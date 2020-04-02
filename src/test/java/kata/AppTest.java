@@ -1,5 +1,6 @@
 package kata;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -52,6 +53,7 @@ class AppTest {
         assertThat(exception.getMessage()).isEqualTo("negatives not allowed: -1");
     }
 
+    @Disabled("Need to refactor first")
     @Test
     void multipleNegativeNumbersNotAllowed() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculate("-1,-2"));
@@ -68,18 +70,17 @@ class AppTest {
             delimiter = String.valueOf(split[0].charAt(2));
             input = split[1];
         }
-        if (input.contains(delimiter) || input.contains("\n")) {
-            input = input.replace("\n", delimiter);
-            String[] split = input.split(delimiter);
-            int result = 0;
-            for (String s : split) {
-                int i = toInt(s);
-                result += i;
-            }
-            return result;
+        if (!input.contains(delimiter)) {
+            input += delimiter;
         }
-        int i = toInt(input);
-        return i;
+        input = input.replace("\n", delimiter);
+        String[] split = input.split(delimiter);
+        int result = 0;
+        for (String s : split) {
+            int i = toInt(s);
+            result += i;
+        }
+        return result;
     }
 
     private int toInt(String s) {
