@@ -75,6 +75,10 @@ class AppTest {
             }
             return result;
         }
-        return Integer.parseInt(input);
+        int i = Integer.parseInt(input);
+        if (i < 0) {
+            throw new IllegalArgumentException();
+        }
+        return i;
     }
 }
