@@ -8,12 +8,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class AppTest {
-    // "" -> 0
     // "1" -> 1
     // "1,2" -> 3
 
     @Test
-    void my_first_test() {
-        assertThat("4" + "2").isEqualTo("42");
+    void emptyStringReturnsZero() {
+        assertThat(calculate("")).isEqualTo(0);
+    }
+
+    @Test
+    void singleNumberReturnsSameNumber() {
+        assertThat(calculate("1")).isEqualTo(1);
+    }
+
+    private int calculate(String input) {
+        if (input.isEmpty()) {
+
+        }
+        return 0;
     }
 }
