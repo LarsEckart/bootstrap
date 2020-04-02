@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class AppTest {
-    // the following input is ok: “1\n2,3” (will equal 6)
+    // “//;\n1;2” -> 3
 
     @Test
     void emptyStringReturnsZero() {
@@ -36,12 +36,22 @@ class AppTest {
         assertThat(calculate("1\n2,3")).isEqualTo(6);
     }
 
+    @Test
+    void customDelimiterInFirstLine() {
+        assertThat(calculate("//;\n1;2")).isEqualTo(3);
+    }
+
     private int calculate(String input) {
         if (input.isEmpty()) {
             return 0;
         }
+        if (input.startsWith("//")) {
+            // cut off first line
+            // replace custom delimiter with comma
+        }
         if (input.contains(",") || input.contains("\n")) {
-            String[] split = input.split("[,\\n]");
+            input = input.replace("\n", ",");
+            String[] split = input.split(",");
             int result = 0;
             for (String s : split) {
                 result += Integer.parseInt(s);
