@@ -8,6 +8,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class AppTest {
+    // "" -> 0
+    // "1" -> 1
+    // "1,2" -> 3
 
     @Test
     void my_first_test() {
