@@ -5,10 +5,15 @@ import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class AppTest {
-    // “//;\n1;2” -> 3
+    /*
+        Calling Add with a negative number will throw an exception “negatives not allowed” - and the negative that was passed.
+
+        if there are multiple negatives, show all of them in the exception message.
+     */
 
     @Test
     void emptyStringReturnsZero() {
@@ -41,6 +46,12 @@ class AppTest {
         assertThat(calculate("//;\n1;2")).isEqualTo(3);
     }
 
+    @Test
+    void negativesNotAllowed() {
+        assertThrows(IllegalArgumentException.class, () -> calculate("-1"));
+        // check exception message
+    }
+
     private int calculate(String input) {
         if (input.isEmpty()) {
             return 0;
@@ -56,7 +67,11 @@ class AppTest {
             String[] split = input.split(delimiter);
             int result = 0;
             for (String s : split) {
-                result += Integer.parseInt(s);
+                int i = Integer.parseInt(s);
+                if (i < 0) {
+                    throw new IllegalArgumentException();
+                }
+                result += i;
             }
             return result;
         }
