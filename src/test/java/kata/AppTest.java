@@ -48,8 +48,14 @@ class AppTest {
 
     @Test
     void negativesNotAllowed() {
-        assertThrows(IllegalArgumentException.class, () -> calculate("-1"));
-        // check exception message
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculate("-1"));
+        assertThat(exception.getMessage()).isEqualTo("negatives not allowed: -1");
+    }
+
+    @Test
+    void multipleNegativeNumbersNotAllowed() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculate("-1,-2"));
+        assertThat(exception.getMessage()).isEqualTo("negatives not allowed: -1, -2");
     }
 
     private int calculate(String input) {
@@ -67,17 +73,19 @@ class AppTest {
             String[] split = input.split(delimiter);
             int result = 0;
             for (String s : split) {
-                int i = Integer.parseInt(s);
-                if (i < 0) {
-                    throw new IllegalArgumentException();
-                }
+                int i = toInt(s);
                 result += i;
             }
             return result;
         }
-        int i = Integer.parseInt(input);
+        int i = toInt(input);
+        return i;
+    }
+
+    private int toInt(String s) {
+        int i = Integer.parseInt(s);
         if (i < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("negatives not allowed: -1");
         }
         return i;
     }
