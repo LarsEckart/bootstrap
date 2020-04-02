@@ -40,8 +40,8 @@ class AppTest {
         if (input.isEmpty()) {
             return 0;
         }
-        if (input.contains(",")) {
-            String[] split = input.split(",");
+        if (input.contains(",") || input.contains("\n")) {
+            String[] split = input.split("[,\\n]");
             int result = 0;
             for (String s : split) {
                 result += Integer.parseInt(s);
