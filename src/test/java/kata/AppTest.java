@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class AppTest {
-    // "1,2" -> 3
+    // the following input is ok: “1\n2,3” (will equal 6)
 
     @Test
     void emptyStringReturnsZero() {
@@ -18,11 +18,22 @@ class AppTest {
     @Test
     void singleNumberReturnsSameNumber() {
         assertThat(calculate("1")).isEqualTo(1);
+        assertThat(calculate("2")).isEqualTo(2);
     }
 
     @Test
     void twoNumbersReturnsSum() {
         assertThat(calculate("1,2")).isEqualTo(3);
+    }
+
+    @Test
+    void multipleNumbersReturnsSum() {
+        assertThat(calculate("1,2,3")).isEqualTo(6);
+    }
+
+    @Test
+    void newlineIsAlsoAValidNumberSeparator() {
+        assertThat(calculate("1\n2,3")).isEqualTo(6);
     }
 
     private int calculate(String input) {
@@ -31,8 +42,12 @@ class AppTest {
         }
         if (input.contains(",")) {
             String[] split = input.split(",");
-            return Integer.parseInt(split[0]) + Integer.parseInt(split[1]);
+            int result = 0;
+            for (String s : split) {
+                result += Integer.parseInt(s);
+            }
+            return result;
         }
-        return 1;
+        return Integer.parseInt(input);
     }
 }
