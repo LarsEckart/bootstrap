@@ -45,13 +45,15 @@ class AppTest {
         if (input.isEmpty()) {
             return 0;
         }
+        String delimiter = ",";
         if (input.startsWith("//")) {
             String[] split = input.split("\n");
-            input = split[1].replace(String.valueOf(split[0].charAt(2)), ",");
+            delimiter = String.valueOf(split[0].charAt(2));
+            input = split[1];
         }
-        if (input.contains(",") || input.contains("\n")) {
-            input = input.replace("\n", ",");
-            String[] split = input.split(",");
+        if (input.contains(delimiter) || input.contains("\n")) {
+            input = input.replace("\n", delimiter);
+            String[] split = input.split(delimiter);
             int result = 0;
             for (String s : split) {
                 result += Integer.parseInt(s);
