@@ -46,8 +46,8 @@ class AppTest {
             return 0;
         }
         if (input.startsWith("//")) {
-            // cut off first line
-            // replace custom delimiter with comma
+            String[] split = input.split("\n");
+            input = split[1].replace(String.valueOf(split[0].charAt(2)), ",");
         }
         if (input.contains(",") || input.contains("\n")) {
             input = input.replace("\n", ",");
