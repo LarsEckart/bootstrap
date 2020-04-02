@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class AppTest {
-    // "1" -> 1
     // "1,2" -> 3
 
     @Test
@@ -21,10 +20,19 @@ class AppTest {
         assertThat(calculate("1")).isEqualTo(1);
     }
 
+    @Test
+    void twoNumbersReturnsSum() {
+        assertThat(calculate("1,2")).isEqualTo(3);
+    }
+
     private int calculate(String input) {
         if (input.isEmpty()) {
-
+            return 0;
         }
-        return 0;
+        if (input.contains(",")) {
+            String[] split = input.split(",");
+            return Integer.parseInt(split[0]) + Integer.parseInt(split[1]);
+        }
+        return 1;
     }
 }
