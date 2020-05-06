@@ -10,7 +10,7 @@ repositories {
 
 dependencies {
     def junitVersion = '5.6.2'
-    def assertjVersion = '3.15.0'
+    def assertjVersion = '3.16.0'
     def approvalVersion = '4.0.2'
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
