@@ -295,7 +295,7 @@ public class XMLToJson
       int lastKeyValueSepPos = segString.indexOf(":");
       String lastKeyString = segString.substring(0, lastKeyValueSepPos);
       String lastValueString = segString.substring(lastKeyValueSepPos + 1);
-      if (pathMap.get(lastKeyString).length() > 0)
+      if (StringUtils.isNonZero(pathMap.get(lastKeyString)))
       {
         tagetString = tagetString.concat(pathMap.get(lastKeyString));
       }
