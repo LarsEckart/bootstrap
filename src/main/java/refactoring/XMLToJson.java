@@ -297,9 +297,10 @@ public class XMLToJson
     System.out.println(segString);
     if (segString.indexOf(":") > 0)
     {
-      int lastKeyValueSepPos = segString.indexOf(":");
-      String lastKeyString = segString.substring(0, lastKeyValueSepPos);
-      String lastValueString = segString.substring(lastKeyValueSepPos + 1);
+      String[] split = segString.split("\\:");
+
+      String lastKeyString = split[0];
+      String lastValueString = split[1];
       if (!StringUtils.isNonZero(pathMap.get(lastKeyString))) {
         throw new Exception("no mapping found");
       }
