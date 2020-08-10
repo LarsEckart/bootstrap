@@ -10,7 +10,9 @@ class XMLToJsonTest {
   void approval() throws Exception {
     XMLToJson xmlToJson = new XMLToJson();
     URL url = getClass().getClassLoader().getResource("xmlToJson.xml");
-    String json = xmlToJson.getJson(url, "fk:AMM24_fk:AMM24-00-00_fk:AMM24-00-00-02");
+
+    String json = xmlToJson.getJson(url, "fk:AMM24_fk:AMM24-FM");
+
     Approvals.verify(json);
   }
 }
