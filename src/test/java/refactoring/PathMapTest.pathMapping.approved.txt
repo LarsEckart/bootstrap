@@ -1,0 +1,15 @@
+path maps
+
+
+ -> //toc
+fk:AMM24_fk:AMM24-FM -> //folder[@key='AMM24']/folder[@key='AMM24-FM']
+dk:AMM24 -> //doc[@key='AMM24']
+dt:AMM24 -> //doc[@type='AMM24']
+dth:AMM24 -> //doc[@type='history'='AMM24']
+dtrn:AMM24 -> //doc[@trnum='AMM24']
+fk:AMM24 -> //folder[@key='AMM24']
+ft:AMM24 -> //folder[@type='AMM24']
+fth:AMM24 -> //folder[@type='history'='AMM24']
+dk:AMM24_dt:AMM24_dth:AMM24_dtrn:AMM24_fk:AMM24_ft:AMM24_fth:AMM24 -> //doc[@key='AMM24']/doc[@type='AMM24']/doc[@type='history'='AMM24']/doc[@trnum='AMM24']/folder[@key='AMM24']/folder[@type='AMM24']/folder[@type='history'='AMM24']
+unknown:AMM24 -> class java.lang.NullPointerException null
+unknown:AMM24_ft:any -> class java.lang.NullPointerException null
