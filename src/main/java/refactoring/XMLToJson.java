@@ -42,7 +42,7 @@ import org.dom4j.Element;
 
 public class XMLToJson
 {
-  private static final Map<String, String> pathMap;
+  public static final Map<String, String> pathMap;
   static
   {
     Map<String, String> aMap = new HashMap<String, String>();
