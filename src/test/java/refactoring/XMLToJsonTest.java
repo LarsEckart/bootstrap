@@ -11,20 +11,19 @@ class XMLToJsonTest {
 
   @Test
   void approval() throws Exception {
-    XMLToJson xmlToJson = new XMLToJson();
-    URL url = getClass().getClassLoader().getResource("xmlToJson.xml");
-
-    String json = xmlToJson.getJson(url, "fk:AMM24_fk:AMM24-FM");
-
-    Approvals.verifyJson(json);
+    verifyXmlToJson("fk:AMM24_fk:AMM24-FM");
   }
 
   @Test
   void approval_root() throws Exception {
+    verifyXmlToJson("/");
+  }
+
+  private void verifyXmlToJson(String xPathString) throws Exception {
     XMLToJson xmlToJson = new XMLToJson();
     URL url = getClass().getClassLoader().getResource("xmlToJson.xml");
 
-    String json = xmlToJson.getJson(url, "/");
+    String json = xmlToJson.getJson(url, xPathString);
 
     Approvals.verifyJson(json);
   }
