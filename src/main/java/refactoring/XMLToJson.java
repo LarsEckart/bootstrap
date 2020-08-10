@@ -303,7 +303,7 @@ public class XMLToJson
       if (!StringUtils.isNonZero(pathMap.get(key))) {
         throw new Exception("no mapping found");
       }
-      tagetString += String.format("%s='%s']", pathMap.get(key), value);
+      tagetString = String.format("%s%s='%s']", tagetString, pathMap.get(key), value);
     }
     return tagetString;
   }
