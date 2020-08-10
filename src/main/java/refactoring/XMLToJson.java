@@ -298,13 +298,12 @@ public class XMLToJson
     String[] split = segString.split("\\:");
     if (split.length == 2)
     {
-      String lastKeyString = split[0];
-      String lastValueString = split[1];
-      if (!StringUtils.isNonZero(pathMap.get(lastKeyString))) {
+      String key = split[0];
+      String value = split[1];
+      if (!StringUtils.isNonZero(pathMap.get(key))) {
         throw new Exception("no mapping found");
       }
-      tagetString = tagetString.concat(pathMap.get(lastKeyString));
-      tagetString = tagetString.concat("='").concat(lastValueString).concat("']");
+      tagetString += String.format("%s='%s']", pathMap.get(key), value);
     }
     return tagetString;
   }
