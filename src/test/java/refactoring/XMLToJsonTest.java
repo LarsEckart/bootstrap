@@ -18,4 +18,14 @@ class XMLToJsonTest {
 
     Approvals.verifyJson(json);
   }
+
+  @Test
+  void approval_root() throws Exception {
+    XMLToJson xmlToJson = new XMLToJson();
+    URL url = getClass().getClassLoader().getResource("xmlToJson.xml");
+
+    String json = xmlToJson.getJson(url, "/");
+
+    Approvals.verifyJson(json);
+  }
 }
