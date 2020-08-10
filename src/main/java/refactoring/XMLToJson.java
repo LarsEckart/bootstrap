@@ -289,13 +289,13 @@ public class XMLToJson
     }
     //this is for scenerio either no "_" or sub string after "_"
 
-    return tagetString + outputSource(shortXPath.substring(newStart));
+    return tagetString + expandPath(shortXPath.substring(newStart));
   }
 
-  private String outputSource(String segString)
+  private String expandPath(String shortPathPair)
       throws Exception {
-    System.out.println(segString);
-    String[] split = segString.split("\\:");
+    System.out.println(shortPathPair);
+    String[] split = shortPathPair.split("\\:");
     if (split.length == 2)
     {
       String key = split[0];
