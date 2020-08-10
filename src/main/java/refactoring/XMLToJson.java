@@ -300,14 +300,10 @@ public class XMLToJson
       int lastKeyValueSepPos = segString.indexOf(":");
       String lastKeyString = segString.substring(0, lastKeyValueSepPos);
       String lastValueString = segString.substring(lastKeyValueSepPos + 1);
-      if (StringUtils.isNonZero(pathMap.get(lastKeyString)))
-      {
-        tagetString = tagetString.concat(pathMap.get(lastKeyString));
-      }
-      else
-      {
+      if (!StringUtils.isNonZero(pathMap.get(lastKeyString))) {
         throw new Exception("no mapping found");
       }
+      tagetString = tagetString.concat(pathMap.get(lastKeyString));
       tagetString = tagetString.concat("='").concat(lastValueString).concat("']");
     }
     return tagetString;
