@@ -205,15 +205,6 @@ public class XMLToJson
   }
 
   /*
-   * read xpathstring from post request and generate the real xpath for toc
-   */
-  public String getXPathString()
-  {
-    //readPostRequest()
-    return null;
-  }
-
-  /*
    * post string looks like : "fk:LOETR_dtrn:TR12-118_fth_dth"
    * it represents the inner doc elemnet:
    * <folder key="LOETR" type="loetr" title="List of Effective TRs" file="loetr.html">
