@@ -248,27 +248,20 @@ public class XMLToJson
    */
   public static String pathMapping(String shortXPath) throws Exception
   {
-    if (shortXPath.equals(""))
+    if ("".equals(shortXPath))
     {
       return "//toc";
     }
 
-    String  tagetString = "//";
-
-    int newStart = 0;
-    String segString = "";
-    String valueString = "";
-    // dth???
-    // need mapping all senarios
-    // already??
+    String expanded = "//";
     String[] pairs = shortXPath.split("_");
     for (String pair : pairs) {
-      if (!tagetString.endsWith("/")) {
-        tagetString += "/";
+      if (!expanded.endsWith("/")) {
+        expanded += "/";
       }
-      tagetString += expandPath(pair);
+      expanded += expandPath(pair);
     }
-    return tagetString;
+    return expanded;
   }
 
   private static String expandPath(String shortPathPair)
