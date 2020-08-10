@@ -246,12 +246,12 @@ public class XMLToJson
    *
    *
    */
-  public String pathMapping(String shortXPath) throws Exception
+  public static String pathMapping(String shortXPath) throws Exception
   {
     String tagetString = null;
     if (shortXPath.equals(""))
     {
-      tagetString = "//toc";
+      return "//toc";
     }
     else
     {
@@ -261,38 +261,20 @@ public class XMLToJson
     int newStart = 0;
     String segString = "";
     String valueString = "";
-    //dth???
-    //need mapping all senarios
-    //already??
-    while (shortXPath.indexOf("_", newStart) > -1)
-    {
-      int keyValueSepPos = 0;
-      String keyString = "";//not necessary key, might be type attribute
-      segString = shortXPath.substring(newStart, shortXPath.indexOf("_", newStart));
-      newStart = shortXPath.indexOf("_", newStart) + 1;//new start search point
-      //System.out.println(newStart);
-      if (segString.indexOf(":") > 0)
-      {
-        keyValueSepPos = segString.indexOf(":");
-        keyString = segString.substring(0, keyValueSepPos);
-        valueString = segString.substring(keyValueSepPos + 1);
-        if (StringUtils.isNonZero(pathMap.get(keyString)))
-        {
-          tagetString = tagetString.concat(pathMap.get(keyString));
-        }
-        else
-        {
-          throw new Exception("no mapping found");
-        }
-        tagetString = tagetString.concat("='").concat(valueString).concat("']/");
+    // dth???
+    // need mapping all senarios
+    // already??
+    String[] pairs = shortXPath.split("_");
+    for (String pair : pairs) {
+      if (!tagetString.endsWith("/")) {
+        tagetString += "/";
       }
+      tagetString += expandPath(pair);
     }
-    //this is for scenerio either no "_" or sub string after "_"
-
-    return tagetString + expandPath(shortXPath.substring(newStart));
+    return tagetString;
   }
 
-  private String expandPath(String shortPathPair)
+  private static String expandPath(String shortPathPair)
       throws Exception {
     System.out.println(shortPathPair);
     String[] split = shortPathPair.split("\\:");
