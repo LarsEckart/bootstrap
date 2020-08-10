@@ -288,6 +288,12 @@ public class XMLToJson
       }
     }
     //this is for scenerio either no "_" or sub string after "_"
+    return outputSource(shortXPath, tagetString, newStart);
+  }
+
+  private String outputSource(String shortXPath, String tagetString, int newStart)
+      throws Exception {
+    String segString;
     segString = shortXPath.substring(newStart);
     System.out.println(segString);
     if (segString.indexOf(":") > 0)
@@ -306,7 +312,6 @@ public class XMLToJson
       tagetString = tagetString.concat("='").concat(lastValueString).concat("']");
     }
     return tagetString;
-
   }
 
   public static void main(String[] args) throws Exception
