@@ -248,15 +248,12 @@ public class XMLToJson
    */
   public static String pathMapping(String shortXPath) throws Exception
   {
-    String tagetString = null;
     if (shortXPath.equals(""))
     {
       return "//toc";
     }
-    else
-    {
-      tagetString = "//";
-    }
+
+    String  tagetString = "//";
 
     int newStart = 0;
     String segString = "";
