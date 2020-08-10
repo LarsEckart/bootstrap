@@ -75,7 +75,6 @@ public class XMLToJson
     Element node = null;
     if (xPathString.equals("/"))
     {
-
       node = TOCDoc.getRootElement();
     }
     else
@@ -84,10 +83,9 @@ public class XMLToJson
       System.out.println(realXPathString);
       node = (Element) TOCDoc.selectSingleNode(realXPathString);
     }
-    //List<Element>  li = node.elements();
     for (Iterator<Element> i = node.elementIterator(); i.hasNext();)
     {
-      Element elem = (Element) i.next();
+      Element elem = i.next();
       String eleName = elem.getName();
       Boolean hasChildren = false;
       if ((elem.elements().size() > 0))
@@ -98,9 +96,7 @@ public class XMLToJson
       }
       List<Attribute> list = elem.attributes();
       String titleAttrContent = elem.attributeValue("title");
-      //Boolean isFileAttr = false;
       String fileAttrContent = elem.attributeValue("file");
-      //if  (fileAttrContent.isEmpty() )
       if ("doc".equals(eleName))
       {
         //doc element always has "file" attribute
@@ -109,7 +105,6 @@ public class XMLToJson
         {
           jsonString = jsonString.concat("{");
           String attrName = attribute.getName();
-          //System.out.println("doc arribute Name : " + attrName);
           //each one has to have "data" line, "attr" line "state" line and "children" line
           jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
           if (attrName.equals("key"))
@@ -127,32 +122,12 @@ public class XMLToJson
 
             break;
           }
-					/*		else if (attrName.equals("type"))//type attribute for doc element won't determite what exactly the element is
-							{
-								String typeContent = elem.attributeValue("type");
-								//doc element has type "history"
-								if (typeContent == "history"){
-									jsonString = jsonString.concat("'attr':{'id':'").concat(xPathString).concat("_dth,");
-								}else if (typeContent == "?????"){
-									//any values for type attribute need to concern????
-								}
-
-							}
-							else if (attrName.equals("file"))
-							{
-
-							}*/
         }
         if (hasChildren)
         {
           //state set up as "closed" and no need to set up "children" field
           jsonString = jsonString.concat(",'state':'closed'");
 
-        }
-        else
-        {
-          //no need to put anything
-          //jsonString = jsonString.concat("'state':'???'");
         }
         jsonString = jsonString.concat("},");
       }
@@ -178,30 +153,20 @@ public class XMLToJson
           else if (attrName.equals("type"))
           {
             String typeContent = elem.attributeValue("type");
-            //doc element has type "history"
             if ("history".equals(typeContent))
             {
               jsonString = jsonString.concat("'attr':{'id':'").concat(xPathString).concat("_fth,");
 
             }
-            else if ("?????".equals(typeContent))
-            {
-              //any values need to concern????
-            }
             break;
-
           }
-
         }
         jsonString = jsonString.concat("},");
       }
-      continue;
     }
-    //return list;
     jsonString = jsonString.substring(0, jsonString.length() - 1);
     jsonString = jsonString.concat("]");
     return jsonString;
-
   }
 
   /*

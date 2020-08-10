@@ -16,6 +16,6 @@ class XMLToJsonTest {
 
     String json = xmlToJson.getJson(url, "fk:AMM24_fk:AMM24-FM");
 
-    Approvals.verify(json);
+    Approvals.verifyJson(json);
   }
 }
