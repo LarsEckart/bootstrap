@@ -101,7 +101,7 @@ public class XMLToJson
       //Boolean isFileAttr = false;
       String fileAttrContent = elem.attributeValue("file");
       //if  (fileAttrContent.isEmpty() )
-      if (eleName == "doc")
+      if ("doc".equals(eleName))
       {
         //doc element always has "file" attribute
 
@@ -157,7 +157,7 @@ public class XMLToJson
         jsonString = jsonString.concat("},");
       }
 
-      else if (eleName == "folder")
+      else if ("folder".equals(eleName))
       {
         jsonString = jsonString.concat("{");
         for (Attribute attribute : list)
@@ -179,12 +179,12 @@ public class XMLToJson
           {
             String typeContent = elem.attributeValue("type");
             //doc element has type "history"
-            if (typeContent == "history")
+            if ("history".equals(typeContent))
             {
               jsonString = jsonString.concat("'attr':{'id':'").concat(xPathString).concat("_fth,");
 
             }
-            else if (typeContent == "?????")
+            else if ("?????".equals(typeContent))
             {
               //any values need to concern????
             }

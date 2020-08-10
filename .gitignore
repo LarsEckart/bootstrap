@@ -12,3 +12,6 @@ out
 .project
 .settings/
 bin/
+
+# approvaltests
+*.received.*
