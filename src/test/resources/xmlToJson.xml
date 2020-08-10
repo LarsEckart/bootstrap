@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<folder type="history" key="AMM24">
+  <folder type="history" key="AMM24-FM">
+    <folder type="history" key="any">
+      <doc title="anyTitle" lars="eckart" file="ad"/>
+      <doc title="anyTitle" oskar="eckart" file="asdsad"/>
+    </folder>
+    <doc title="anyTitle2" oskar="eckart" file="asd124sad"/>
+    <doc title="anyTitle3" oskar="eckart" file="asd12515sad"/>
+  </folder>
+</folder>

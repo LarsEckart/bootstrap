@@ -9,6 +9,8 @@ repositories {
 }
 
 dependencies {
+    implementation("org.dom4j:dom4j:2.1.3")
+
     val assertjVersion = "3.16.1"
     val approvalVersion = "9.1.0"
 
@@ -29,6 +31,9 @@ dependencies {
 
     testImplementation("org.assertj:assertj-core:${assertjVersion}")
     testImplementation("com.approvaltests:approvaltests:${approvalVersion}")
+    testImplementation("com.google.code.gson:gson:2.8.6"){
+        because("Approvals.verifyJson()")
+    }
 }
 
 tasks.withType<JavaCompile> {
