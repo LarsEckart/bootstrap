@@ -299,11 +299,12 @@ public class XMLToJson
     if (split.length == 2)
     {
       String key = split[0];
+      String path = pathMap.get(key);
       String value = split[1];
-      if (!StringUtils.isNonZero(pathMap.get(key))) {
+      if (!StringUtils.isNonZero(path)) {
         throw new Exception("no mapping found");
       }
-      tagetString = String.format("%s%s='%s']", tagetString, pathMap.get(key), value);
+      tagetString = String.format("%s%s='%s']", tagetString, path, value);
     }
     return tagetString;
   }
