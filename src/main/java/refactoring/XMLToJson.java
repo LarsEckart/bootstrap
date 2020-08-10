@@ -295,10 +295,9 @@ public class XMLToJson
       throws Exception {
     String segString = shortXPath.substring(newStart);
     System.out.println(segString);
-    if (segString.indexOf(":") > 0)
+    String[] split = segString.split("\\:");
+    if (split.length == 2)
     {
-      String[] split = segString.split("\\:");
-
       String lastKeyString = split[0];
       String lastValueString = split[1];
       if (!StringUtils.isNonZero(pathMap.get(lastKeyString))) {
