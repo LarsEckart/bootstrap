@@ -293,8 +293,7 @@ public class XMLToJson
 
   private String outputSource(String shortXPath, String tagetString, int newStart)
       throws Exception {
-    String segString;
-    segString = shortXPath.substring(newStart);
+    String segString = shortXPath.substring(newStart);
     System.out.println(segString);
     if (segString.indexOf(":") > 0)
     {
