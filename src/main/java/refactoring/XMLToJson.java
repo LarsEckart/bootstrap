@@ -1,5 +1,6 @@
 package refactoring;
 
+import com.spun.util.StringUtils;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
@@ -275,7 +276,7 @@ public class XMLToJson
         keyValueSepPos = segString.indexOf(":");
         keyString = segString.substring(0, keyValueSepPos);
         valueString = segString.substring(keyValueSepPos + 1);
-        if (pathMap.get(keyString).length() > 0)
+        if (StringUtils.isNonZero(pathMap.get(keyString)))
         {
           tagetString = tagetString.concat(pathMap.get(keyString));
         }

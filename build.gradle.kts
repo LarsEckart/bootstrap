@@ -9,13 +9,14 @@ repositories {
 }
 
 dependencies {
-    implementation("org.dom4j:dom4j:2.1.3")
-
     val assertjVersion = "3.16.1"
     val approvalVersion = "9.1.0"
 
     val junit4Version   = "4.13"
     val junitBomVersion = "5.6.2"
+
+    implementation("org.dom4j:dom4j:2.1.3")
+    implementation("com.approvaltests:approvaltests-util:${approvalVersion}")
 
     testImplementation(platform("org.junit:junit-bom:$junitBomVersion"))
     testImplementation("org.junit.jupiter:junit-jupiter")
