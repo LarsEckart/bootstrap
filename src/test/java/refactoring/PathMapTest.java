@@ -27,7 +27,11 @@ class PathMapTest {
         "fth:AMM24",
         "dk:AMM24_dt:AMM24_dth:AMM24_dtrn:AMM24_fk:AMM24_ft:AMM24_fth:AMM24",
         "unknown:AMM24",
-        "unknown:AMM24_ft:any"
+        "unknown:AMM24_ft:any",
+        "dk",
+        "dk_dt",
+        "dk_dt:AMM24",
+        "dt:AMM24_dk",
     };
     Approvals.verifyAll(
         "path maps",
