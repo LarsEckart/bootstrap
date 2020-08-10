@@ -1,0 +1,7 @@
+dk : doc[@key 
+dt : doc[@type 
+dth : doc[@type='history' 
+dtrn : doc[@trnum 
+fk : folder[@key 
+ft : folder[@type 
+fth : folder[@type='history' 
