@@ -289,10 +289,10 @@ public class XMLToJson
     }
     //this is for scenerio either no "_" or sub string after "_"
 
-    return outputSource(shortXPath.substring(newStart), tagetString);
+    return tagetString + outputSource(shortXPath.substring(newStart));
   }
 
-  private String outputSource(String segString, String tagetString)
+  private String outputSource(String segString)
       throws Exception {
     System.out.println(segString);
     String[] split = segString.split("\\:");
@@ -304,9 +304,9 @@ public class XMLToJson
       if (!StringUtils.isNonZero(path)) {
         throw new Exception("no mapping found");
       }
-      tagetString = String.format("%s%s='%s']", tagetString, path, value);
+      return String.format("%s='%s']", path, value);
     }
-    return tagetString;
+    return "";
   }
 
   public static void main(String[] args) throws Exception
