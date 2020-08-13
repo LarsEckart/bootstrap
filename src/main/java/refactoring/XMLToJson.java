@@ -138,13 +138,18 @@ public class XMLToJson {
   }
 
   private String convertTrnum(String xPathString, Element elem, String fileAttrContent) {
-    String trnumContent = elem.attributeValue("trnum");
-    return String.format("'attr':{'id':'%s_dtrn:%s','file':'%s'}", xPathString, trnumContent, fileAttrContent);
+    return convert(xPathString, elem, fileAttrContent, "_dtrn", "trnum");
   }
 
   private String convertKey(String xPathString, Element elem, String fileAttrContent) {
-    String keyContent = elem.attributeValue("key");
-    return String.format("'attr':{'id':'%s_dk:%s','file':'%s'}", xPathString, keyContent, fileAttrContent);
+    return convert(xPathString, elem, fileAttrContent, "_dk", "key");
+  }
+
+  private String convert(String xPathString, Element elem, String fileAttrContent, String label,
+      String keyName) {
+    String content = elem.attributeValue(keyName);
+    return String.format("'attr':{'id':'%s%s:%s','file':'%s'}", xPathString, label, content,
+        fileAttrContent);
   }
 
   private String convertFolder(String xPathString, Element elem, List<Attribute> list,
