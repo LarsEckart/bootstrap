@@ -2,6 +2,7 @@ package refactoring;
 
 import com.spun.util.StringUtils;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -113,28 +114,25 @@ public class XMLToJson {
 
   private String convertDoc(String xPathString, Element elem, Boolean hasChildren,
       List<Attribute> list, String titleAttrContent, String fileAttrContent) {
-    String jsonString = "";
-    // doc element always has "file" attribute
 
-    jsonString = jsonString.concat("{");
+    List<String> pieces = new ArrayList<>();
     for (Attribute attribute : list) {
+      pieces.add("'data':'" + titleAttrContent + "'");
       String attrName = attribute.getName();
-      // each one has to have "data" line, "attr" line "state" line and "children" line
-      jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
       if ("key".equals(attrName)) {
-        jsonString += convertKey(xPathString, elem, fileAttrContent);
+        pieces.add(convertKey(xPathString, elem, fileAttrContent));
         break;
-      } else if ("trnum".equals(attrName)) {
-        jsonString += convertTrnum(xPathString, elem, fileAttrContent);
+      }
+      if ("trnum".equals(attrName)) {
+        pieces.add(convertTrnum(xPathString, elem, fileAttrContent));
         break;
       }
     }
     if (hasChildren) {
       // state set up as "closed" and no need to set up "children" field
-      jsonString = jsonString.concat(",'state':'closed'");
+      pieces.add("'state':'closed'");
     }
-    jsonString = jsonString.concat("}");
-    return jsonString;
+    return "{" + String.join(",", pieces) + "}";
   }
 
   private String convertTrnum(String xPathString, Element elem, String fileAttrContent) {
