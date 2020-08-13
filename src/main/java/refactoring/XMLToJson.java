@@ -66,9 +66,20 @@ public class XMLToJson {
    */
   @SuppressWarnings({"unchecked"})
   public String getJson(URL url, String xPathString) throws Exception {
-    Document TOCDoc = util.getDocument(url);
     String jsonString = "[";
 
+    Element node = getNode(url, xPathString);
+    for (Iterator<Element> i = node.elementIterator(); i.hasNext(); ) {
+      Element elem = i.next();
+      jsonString = applesauce(xPathString, jsonString, elem);
+    }
+    jsonString = jsonString.substring(0, jsonString.length() - 1);
+    jsonString = jsonString.concat("]");
+    return jsonString;
+  }
+
+  private Element getNode(URL url, String xPathString) throws Exception {
+    Document TOCDoc = util.getDocument(url);
     Element node = null;
     if (xPathString.equals("/")) {
       node = TOCDoc.getRootElement();
@@ -77,13 +88,7 @@ public class XMLToJson {
       System.out.println(realXPathString);
       node = (Element) TOCDoc.selectSingleNode(realXPathString);
     }
-    for (Iterator<Element> i = node.elementIterator(); i.hasNext(); ) {
-      Element elem = i.next();
-      jsonString = applesauce(xPathString, jsonString, elem);
-    }
-    jsonString = jsonString.substring(0, jsonString.length() - 1);
-    jsonString = jsonString.concat("]");
-    return jsonString;
+    return node;
   }
 
   private String applesauce(String xPathString, String jsonString, Element elem) {
