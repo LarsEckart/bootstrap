@@ -122,18 +122,7 @@ public class XMLToJson {
       // each one has to have "data" line, "attr" line "state" line and "children" line
       jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
       if ("key".equals(attrName)) {
-        String keyContent = elem.attributeValue("key");
-        String result = "";
-        result =
-            result
-                .concat("'attr':{'id':'")
-                .concat(xPathString)
-                .concat("_dk:")
-                .concat(keyContent)
-                .concat("','file':'")
-                .concat(fileAttrContent)
-                .concat("'}");
-        jsonString += result;
+        jsonString += convertKey(xPathString, elem, fileAttrContent);
         break;
       } else if ("trnum".equals(attrName)) {
 
@@ -157,6 +146,21 @@ public class XMLToJson {
     }
     jsonString = jsonString.concat("}");
     return jsonString;
+  }
+
+  private String convertKey(String xPathString, Element elem, String fileAttrContent) {
+    String keyContent = elem.attributeValue("key");
+    String result = "";
+    result =
+        result
+            .concat("'attr':{'id':'")
+            .concat(xPathString)
+            .concat("_dk:")
+            .concat(keyContent)
+            .concat("','file':'")
+            .concat(fileAttrContent)
+            .concat("'}");
+    return result;
   }
 
   private String convertFolder(String xPathString, Element elem, List<Attribute> list,
