@@ -22,17 +22,7 @@ class XMLToJsonTest {
 
   @Test
   void approval_trnum() throws Exception {
-    XMLToJson xmlToJson = new XMLToJson();
-    URL url = getClass().getClassLoader().getResource("xmlToJson.xml");
-
-    String json = xmlToJson.getJson(url, "ft:loetr");
-
-    String replace =
-        json.replace(",", ",\n")
-            .replace("}", "\n}\n")
-            .replace("{", "\n{\n");
-
-    Approvals.verify(replace);
+    verifyXmlToJson("ft:loetr");
   }
 
   private void verifyXmlToJson(String xPathString) throws Exception {
