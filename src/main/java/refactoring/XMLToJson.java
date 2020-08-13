@@ -94,7 +94,7 @@ public class XMLToJson {
 
     String eleName = elem.getName();
     Boolean hasChildren = false;
-    if ((elem.elements().size() > 0)) {
+    if ((!elem.elements().isEmpty())) {
       hasChildren = true;
       // current element has children itself, state shoud be "closed"
 
