@@ -136,7 +136,7 @@ public class XMLToJson {
         for (Attribute attribute : list) {
           String attrName = attribute.getName();
           jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
-          if (attrName.equals("key")) {
+          if ("key".equals(attrName)) {
             String keyContent = elem.attributeValue("key");
             jsonString =
                 jsonString
@@ -150,7 +150,7 @@ public class XMLToJson {
             }
 
             break;
-          } else if (attrName.equals("type")) {
+          } else if ("type".equals(attrName)) {
             String typeContent = elem.attributeValue("type");
             if ("history".equals(typeContent)) {
               jsonString = jsonString.concat("'attr':{'id':'").concat(xPathString).concat("_fth,");
