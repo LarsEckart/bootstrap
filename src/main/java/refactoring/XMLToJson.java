@@ -116,8 +116,8 @@ public class XMLToJson {
     String jsonString = "";
     // doc element always has "file" attribute
 
+    jsonString = jsonString.concat("{");
     for (Attribute attribute : list) {
-      jsonString = jsonString.concat("{");
       String attrName = attribute.getName();
       // each one has to have "data" line, "attr" line "state" line and "children" line
       jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
