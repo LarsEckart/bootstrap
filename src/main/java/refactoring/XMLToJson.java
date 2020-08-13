@@ -107,8 +107,7 @@ public class XMLToJson {
     } else if ("folder".equals(eleName)) {
       return convertFolder(xPathString, elem, list, titleAttrContent, fileAttrContent);
     } else {
-      String jsonString = "";
-      return jsonString;
+      return "";
     }
   }
 
