@@ -71,7 +71,7 @@ public class XMLToJson {
         getNode(url, xPathString)
             .elements()
             .stream()
-            .map(element -> applesauce(xPathString, element))
+            .map(element -> convertToJson(xPathString, element))
             .collect(Collectors.joining(","));
     return "[" + innerJson + "]";
   }
@@ -89,7 +89,7 @@ public class XMLToJson {
     return node;
   }
 
-  private String applesauce(String xPathString, Element elem) {
+  private String convertToJson(String xPathString, Element elem) {
     String jsonString = "";
     String eleName = elem.getName();
     Boolean hasChildren = false;
@@ -102,47 +102,8 @@ public class XMLToJson {
     String titleAttrContent = elem.attributeValue("title");
     String fileAttrContent = elem.attributeValue("file");
     if ("doc".equals(eleName)) {
-      // doc element always has "file" attribute
-
-      for (Attribute attribute : list) {
-        jsonString = jsonString.concat("{");
-        String attrName = attribute.getName();
-        // each one has to have "data" line, "attr" line "state" line and "children" line
-        jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
-        if (attrName.equals("key")) {
-          String keyContent = elem.attributeValue("key");
-          jsonString =
-              jsonString
-                  .concat("'attr':{'id':'")
-                  .concat(xPathString)
-                  .concat("_dk:")
-                  .concat(keyContent)
-                  .concat("','file':'")
-                  .concat(fileAttrContent)
-                  .concat("'}");
-
-          break;
-        } else if (attrName.equals("trnum")) {
-
-          String trnumContent = elem.attributeValue("trnum");
-          jsonString =
-              jsonString
-                  .concat("'attr':{'id':'")
-                  .concat(xPathString)
-                  .concat("_dtrn:")
-                  .concat(trnumContent)
-                  .concat("','file':'")
-                  .concat(fileAttrContent)
-                  .concat("'}");
-
-          break;
-        }
-      }
-      if (hasChildren) {
-        // state set up as "closed" and no need to set up "children" field
-        jsonString = jsonString.concat(",'state':'closed'");
-      }
-      jsonString = jsonString.concat("}");
+      jsonString = convertDoc(xPathString, elem, jsonString, hasChildren, list, titleAttrContent,
+          fileAttrContent);
     } else if ("folder".equals(eleName)) {
       jsonString = jsonString.concat("{");
       for (Attribute attribute : list) {
@@ -172,6 +133,53 @@ public class XMLToJson {
       }
       jsonString = jsonString.concat("}");
     }
+    return jsonString;
+  }
+
+  @org.jetbrains.annotations.NotNull
+  private String convertDoc(String xPathString, Element elem, String jsonString,
+      Boolean hasChildren, List<Attribute> list, String titleAttrContent, String fileAttrContent) {
+    // doc element always has "file" attribute
+
+    for (Attribute attribute : list) {
+      jsonString = jsonString.concat("{");
+      String attrName = attribute.getName();
+      // each one has to have "data" line, "attr" line "state" line and "children" line
+      jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
+      if (attrName.equals("key")) {
+        String keyContent = elem.attributeValue("key");
+        jsonString =
+            jsonString
+                .concat("'attr':{'id':'")
+                .concat(xPathString)
+                .concat("_dk:")
+                .concat(keyContent)
+                .concat("','file':'")
+                .concat(fileAttrContent)
+                .concat("'}");
+
+        break;
+      } else if (attrName.equals("trnum")) {
+
+        String trnumContent = elem.attributeValue("trnum");
+        jsonString =
+            jsonString
+                .concat("'attr':{'id':'")
+                .concat(xPathString)
+                .concat("_dtrn:")
+                .concat(trnumContent)
+                .concat("','file':'")
+                .concat(fileAttrContent)
+                .concat("'}");
+
+        break;
+      }
+    }
+    if (hasChildren) {
+      // state set up as "closed" and no need to set up "children" field
+      jsonString = jsonString.concat(",'state':'closed'");
+    }
+    jsonString = jsonString.concat("}");
     return jsonString;
   }
 
