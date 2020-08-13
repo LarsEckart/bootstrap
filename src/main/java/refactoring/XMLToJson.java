@@ -90,7 +90,7 @@ public class XMLToJson {
   }
 
   private String convertToJson(String xPathString, Element elem) {
-    String jsonString = "";
+
     String eleName = elem.getName();
     Boolean hasChildren = false;
     if ((elem.elements().size() > 0)) {
@@ -102,10 +102,13 @@ public class XMLToJson {
     String titleAttrContent = elem.attributeValue("title");
     String fileAttrContent = elem.attributeValue("file");
     if ("doc".equals(eleName)) {
-      jsonString = convertDoc(xPathString, elem, jsonString, hasChildren, list, titleAttrContent,
-          fileAttrContent);
+      String jsonString = "";
+      jsonString =
+          convertDoc(
+              xPathString, elem, jsonString, hasChildren, list, titleAttrContent, fileAttrContent);
       return jsonString;
     } else if ("folder".equals(eleName)) {
+      String jsonString = "";
       jsonString = jsonString.concat("{");
       for (Attribute attribute : list) {
         String attrName = attribute.getName();
@@ -134,7 +137,8 @@ public class XMLToJson {
       }
       jsonString = jsonString.concat("}");
       return jsonString;
-    } else{
+    } else {
+      String jsonString = "";
       return jsonString;
     }
   }
