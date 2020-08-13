@@ -70,7 +70,8 @@ public class XMLToJson {
 
     Element node = getNode(url, xPathString);
     for (Element element : node.elements()) {
-      jsonString = applesauce(xPathString, jsonString, element);
+      //jsonString = applesauce(xPathString, jsonString, element);
+      jsonString += applesauce(xPathString, element);
     }
     jsonString = jsonString.substring(0, jsonString.length() - 1);
     jsonString = jsonString.concat("]");
@@ -90,7 +91,8 @@ public class XMLToJson {
     return node;
   }
 
-  private String applesauce(String xPathString, String jsonString, Element elem) {
+  private String applesauce(String xPathString,  Element elem) {
+    String jsonString = "";
     String eleName = elem.getName();
     Boolean hasChildren = false;
     if ((elem.elements().size() > 0)) {
