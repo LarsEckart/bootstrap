@@ -69,9 +69,8 @@ public class XMLToJson {
     String jsonString = "[";
 
     Element node = getNode(url, xPathString);
-    for (Iterator<Element> i = node.elementIterator(); i.hasNext(); ) {
-      Element elem = i.next();
-      jsonString = applesauce(xPathString, jsonString, elem);
+    for (Element element : node.elements()) {
+      jsonString = applesauce(xPathString, jsonString, element);
     }
     jsonString = jsonString.substring(0, jsonString.length() - 1);
     jsonString = jsonString.concat("]");
