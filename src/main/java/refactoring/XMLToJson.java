@@ -125,10 +125,10 @@ public class XMLToJson {
         jsonString += convertKey(xPathString, elem, fileAttrContent);
         break;
       } else if ("trnum".equals(attrName)) {
-
+      String result = "";
         String trnumContent = elem.attributeValue("trnum");
-        jsonString =
-            jsonString
+        result =
+            result
                 .concat("'attr':{'id':'")
                 .concat(xPathString)
                 .concat("_dtrn:")
@@ -136,7 +136,7 @@ public class XMLToJson {
                 .concat("','file':'")
                 .concat(fileAttrContent)
                 .concat("'}");
-
+        jsonString += result;
         break;
       }
     }
