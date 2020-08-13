@@ -40,12 +40,10 @@ import org.dom4j.Element;
  *	"Ajax node"
  *	]
  */
-
-public class XMLToJson
-{
+public class XMLToJson {
   public static final Map<String, String> pathMap;
-  static
-  {
+
+  static {
     Map<String, String> aMap = new HashMap<String, String>();
     aMap.put("fk", "folder[@key");
     aMap.put("ft", "folder[@type");
@@ -66,97 +64,96 @@ public class XMLToJson
    *
    * sample xPathString : "fk:AMM24_fk:AMM24-FM_dk"
    */
-  @SuppressWarnings({ "unchecked" })
-  public String getJson(URL url, String xPathString) throws Exception
-  {
+  @SuppressWarnings({"unchecked"})
+  public String getJson(URL url, String xPathString) throws Exception {
     Document TOCDoc = util.getDocument(url);
     String jsonString = "[";
 
     Element node = null;
-    if (xPathString.equals("/"))
-    {
+    if (xPathString.equals("/")) {
       node = TOCDoc.getRootElement();
-    }
-    else
-    {
+    } else {
       String realXPathString = pathMapping(xPathString);
       System.out.println(realXPathString);
       node = (Element) TOCDoc.selectSingleNode(realXPathString);
     }
-    for (Iterator<Element> i = node.elementIterator(); i.hasNext();)
-    {
+    for (Iterator<Element> i = node.elementIterator(); i.hasNext(); ) {
       Element elem = i.next();
       String eleName = elem.getName();
       Boolean hasChildren = false;
-      if ((elem.elements().size() > 0))
-      {
+      if ((elem.elements().size() > 0)) {
         hasChildren = true;
-        //current element has children itself, state shoud be "closed"
+        // current element has children itself, state shoud be "closed"
 
       }
       List<Attribute> list = elem.attributes();
       String titleAttrContent = elem.attributeValue("title");
       String fileAttrContent = elem.attributeValue("file");
-      if ("doc".equals(eleName))
-      {
-        //doc element always has "file" attribute
+      if ("doc".equals(eleName)) {
+        // doc element always has "file" attribute
 
-        for (Attribute attribute : list)
-        {
+        for (Attribute attribute : list) {
           jsonString = jsonString.concat("{");
           String attrName = attribute.getName();
-          //each one has to have "data" line, "attr" line "state" line and "children" line
+          // each one has to have "data" line, "attr" line "state" line and "children" line
           jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
-          if (attrName.equals("key"))
-          {
+          if (attrName.equals("key")) {
             String keyContent = elem.attributeValue("key");
-            jsonString = jsonString.concat("'attr':{'id':'").concat(xPathString).concat("_dk:").concat(keyContent).concat("','file':'").concat(fileAttrContent).concat("'}");
+            jsonString =
+                jsonString
+                    .concat("'attr':{'id':'")
+                    .concat(xPathString)
+                    .concat("_dk:")
+                    .concat(keyContent)
+                    .concat("','file':'")
+                    .concat(fileAttrContent)
+                    .concat("'}");
 
             break;
-          }
-          else if (attrName.equals("trnum"))
-          {
+          } else if (attrName.equals("trnum")) {
 
             String trnumContent = elem.attributeValue("trnum");
-            jsonString = jsonString.concat("'attr':{'id':'").concat(xPathString).concat("_dtrn:").concat(trnumContent).concat("','file':'").concat(fileAttrContent).concat("'}");
+            jsonString =
+                jsonString
+                    .concat("'attr':{'id':'")
+                    .concat(xPathString)
+                    .concat("_dtrn:")
+                    .concat(trnumContent)
+                    .concat("','file':'")
+                    .concat(fileAttrContent)
+                    .concat("'}");
 
             break;
           }
         }
-        if (hasChildren)
-        {
-          //state set up as "closed" and no need to set up "children" field
+        if (hasChildren) {
+          // state set up as "closed" and no need to set up "children" field
           jsonString = jsonString.concat(",'state':'closed'");
-
         }
         jsonString = jsonString.concat("},");
-      }
-
-      else if ("folder".equals(eleName))
-      {
+      } else if ("folder".equals(eleName)) {
         jsonString = jsonString.concat("{");
-        for (Attribute attribute : list)
-        {
+        for (Attribute attribute : list) {
           String attrName = attribute.getName();
           jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
-          if (attrName.equals("key"))
-          {
+          if (attrName.equals("key")) {
             String keyContent = elem.attributeValue("key");
-            jsonString = jsonString.concat("'attr':{'id':'").concat(xPathString).concat("_fk:").concat(keyContent).concat("'}");
-            if (fileAttrContent != null)
-            {
+            jsonString =
+                jsonString
+                    .concat("'attr':{'id':'")
+                    .concat(xPathString)
+                    .concat("_fk:")
+                    .concat(keyContent)
+                    .concat("'}");
+            if (fileAttrContent != null) {
               jsonString = jsonString.concat("','file':'").concat(fileAttrContent).concat("'}");
             }
 
             break;
-          }
-          else if (attrName.equals("type"))
-          {
+          } else if (attrName.equals("type")) {
             String typeContent = elem.attributeValue("type");
-            if ("history".equals(typeContent))
-            {
+            if ("history".equals(typeContent)) {
               jsonString = jsonString.concat("'attr':{'id':'").concat(xPathString).concat("_fth,");
-
             }
             break;
           }
@@ -202,10 +199,8 @@ public class XMLToJson
    *
    *
    */
-  public static String pathMapping(String shortXPath) throws Exception
-  {
-    if ("".equals(shortXPath))
-    {
+  public static String pathMapping(String shortXPath) throws Exception {
+    if ("".equals(shortXPath)) {
       return "//toc";
     }
 
@@ -220,12 +215,10 @@ public class XMLToJson
     return expanded;
   }
 
-  private static String expandPath(String shortPathPair)
-      throws Exception {
+  private static String expandPath(String shortPathPair) throws Exception {
     System.out.println(shortPathPair);
     String[] split = shortPathPair.split("\\:");
-    if (split.length == 2)
-    {
+    if (split.length == 2) {
       String key = split[0];
       String path = pathMap.get(key);
       String value = split[1];
@@ -237,14 +230,14 @@ public class XMLToJson
     return "";
   }
 
-  public static void main(String[] args) throws Exception
-  {
+  public static void main(String[] args) throws Exception {
     XMLToJson x2j = new XMLToJson();
     String test = "fk:AMM24_fk:AMM24-FM";
 
     test = "";
-    System.out.println(x2j.getJson(new URL("http://localhost:8080/WebNavSpring/q400/amm/toc.xml"), test));
-    //System.out.println(x2j.pathMapping(test));
+    System.out.println(
+        x2j.getJson(new URL("http://localhost:8080/WebNavSpring/q400/amm/toc.xml"), test));
+    // System.out.println(x2j.pathMapping(test));
 
   }
 }
