@@ -116,8 +116,8 @@ public class XMLToJson {
       List<Attribute> list, String titleAttrContent, String fileAttrContent) {
 
     List<String> pieces = new ArrayList<>();
+    pieces.add("'data':'" + titleAttrContent + "'");
     for (Attribute attribute : list) {
-      pieces.add("'data':'" + titleAttrContent + "'");
       String attrName = attribute.getName();
       if ("key".equals(attrName)) {
         pieces.add(convertKey(xPathString, elem, fileAttrContent));
