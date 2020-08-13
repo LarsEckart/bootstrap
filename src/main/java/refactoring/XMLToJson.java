@@ -154,17 +154,7 @@ public class XMLToJson {
 
   private String convertKey(String xPathString, Element elem, String fileAttrContent) {
     String keyContent = elem.attributeValue("key");
-    String result = "";
-    result =
-        result
-            .concat("'attr':{'id':'")
-            .concat(xPathString)
-            .concat("_dk:")
-            .concat(keyContent)
-            .concat("','file':'")
-            .concat(fileAttrContent)
-            .concat("'}");
-    return result;
+    return String.format("'attr':{'id':'%s_dk:%s','file':'%s'}", xPathString, keyContent, fileAttrContent);
   }
 
   private String convertFolder(String xPathString, Element elem, List<Attribute> list,
