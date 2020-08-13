@@ -125,18 +125,7 @@ public class XMLToJson {
         jsonString += convertKey(xPathString, elem, fileAttrContent);
         break;
       } else if ("trnum".equals(attrName)) {
-      String result = "";
-        String trnumContent = elem.attributeValue("trnum");
-        result =
-            result
-                .concat("'attr':{'id':'")
-                .concat(xPathString)
-                .concat("_dtrn:")
-                .concat(trnumContent)
-                .concat("','file':'")
-                .concat(fileAttrContent)
-                .concat("'}");
-        jsonString += result;
+        jsonString += convertTrnum(xPathString, elem, fileAttrContent);
         break;
       }
     }
@@ -146,6 +135,21 @@ public class XMLToJson {
     }
     jsonString = jsonString.concat("}");
     return jsonString;
+  }
+
+  private String convertTrnum(String xPathString, Element elem, String fileAttrContent) {
+    String result = "";
+    String trnumContent = elem.attributeValue("trnum");
+    result =
+        result
+            .concat("'attr':{'id':'")
+            .concat(xPathString)
+            .concat("_dtrn:")
+            .concat(trnumContent)
+            .concat("','file':'")
+            .concat(fileAttrContent)
+            .concat("'}");
+    return result;
   }
 
   private String convertKey(String xPathString, Element elem, String fileAttrContent) {
