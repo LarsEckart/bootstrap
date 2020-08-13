@@ -104,6 +104,7 @@ public class XMLToJson {
     if ("doc".equals(eleName)) {
       jsonString = convertDoc(xPathString, elem, jsonString, hasChildren, list, titleAttrContent,
           fileAttrContent);
+      return jsonString;
     } else if ("folder".equals(eleName)) {
       jsonString = jsonString.concat("{");
       for (Attribute attribute : list) {
@@ -132,9 +133,10 @@ public class XMLToJson {
         }
       }
       jsonString = jsonString.concat("}");
+      return jsonString;
     } else{
+      return jsonString;
     }
-    return jsonString;
   }
 
   private String convertDoc(String xPathString, Element elem, String jsonString,
