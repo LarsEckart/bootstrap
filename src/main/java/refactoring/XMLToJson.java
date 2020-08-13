@@ -138,18 +138,8 @@ public class XMLToJson {
   }
 
   private String convertTrnum(String xPathString, Element elem, String fileAttrContent) {
-    String result = "";
     String trnumContent = elem.attributeValue("trnum");
-    result =
-        result
-            .concat("'attr':{'id':'")
-            .concat(xPathString)
-            .concat("_dtrn:")
-            .concat(trnumContent)
-            .concat("','file':'")
-            .concat(fileAttrContent)
-            .concat("'}");
-    return result;
+    return String.format("'attr':{'id':'%s_dtrn:%s','file':'%s'}", xPathString, trnumContent, fileAttrContent);
   }
 
   private String convertKey(String xPathString, Element elem, String fileAttrContent) {
