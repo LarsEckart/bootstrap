@@ -93,12 +93,7 @@ public class XMLToJson {
   private String convertToJson(String xPathString, Element elem) {
 
     String eleName = elem.getName();
-    Boolean hasChildren = false;
-    if ((!elem.elements().isEmpty())) {
-      hasChildren = true;
-      // current element has children itself, state shoud be "closed"
-
-    }
+    boolean hasChildren = !elem.elements().isEmpty();
     String titleAttrContent = elem.attributeValue("title");
     String fileAttrContent = elem.attributeValue("file");
     if ("doc".equals(eleName)) {
