@@ -148,14 +148,9 @@ public class XMLToJson {
       String attrName = attribute.getName();
       jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
       if ("key".equals(attrName)) {
-        String keyContent = elem.attributeValue("key");
-        jsonString =
-            jsonString
-                .concat("'attr':{'id':'")
-                .concat(xPathString)
-                .concat("_fk:")
-                .concat(keyContent)
-                .concat("'}");
+        String content = elem.attributeValue("key");
+        jsonString += String
+            .format("'attr':{'id':'%s%s:%s'}", xPathString, "_fk", content);
         if (fileAttrContent != null) {
           jsonString = jsonString.concat("','file':'").concat(fileAttrContent).concat("'}");
         }
