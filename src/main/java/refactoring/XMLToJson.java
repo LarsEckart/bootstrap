@@ -137,8 +137,7 @@ public class XMLToJson {
       String keyName) {
     String content = elem.attributeValue(keyName);
     String file = fileAttrContent == null ? "" :  String.format(",'file':'%s'", fileAttrContent);
-    return String.format("'attr':{'id':'%s%s:%s'%s}", xPathString, label, content,
-        file);
+    return String.format("'attr':{'id':'%s%s:%s'%s}", xPathString, label, content, file);
   }
 
   private String convertFolder(String xPathString, Element elem,
@@ -149,13 +148,7 @@ public class XMLToJson {
       String attrName = attribute.getName();
       jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
       if ("key".equals(attrName)) {
-        String content = elem.attributeValue("key");
-        jsonString += String
-            .format("'attr':{'id':'%s%s:%s'}", xPathString, "_fk", content);
-        if (fileAttrContent != null) {
-          jsonString = jsonString.concat("','file':'").concat(fileAttrContent).concat("'}");
-        }
-
+        jsonString += convert(xPathString, elem, fileAttrContent, "_fk", "key");
         break;
       } else if ("type".equals(attrName)) {
         String typeContent = elem.attributeValue("type");
