@@ -4,9 +4,9 @@ import com.spun.util.StringUtils;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -66,16 +66,13 @@ public class XMLToJson {
    */
   @SuppressWarnings({"unchecked"})
   public String getJson(URL url, String xPathString) throws Exception {
-    String jsonString = "[";
 
     Element node = getNode(url, xPathString);
-    for (Element element : node.elements()) {
-      //jsonString = applesauce(xPathString, jsonString, element);
-      jsonString += applesauce(xPathString, element);
-    }
-    jsonString = jsonString.substring(0, jsonString.length() - 1);
-    jsonString = jsonString.concat("]");
-    return jsonString;
+    var innerJson =
+        node.elements().stream()
+            .map(element -> applesauce(xPathString, element))
+            .collect(Collectors.joining(","));
+    return "[" + innerJson + "]";
   }
 
   private Element getNode(URL url, String xPathString) throws Exception {
@@ -91,7 +88,7 @@ public class XMLToJson {
     return node;
   }
 
-  private String applesauce(String xPathString,  Element elem) {
+  private String applesauce(String xPathString, Element elem) {
     String jsonString = "";
     String eleName = elem.getName();
     Boolean hasChildren = false;
@@ -144,7 +141,7 @@ public class XMLToJson {
         // state set up as "closed" and no need to set up "children" field
         jsonString = jsonString.concat(",'state':'closed'");
       }
-      jsonString = jsonString.concat("},");
+      jsonString = jsonString.concat("}");
     } else if ("folder".equals(eleName)) {
       jsonString = jsonString.concat("{");
       for (Attribute attribute : list) {
@@ -172,7 +169,7 @@ public class XMLToJson {
           break;
         }
       }
-      jsonString = jsonString.concat("},");
+      jsonString = jsonString.concat("}");
     }
     return jsonString;
   }
