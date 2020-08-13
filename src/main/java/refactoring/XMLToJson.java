@@ -123,8 +123,9 @@ public class XMLToJson {
       jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
       if ("key".equals(attrName)) {
         String keyContent = elem.attributeValue("key");
-        jsonString =
-            jsonString
+        String result = "";
+        result =
+            result
                 .concat("'attr':{'id':'")
                 .concat(xPathString)
                 .concat("_dk:")
@@ -132,7 +133,7 @@ public class XMLToJson {
                 .concat("','file':'")
                 .concat(fileAttrContent)
                 .concat("'}");
-
+        jsonString += result;
         break;
       } else if ("trnum".equals(attrName)) {
 
