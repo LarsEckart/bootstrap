@@ -92,21 +92,18 @@ public class XMLToJson {
 
   private String convertToJson(String xPathString, Element elem) {
 
-    String eleName = elem.getName();
-    boolean hasChildren = !elem.elements().isEmpty();
     String titleAttrContent = elem.attributeValue("title");
     String fileAttrContent = elem.attributeValue("file");
-    if ("doc".equals(eleName)) {
-      return convertDoc(xPathString, elem, hasChildren, titleAttrContent, fileAttrContent);
-    } else if ("folder".equals(eleName)) {
-      return convertFolder(xPathString, elem, elem.attributes(), titleAttrContent, fileAttrContent);
-    } else {
-      return "";
-    }
+
+    return switch (elem.getName()) {
+      case "doc" -> convertDoc(xPathString, elem, titleAttrContent, fileAttrContent);
+      case "folder" -> convertFolder(xPathString, elem, titleAttrContent, fileAttrContent);
+      default -> "";
+    };
   }
 
-  private String convertDoc(String xPathString, Element elem, Boolean hasChildren,
-      String titleAttrContent, String fileAttrContent) {
+  private String convertDoc(String xPathString, Element elem, String titleAttrContent,
+      String fileAttrContent) {
 
     List<String> pieces = new ArrayList<>();
     pieces.add("'data':'" + titleAttrContent + "'");
@@ -121,7 +118,7 @@ public class XMLToJson {
         break;
       }
     }
-    if (hasChildren) {
+    if (!elem.elements().isEmpty()) {
       // state set up as "closed" and no need to set up "children" field
       pieces.add("'state':'closed'");
     }
@@ -143,11 +140,11 @@ public class XMLToJson {
         fileAttrContent);
   }
 
-  private String convertFolder(String xPathString, Element elem, List<Attribute> list,
+  private String convertFolder(String xPathString, Element elem,
       String titleAttrContent, String fileAttrContent) {
     String jsonString = "";
     jsonString = jsonString.concat("{");
-    for (Attribute attribute : list) {
+    for (Attribute attribute : elem.attributes()) {
       String attrName = attribute.getName();
       jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
       if ("key".equals(attrName)) {
