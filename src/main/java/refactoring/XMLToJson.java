@@ -132,11 +132,11 @@ public class XMLToJson {
         }
       }
       jsonString = jsonString.concat("}");
+    } else{
     }
     return jsonString;
   }
 
-  @org.jetbrains.annotations.NotNull
   private String convertDoc(String xPathString, Element elem, String jsonString,
       Boolean hasChildren, List<Attribute> list, String titleAttrContent, String fileAttrContent) {
     // doc element always has "file" attribute
