@@ -113,11 +113,8 @@ public class XMLToJson {
 
   private String convertDoc2(String xPathString, Element elem, Boolean hasChildren,
       List<Attribute> list, String titleAttrContent, String fileAttrContent) {
-    String jsonString = "";
-    jsonString =
-        convertDoc(
-            xPathString, elem, jsonString, hasChildren, list, titleAttrContent, fileAttrContent);
-    return jsonString;
+    return convertDoc(
+        xPathString, elem, "", hasChildren, list, titleAttrContent, fileAttrContent);
   }
 
   private String convertFolder(String xPathString, Element elem, List<Attribute> list,
