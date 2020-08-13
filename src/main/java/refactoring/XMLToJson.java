@@ -99,24 +99,23 @@ public class XMLToJson {
       // current element has children itself, state shoud be "closed"
 
     }
-    List<Attribute> list = elem.attributes();
     String titleAttrContent = elem.attributeValue("title");
     String fileAttrContent = elem.attributeValue("file");
     if ("doc".equals(eleName)) {
-      return convertDoc(xPathString, elem, hasChildren, list, titleAttrContent, fileAttrContent);
+      return convertDoc(xPathString, elem, hasChildren, titleAttrContent, fileAttrContent);
     } else if ("folder".equals(eleName)) {
-      return convertFolder(xPathString, elem, list, titleAttrContent, fileAttrContent);
+      return convertFolder(xPathString, elem, elem.attributes(), titleAttrContent, fileAttrContent);
     } else {
       return "";
     }
   }
 
   private String convertDoc(String xPathString, Element elem, Boolean hasChildren,
-      List<Attribute> list, String titleAttrContent, String fileAttrContent) {
+      String titleAttrContent, String fileAttrContent) {
 
     List<String> pieces = new ArrayList<>();
     pieces.add("'data':'" + titleAttrContent + "'");
-    for (Attribute attribute : list) {
+    for (Attribute attribute : elem.attributes()) {
       String attrName = attribute.getName();
       if ("key".equals(attrName)) {
         pieces.add(convertKey(xPathString, elem, fileAttrContent));
