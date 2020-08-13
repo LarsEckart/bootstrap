@@ -20,10 +20,19 @@ class XMLToJsonTest {
     verifyXmlToJson("/");
   }
 
-  @Disabled("didn't work yet")
   @Test
   void approval_trnum() throws Exception {
-    verifyXmlToJson("fk:AMM24-00-00-02_ft:loetr");
+    XMLToJson xmlToJson = new XMLToJson();
+    URL url = getClass().getClassLoader().getResource("xmlToJson.xml");
+
+    String json = xmlToJson.getJson(url, "ft:loetr");
+
+    String replace =
+        json.replace(",", ",\n")
+            .replace("}", "\n}\n")
+            .replace("{", "\n{\n");
+
+    Approvals.verify(replace);
   }
 
   private void verifyXmlToJson(String xPathString) throws Exception {

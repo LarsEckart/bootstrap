@@ -1,0 +1,15 @@
+[
+{
+'data':'[TR12-118] TASK AMM12-31-00-660-806 - Inspection and Removal of De-Hydrated Anti-Icing Fluid inside the Flight Control Surfaces',
+
+{
+'data':'[TR12-118] TASK AMM12-31-00-660-806 - Inspection and Removal of De-Hydrated Anti-Icing Fluid inside the Flight Control Surfaces',
+'attr':
+{
+'id':'ft:loetr_dtrn:TR12-118',
+'file':'TR12-118.pdf'
+}
+,
+'state':'closed'
+}
+]
