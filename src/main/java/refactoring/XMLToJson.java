@@ -121,7 +121,7 @@ public class XMLToJson {
       String attrName = attribute.getName();
       // each one has to have "data" line, "attr" line "state" line and "children" line
       jsonString = jsonString.concat("'data':'").concat(titleAttrContent).concat("',");
-      if (attrName.equals("key")) {
+      if ("key".equals(attrName)) {
         String keyContent = elem.attributeValue("key");
         jsonString =
             jsonString
@@ -134,7 +134,7 @@ public class XMLToJson {
                 .concat("'}");
 
         break;
-      } else if (attrName.equals("trnum")) {
+      } else if ("trnum".equals(attrName)) {
 
         String trnumContent = elem.attributeValue("trnum");
         jsonString =
