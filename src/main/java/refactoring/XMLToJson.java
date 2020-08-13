@@ -67,9 +67,10 @@ public class XMLToJson {
   @SuppressWarnings({"unchecked"})
   public String getJson(URL url, String xPathString) throws Exception {
 
-    Element node = getNode(url, xPathString);
     var innerJson =
-        node.elements().stream()
+        getNode(url, xPathString)
+            .elements()
+            .stream()
             .map(element -> applesauce(xPathString, element))
             .collect(Collectors.joining(","));
     return "[" + innerJson + "]";
