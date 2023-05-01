@@ -1,14 +1,14 @@
 package kata;
 
 import com.spun.util.markdown.table.MarkdownTable;
+import org.lambda.query.Queryable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Monopoly {
 
     private Places[] board = {Places.GO};
-    List<Player> players = new ArrayList<>();
+    Queryable<Player> players = new Queryable<>(Player.class);
 
     public Monopoly(int playerCount) {
         for (int i = 0; i < playerCount; i++) {
@@ -21,8 +21,19 @@ class Monopoly {
         MarkdownTable markdownTable = new MarkdownTable();
 
         for (var square : board) {
-            markdownTable.addRow(square.name());
+            // get players on square, if there are players, add it to md column, if not
+            List<Player> players = getPlayersOnSquare(square);
+            markdownTable.addRow(square.name(), players);
         }
-        return markdownTable.toMarkdown();
+        String output = markdownTable.toMarkdown();
+        for (var player : players) {
+            output += player.details() + "\n";
+        }
+        return output;
     }
+
+    private List<Player> getPlayersOnSquare(Places square) {
+        return players.where(p -> p.location() == square.location());
+    }
+
 }

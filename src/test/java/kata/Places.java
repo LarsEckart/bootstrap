@@ -11,4 +11,8 @@ class Places {
     public String name() {
         return name;
     }
+
+    public int location() {
+        return 0;
+    }
 }
