@@ -1,5 +1,10 @@
 Initial:
-| GO | [Player 1, Player 2, Player 3] |
+|          GO          | [Player 1, Player 2, Player 3] |
+| Mediterranean Avenue |               []               |
+|   Community Chest    |               []               |
+|    Baltic Avenue     |               []               |
+|      Income Tax      |               []               |
+|   Reading Railroad   |               []               |
 Player 1 ($1500)
 Player 2 ($1500)
 Player 3 ($1500)

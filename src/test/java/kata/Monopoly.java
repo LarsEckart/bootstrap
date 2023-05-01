@@ -7,7 +7,13 @@ import java.util.List;
 
 class Monopoly {
 
-    private Places[] board = {Places.GO};
+    private Places[] board = {
+            Places.GO,
+            Places.MediterraneanAvenue,
+            Places.CommunityChest,
+            Places.BalticAvenue,
+            Places.IncomeTax,
+            Places.ReadingRailroad};
     Queryable<Player> players = new Queryable<>(Player.class);
 
     public Monopoly(int playerCount) {
