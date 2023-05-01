@@ -22,6 +22,10 @@ class Monopoly {
         }
     }
 
+    Player getPlayer(int index) {
+        return players.get(index);
+    }
+
     @Override
     public String toString() {
         MarkdownTable markdownTable = new MarkdownTable();
@@ -42,4 +46,15 @@ class Monopoly {
         return players.where(p -> p.location() == square.location());
     }
 
+    public Turn move(int i) {
+        return null;
+    }
+
+    public Turn buyProperty() {
+        return null;
+    }
+
+    public void endTurn() {
+
+    }
 }
