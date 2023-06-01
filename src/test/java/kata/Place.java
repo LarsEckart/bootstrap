@@ -40,4 +40,8 @@ class Place {
     public AutomaticAction getAutomaticAction() {
         return automaticAction;
     }
+
+    public boolean isPurchasable() {
+        return automaticAction instanceof Rent;
+    }
 }

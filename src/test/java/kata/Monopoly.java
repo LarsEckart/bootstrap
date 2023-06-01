@@ -72,7 +72,8 @@ class Monopoly {
     }
 
     public boolean isPropertyAvailable(int location) {
-        return true;
+        Place property = getProperty(location);
+        return property.isPurchasable();
     }
 
     public Place getProperty(int location) {
