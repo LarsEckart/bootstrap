@@ -7,14 +7,15 @@ import java.util.List;
 
 class Monopoly {
 
-    private Places[] board = {
-            Places.GO,
-            Places.MediterraneanAvenue,
-            Places.CommunityChest,
-            Places.BalticAvenue,
-            Places.IncomeTax,
-            Places.ReadingRailroad};
+    private Place[] board = {
+            Place.GO,
+            Place.MediterraneanAvenue,
+            Place.CommunityChest,
+            Place.BalticAvenue,
+            Place.IncomeTax,
+            Place.ReadingRailroad};
     Queryable<Player> players = new Queryable<>(Player.class);
+    private int currentPlayer = 0;
 
     public Monopoly(int playerCount) {
         for (int i = 0; i < playerCount; i++) {
@@ -39,22 +40,25 @@ class Monopoly {
         for (var player : players) {
             output += player.details() + "\n";
         }
+        output += "current player: " + (currentPlayer + 1);
         return output;
     }
 
-    private List<Player> getPlayersOnSquare(Places square) {
+    private List<Player> getPlayersOnSquare(Place square) {
         return players.where(p -> p.location() == square.location());
     }
 
-    public Turn move(int i) {
-        return null;
+    public Turn move(int spaces) {
+        Player player = players.get(currentPlayer);
+        player.move(spaces);
+        return new Turn(player, this);
     }
 
-    public Turn buyProperty() {
-        return null;
+    public boolean isPropertyAvailable(int location) {
+        return true;
     }
 
-    public void endTurn() {
-
+    public Place getProperty(int location) {
+        return board[location];
     }
 }

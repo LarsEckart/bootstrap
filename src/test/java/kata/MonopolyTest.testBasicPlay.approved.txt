@@ -5,6 +5,19 @@ Initial:
 |    Baltic Avenue     |               []               |
 |      Income Tax      |               []               |
 |   Reading Railroad   |               []               |
-Player 1 ($1500)
-Player 2 ($1500)
-Player 3 ($1500)
+Player 1 ($1500) 
+Player 2 ($1500) 
+Player 3 ($1500) 
+current player: 1
+
+Frame #1:
+|          GO          | [Player 2, Player 3] |
+| Mediterranean Avenue |          []          |
+|   Community Chest    |          []          |
+|    Baltic Avenue     |          []          |
+|      Income Tax      |          []          |
+|   Reading Railroad   |      [Player 1]      |
+Player 1 ($1300) Reading Railroad
+Player 2 ($1500) 
+Player 3 ($1500) 
+current player: 1
