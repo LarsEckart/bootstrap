@@ -51,7 +51,21 @@ class Monopoly {
     public Turn move(int spaces) {
         Player player = players.get(currentPlayer);
         player.move(spaces);
+        doAutomaticActions(player);
         return new Turn(player, this);
+    }
+
+    private void doAutomaticActions(Player player) {
+        Place place = board[player.location()];
+        Player owner = getOwner(place);
+        if (owner != null && owner != player) {
+            owner.money += 4;
+            player.money -= 4;
+        }
+    }
+
+    private Player getOwner(Place place) {
+        return players.first(p -> p.properties.contains(place));
     }
 
     public boolean isPropertyAvailable(int location) {

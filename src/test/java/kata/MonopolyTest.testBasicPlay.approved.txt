@@ -43,5 +43,5 @@ Frame #3:
 |   Reading Railroad   |      [Player 1]      |
 Player 1 ($1300) Reading Railroad
 Player 2 ($1444) Baltic Avenue
-Player 3 ($1496)
+Player 3 ($1496) 
 current player: 1
