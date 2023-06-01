@@ -13,7 +13,13 @@ class Monopoly {
             Place.CommunityChest,
             Place.BalticAvenue,
             Place.IncomeTax,
-            Place.ReadingRailroad};
+            Place.ReadingRailroad,
+            Place.OrientalAvenue,
+            Place.Chance,
+            Place.VermontAvenue,
+            Place.ConnecticutAvenue,
+            Place.Jail
+    };
     Queryable<Player> players = new Queryable<>(Player.class);
     public int currentPlayer = 0;
 
@@ -57,16 +63,11 @@ class Monopoly {
 
     private void doAutomaticActions(Player player) {
         Place place = board[player.location()];
-        Player owner = getOwner(place);
-        if (owner != null && owner != player) {
-            int rent = place.getRent(owner.getPropertyGroupImprovements(place));
-
-            owner.money += rent;
-            player.money -= rent;
-        }
+        var action = place.getAutomaticAction();
+        action.execute(player, this, place);
     }
 
-    private Player getOwner(Place place) {
+    public Player getOwner(Place place) {
         return players.first(p -> p.properties.contains(place));
     }
 

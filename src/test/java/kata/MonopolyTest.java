@@ -23,6 +23,17 @@ class MonopolyTest {
     }
 
     @Test
+    void testIncomeTaxAndChanceAndJail() {
+        StoryBoard story = new StoryBoard();
+        Monopoly monopoly = new Monopoly(3);
+        story.addFrame(monopoly);
+        story.addFrame(monopoly.move(10).endTurn());
+        story.addFrame(monopoly.move(4).endTurn());
+        story.addFrame(monopoly.move(7).endTurn());
+        Approvals.verify(story);
+    }
+
+    @Test
     void testPlayerDetails() {
         Player player = new Player("Player 1");
 
