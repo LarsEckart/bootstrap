@@ -20,4 +20,28 @@ Frame #1:
 Player 1 ($1300) Reading Railroad
 Player 2 ($1500) 
 Player 3 ($1500) 
+current player: 2
+
+Frame #2:
+|          GO          | [Player 3] |
+| Mediterranean Avenue |     []     |
+|   Community Chest    |     []     |
+|    Baltic Avenue     | [Player 2] |
+|      Income Tax      |     []     |
+|   Reading Railroad   | [Player 1] |
+Player 1 ($1300) Reading Railroad
+Player 2 ($1440) Baltic Avenue
+Player 3 ($1500) 
+current player: 3
+
+Frame #3:
+|          GO          |          []          |
+| Mediterranean Avenue |          []          |
+|   Community Chest    |          []          |
+|    Baltic Avenue     | [Player 2, Player 3] |
+|      Income Tax      |          []          |
+|   Reading Railroad   |      [Player 1]      |
+Player 1 ($1300) Reading Railroad
+Player 2 ($1444) Baltic Avenue
+Player 3 ($1496)
 current player: 1

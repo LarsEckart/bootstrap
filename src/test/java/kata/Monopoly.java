@@ -15,7 +15,7 @@ class Monopoly {
             Place.IncomeTax,
             Place.ReadingRailroad};
     Queryable<Player> players = new Queryable<>(Player.class);
-    private int currentPlayer = 0;
+    public int currentPlayer = 0;
 
     public Monopoly(int playerCount) {
         for (int i = 0; i < playerCount; i++) {
@@ -60,5 +60,9 @@ class Monopoly {
 
     public Place getProperty(int location) {
         return board[location];
+    }
+
+    public void endTurn() {
+        this.currentPlayer = (this.currentPlayer + 1) % players.size();
     }
 }

@@ -10,13 +10,9 @@ public class Turn {
     }
 
     public Turn buyProperty() {
-        // ask if the property is available to buy
         if (board.isPropertyAvailable(player.location())) {
-            // get the cost of the property
             Place property = board.getProperty(player.location());
-            // ask if the player has enough money
             if(property.getPurchaseCost() <= player.getMoney()) {
-                // if so, subtract the cost from the player's money
                 player.money = player.money - property.getPurchaseCost();
                 player.properties.add(property);
             }
@@ -26,7 +22,8 @@ public class Turn {
         return this;
     }
 
-    public void endTurn() {
-
+    public Monopoly endTurn() {
+        board.endTurn();
+        return board;
     }
 }
