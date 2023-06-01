@@ -59,8 +59,10 @@ class Monopoly {
         Place place = board[player.location()];
         Player owner = getOwner(place);
         if (owner != null && owner != player) {
-            owner.money += 4;
-            player.money -= 4;
+            int rent = place.getRent(owner.getPropertyGroupImprovements(place));
+
+            owner.money += rent;
+            player.money -= rent;
         }
     }
 

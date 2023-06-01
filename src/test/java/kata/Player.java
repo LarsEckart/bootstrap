@@ -33,4 +33,8 @@ class Player {
     public int getMoney() {
         return money;
     }
+
+    public Upgrades getPropertyGroupImprovements(Place place) {
+        return Upgrades.SINGLE;
+    }
 }
