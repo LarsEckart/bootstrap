@@ -7,13 +7,12 @@ import java.util.List;
 
 class Players {
 
-    private final List<String> players;
+    private final List<Player> playersNew;
 
     private Players(List<String> players) {
         List<String> strings = new ArrayList<>(players);// defensive copy (immutable
-
         Collections.shuffle(strings);
-        this.players = strings;
+        this.playersNew = strings.stream().map(Player::new).toList();
     }
 
     public static Players of(String... players) {
@@ -22,15 +21,14 @@ class Players {
     }
 
     public int numberOfPlayers() {
-        return players.size();
+        return playersNew.size();
     }
 
     public String getCurrentPlayer() {
-        return players.get(0);
+        return playersNew.get(0).getName();
     }
 
     public List<String> all() {
-        return List.copyOf(players);
+        return playersNew.stream().map(Player::getName).toList();
     }
-
 }
