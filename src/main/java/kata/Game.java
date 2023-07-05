@@ -1,16 +1,18 @@
 package kata;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 class Game {
     private final Players players;
     private final Map<Player, Integer> locations = new HashMap<>();
+    private final List<Field> fields = List.of(Field.of("Start)"));
 
     private Game(Players players) {
         this.players = players;
         for (Player player : players.all()) {
-            locations.put(player, 0);
+            locations.put(player, fields.get(0).getIndex());
         }
     }
 
@@ -34,5 +36,9 @@ class Game {
         Player currentPlayer = players.getCurrentPlayer();
         int currentLocation = locations.get(currentPlayer);
         locations.put(currentPlayer, (currentLocation + roll) % 40);
+    }
+
+    public void endTurn() {
+        players.nextPlayer();
     }
 }

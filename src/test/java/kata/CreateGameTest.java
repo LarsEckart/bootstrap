@@ -39,10 +39,10 @@ class CreateGameTest {
         for (int i = 0; i < 100; i++) {
             Game game = Game.of(Players.of("Horse", "Car"));
             Player firstPlayer = game.whoseTurnIsIt();
-            if (firstPlayer.getName().equals("Car")) {
+            if (firstPlayer.name().equals("Car")) {
                 carFirst++;
             }
-            if (firstPlayer.getName().equals("Horse")) {
+            if (firstPlayer.name().equals("Horse")) {
                 horseFirst++;
             }
         }

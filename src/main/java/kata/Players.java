@@ -8,15 +8,21 @@ import java.util.List;
 class Players {
 
     private final List<Player> players;
+    private int currentPlayerIndex = 0;
 
     private Players(List<String> names) {
         List<String> strings = new ArrayList<>(names);
-        Collections.shuffle(strings);
         this.players = strings.stream().map(Player::new).toList();
     }
 
     public static Players of(String... names) {
-        List<String> list = Arrays.stream(names).toList();
+        List<String> list = new ArrayList<>(Arrays.asList(names));
+        Collections.shuffle(list);
+        return new Players(list);
+    }
+
+    public static Players ofFixedOrder(String... names) {
+        List<String> list = Arrays.asList(names);
         return new Players(list);
     }
 
@@ -24,15 +30,18 @@ class Players {
         return players.size();
     }
 
-    public String getCurrentPlayerName() {
-        return players.get(0).getName();
-    }
-
     public Player getCurrentPlayer() {
-        return players.get(0);
+        return players.get(currentPlayerIndex);
     }
 
     public List<Player> all() {
         return List.copyOf(players);
+    }
+
+    public void nextPlayer() {
+        currentPlayerIndex++;
+        if (currentPlayerIndex >= players.size()) {
+            currentPlayerIndex = 0;
+        }
     }
 }
