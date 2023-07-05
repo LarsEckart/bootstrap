@@ -79,7 +79,7 @@ class Game {
         int newLocationIndex = (currentLocation + roll) % 40;
         locations.put(currentPlayer, newLocationIndex);
         // SMELL: very primitive here, not comparing against Field.
-        if (newLocationIndex == 0) {
+        if (newLocationIndex == 0 || newLocationIndex < currentLocation) {
             currentPlayer.addMoney(200);
         }
     }
