@@ -19,4 +19,23 @@ class PlayerMovementTest {
 
         assertThat(game.locationOfCurrentPlayer()).isEqualTo(7);
     }
+
+    @Test
+    @DisplayName("Player on location numbered 39, rolls 6, ends up on location 5")
+    void playerCanMoveAroundTheBoard() {
+        Players players = Players.of("Horse", "Car");
+        Game game = Game.of(players);
+
+        game.playerRolled(6);
+        game.playerRolled(6);
+        game.playerRolled(6);
+        game.playerRolled(6);
+        game.playerRolled(6);
+        game.playerRolled(6);
+        game.playerRolled(3);
+        assertThat(game.locationOfCurrentPlayer()).isEqualTo(39);
+
+        game.playerRolled(6);
+        assertThat(game.locationOfCurrentPlayer()).isEqualTo(5);
+    }
 }

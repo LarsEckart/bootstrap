@@ -5,11 +5,11 @@ import java.util.Map;
 
 class Game {
     private final Players players;
-    private final Map<String, Integer> locations = new HashMap<>();
+    private final Map<Player, Integer> locations = new HashMap<>();
 
     private Game(Players players) {
         this.players = players;
-        for (String player : players.all()) {
+        for (Player player : players.all()) {
             locations.put(player, 0);
         }
     }
@@ -22,7 +22,7 @@ class Game {
         return players.numberOfPlayers() >= 2 && players.numberOfPlayers() <= 8;
     }
 
-    public String whoseTurnIsIt() {
+    public Player whoseTurnIsIt() {
         return players.getCurrentPlayer();
     }
 
@@ -31,8 +31,8 @@ class Game {
     }
 
     public void playerRolled(int roll) {
-        String currentPlayer = players.getCurrentPlayer();
+        Player currentPlayer = players.getCurrentPlayer();
         int currentLocation = locations.get(currentPlayer);
-        locations.put(currentPlayer, currentLocation + roll);
+        locations.put(currentPlayer, (currentLocation + roll) % 40);
     }
 }

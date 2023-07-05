@@ -7,28 +7,32 @@ import java.util.List;
 
 class Players {
 
-    private final List<Player> playersNew;
+    private final List<Player> players;
 
-    private Players(List<String> players) {
-        List<String> strings = new ArrayList<>(players);// defensive copy (immutable
+    private Players(List<String> names) {
+        List<String> strings = new ArrayList<>(names);
         Collections.shuffle(strings);
-        this.playersNew = strings.stream().map(Player::new).toList();
+        this.players = strings.stream().map(Player::new).toList();
     }
 
-    public static Players of(String... players) {
-        List<String> list = Arrays.stream(players).toList();
+    public static Players of(String... names) {
+        List<String> list = Arrays.stream(names).toList();
         return new Players(list);
     }
 
     public int numberOfPlayers() {
-        return playersNew.size();
+        return players.size();
     }
 
-    public String getCurrentPlayer() {
-        return playersNew.get(0).getName();
+    public String getCurrentPlayerName() {
+        return players.get(0).getName();
     }
 
-    public List<String> all() {
-        return playersNew.stream().map(Player::getName).toList();
+    public Player getCurrentPlayer() {
+        return players.get(0);
+    }
+
+    public List<Player> all() {
+        return List.copyOf(players);
     }
 }
