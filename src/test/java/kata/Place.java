@@ -12,6 +12,7 @@ public class Place {
     public static Place VermontAvenue = new Place("Vermont Avenue", 8, 100, Rent.getNull());
     public static Place ConnecticutAvenue = new Place("Connecticut Avenue", 9, 120, Rent.getNull());
     public static Place Jail = new Place("Jail", 10, Integer.MAX_VALUE, Rent.getNull());
+    public static Place StCharlesPlace = new Place("St. Charles Place", 11, 140, Rent.getNull());
 
     private final String name;
     private final int location;

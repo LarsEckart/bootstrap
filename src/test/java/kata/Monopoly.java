@@ -18,7 +18,8 @@ public class Monopoly {
             Place.Chance,
             Place.VermontAvenue,
             Place.ConnecticutAvenue,
-            Place.Jail
+            Place.Jail,
+            Place.StCharlesPlace
     };
     Queryable<Player> players = new Queryable<>(Player.class);
     public int currentPlayer = 0;

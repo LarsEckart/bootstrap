@@ -36,4 +36,8 @@ public class Player {
     public Upgrades getPropertyGroupImprovements(Place place) {
         return Upgrades.SINGLE;
     }
+
+    public void move(Place place) {
+        location = place.location();
+    }
 }

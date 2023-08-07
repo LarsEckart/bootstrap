@@ -10,6 +10,7 @@ Initial:
 |    Vermont Avenue    |               []               |
 |  Connecticut Avenue  |               []               |
 |         Jail         |               []               |
+|  St. Charles Place   |               []               |
 Player 1 ($1500) 
 Player 2 ($1500) 
 Player 3 ($1500) 
@@ -27,6 +28,7 @@ Frame #1:
 |    Vermont Avenue    |          []          |
 |  Connecticut Avenue  |          []          |
 |         Jail         |      [Player 1]      |
+|  St. Charles Place   |          []          |
 Player 1 ($1500) 
 Player 2 ($1500) 
 Player 3 ($1500) 
@@ -44,6 +46,7 @@ Frame #2:
 |    Vermont Avenue    |     []     |
 |  Connecticut Avenue  |     []     |
 |         Jail         | [Player 1] |
+|  St. Charles Place   |     []     |
 Player 1 ($1500) 
 Player 2 ($1300) 
 Player 3 ($1500) 
@@ -61,6 +64,7 @@ Frame #3:
 |    Vermont Avenue    |     []     |
 |  Connecticut Avenue  |     []     |
 |         Jail         | [Player 1] |
+|  St. Charles Place   |     []     |
 Player 1 ($1500) 
 Player 2 ($1300) 
 Player 3 ($1550) 
