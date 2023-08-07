@@ -38,7 +38,7 @@ class MonopolyTest {
     @Test
     void testOtherChances() {
         StoryBoard story = new StoryBoard();
-        ChancePile.stack(new ChanceCard.BankCard(), new ChanceCard.GoToStCharlesPlace(), new ChanceCard.BankCard());
+        ChancePile.stack(new ChanceCard.BankCard(), new ChanceCard.GoToStCharlesPlace(), new ChanceCard.GoBack3Spaces());
         Monopoly monopoly = new Monopoly(3);
         story.addFrame(monopoly);
         story.addFrame(monopoly.move(7).endTurn());

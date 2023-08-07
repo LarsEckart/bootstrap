@@ -19,7 +19,7 @@ public class ChancePile implements AutomaticAction {
 
     public static void stack(ChanceCard... chanceCard) {
         INSTANCE.cards.clear();
-        Arrays.stream(chanceCard).forEach(INSTANCE.cards::push);
+        Arrays.stream(chanceCard).forEach(item -> INSTANCE.cards.add(0, item));
     }
 
     @Override

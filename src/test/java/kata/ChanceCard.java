@@ -14,7 +14,15 @@ public abstract class ChanceCard implements AutomaticAction {
 
         @Override
         public void execute(Player player, Monopoly monopoly, Place place) {
-            player.move(Place.StCharlesPlace);
+            monopoly.moveTo(Place.StCharlesPlace);
+        }
+    }
+
+    public static class GoBack3Spaces extends ChanceCard {
+
+        @Override
+        public void execute(Player player, Monopoly monopoly, Place place) {
+            monopoly.move(-3);
         }
     }
 }

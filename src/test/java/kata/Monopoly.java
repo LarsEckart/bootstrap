@@ -84,4 +84,10 @@ public class Monopoly {
     public void endTurn() {
         this.currentPlayer = (this.currentPlayer + 1) % players.size();
     }
+
+    public void moveTo(Place place) {
+        int currentLoc = players.get(currentPlayer).location();
+        int howManySteps = place.location() - currentLoc;
+        move(howManySteps);
+    }
 }

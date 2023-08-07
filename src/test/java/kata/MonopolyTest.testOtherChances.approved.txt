@@ -53,19 +53,19 @@ Player 3 ($1500)
 current player: 3
 
 Frame #3:
-|          GO          |          []          |
-| Mediterranean Avenue |          []          |
-|   Community Chest    |          []          |
-|    Baltic Avenue     |          []          |
-|      Income Tax      |          []          |
-|   Reading Railroad   |          []          |
-|   Oriental Avenue    |          []          |
-|        Chance        | [Player 1, Player 3] |
-|    Vermont Avenue    |          []          |
-|  Connecticut Avenue  |          []          |
-|         Jail         |          []          |
-|  St. Charles Place   |      [Player 2]      |
+|          GO          |     []     |
+| Mediterranean Avenue |     []     |
+|   Community Chest    |     []     |
+|    Baltic Avenue     |     []     |
+|      Income Tax      | [Player 3] |
+|   Reading Railroad   |     []     |
+|   Oriental Avenue    |     []     |
+|        Chance        | [Player 1] |
+|    Vermont Avenue    |     []     |
+|  Connecticut Avenue  |     []     |
+|         Jail         |     []     |
+|  St. Charles Place   | [Player 2] |
 Player 1 ($1550) 
 Player 2 ($1500) 
-Player 3 ($1550) 
+Player 3 ($1300) 
 current player: 1
