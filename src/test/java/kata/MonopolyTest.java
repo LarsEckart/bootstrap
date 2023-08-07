@@ -42,7 +42,7 @@ class MonopolyTest {
         Monopoly monopoly = new Monopoly(3);
         story.addFrame(monopoly);
         story.addFrame(monopoly.move(7).endTurn());
-        story.addFrame(monopoly.move(7).endTurn());
+        story.addFrame(monopoly.move(7).buyProperty().endTurn());
         story.addFrame(monopoly.move(7).endTurn());
         Approvals.verify(story);
     }
