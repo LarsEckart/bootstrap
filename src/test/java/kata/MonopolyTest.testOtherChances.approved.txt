@@ -1,71 +1,119 @@
 Initial:
-|          GO          | [Player 1, Player 2, Player 3] |
+|          GO          | [Player 1, Player 2, Player 3, Player 4, Player 5] |
+| Mediterranean Avenue |                         []                         |
+|   Community Chest    |                         []                         |
+|    Baltic Avenue     |                         []                         |
+|      Income Tax      |                         []                         |
+|   Reading Railroad   |                         []                         |
+|   Oriental Avenue    |                         []                         |
+|        Chance        |                         []                         |
+|    Vermont Avenue    |                         []                         |
+|  Connecticut Avenue  |                         []                         |
+|         Jail         |                         []                         |
+|  St. Charles Place   |                         []                         |
+Player 1 ($1500) 
+Player 2 ($1500) 
+Player 3 ($1500) 
+Player 4 ($1500) 
+Player 5 ($1500) 
+current player: 1
+
+Frame #1:
+|          GO          | [Player 2, Player 3, Player 4, Player 5] |
+| Mediterranean Avenue |                    []                    |
+|   Community Chest    |                    []                    |
+|    Baltic Avenue     |                    []                    |
+|      Income Tax      |                    []                    |
+|   Reading Railroad   |                    []                    |
+|   Oriental Avenue    |                    []                    |
+|        Chance        |                [Player 1]                |
+|    Vermont Avenue    |                    []                    |
+|  Connecticut Avenue  |                    []                    |
+|         Jail         |                    []                    |
+|  St. Charles Place   |                    []                    |
+Player 1 ($1550) 
+Player 2 ($1500) 
+Player 3 ($1500) 
+Player 4 ($1500) 
+Player 5 ($1500) 
+current player: 2
+
+Frame #2:
+|          GO          | [Player 3, Player 4, Player 5] |
 | Mediterranean Avenue |               []               |
 |   Community Chest    |               []               |
 |    Baltic Avenue     |               []               |
 |      Income Tax      |               []               |
 |   Reading Railroad   |               []               |
 |   Oriental Avenue    |               []               |
-|        Chance        |               []               |
+|        Chance        |           [Player 1]           |
 |    Vermont Avenue    |               []               |
 |  Connecticut Avenue  |               []               |
 |         Jail         |               []               |
-|  St. Charles Place   |               []               |
-Player 1 ($1500) 
-Player 2 ($1500) 
+|  St. Charles Place   |           [Player 2]           |
+Player 1 ($1550) 
+Player 2 ($1360) St. Charles Place
 Player 3 ($1500) 
-current player: 1
+Player 4 ($1500) 
+Player 5 ($1500) 
+current player: 3
 
-Frame #1:
-|          GO          | [Player 2, Player 3] |
+Frame #3:
+|          GO          | [Player 4, Player 5] |
 | Mediterranean Avenue |          []          |
 |   Community Chest    |          []          |
 |    Baltic Avenue     |          []          |
-|      Income Tax      |          []          |
+|      Income Tax      |      [Player 3]      |
 |   Reading Railroad   |          []          |
 |   Oriental Avenue    |          []          |
 |        Chance        |      [Player 1]      |
 |    Vermont Avenue    |          []          |
 |  Connecticut Avenue  |          []          |
 |         Jail         |          []          |
-|  St. Charles Place   |          []          |
-Player 1 ($1550) 
-Player 2 ($1500) 
-Player 3 ($1500) 
-current player: 2
-
-Frame #2:
-|          GO          | [Player 3] |
-| Mediterranean Avenue |     []     |
-|   Community Chest    |     []     |
-|    Baltic Avenue     |     []     |
-|      Income Tax      |     []     |
-|   Reading Railroad   |     []     |
-|   Oriental Avenue    |     []     |
-|        Chance        | [Player 1] |
-|    Vermont Avenue    |     []     |
-|  Connecticut Avenue  |     []     |
-|         Jail         |     []     |
-|  St. Charles Place   | [Player 2] |
-Player 1 ($1550) 
-Player 2 ($1360) St. Charles Place
-Player 3 ($1500) 
-current player: 3
-
-Frame #3:
-|          GO          |     []     |
-| Mediterranean Avenue |     []     |
-|   Community Chest    |     []     |
-|    Baltic Avenue     |     []     |
-|      Income Tax      | [Player 3] |
-|   Reading Railroad   |     []     |
-|   Oriental Avenue    |     []     |
-|        Chance        | [Player 1] |
-|    Vermont Avenue    |     []     |
-|  Connecticut Avenue  |     []     |
-|         Jail         |     []     |
-|  St. Charles Place   | [Player 2] |
+|  St. Charles Place   |      [Player 2]      |
 Player 1 ($1550) 
 Player 2 ($1360) St. Charles Place
 Player 3 ($1300) 
+Player 4 ($1500) 
+Player 5 ($1500) 
+current player: 4
+
+Frame #4:
+|          GO          |      [Player 5]      |
+| Mediterranean Avenue |          []          |
+|   Community Chest    |          []          |
+|    Baltic Avenue     |          []          |
+|      Income Tax      |      [Player 3]      |
+|   Reading Railroad   |          []          |
+|   Oriental Avenue    |          []          |
+|        Chance        | [Player 1, Player 4] |
+|    Vermont Avenue    |          []          |
+|  Connecticut Avenue  |          []          |
+|         Jail         |          []          |
+|  St. Charles Place   |      [Player 2]      |
+Player 1 ($1550) 
+Player 2 ($1360) St. Charles Place
+Player 3 ($1300) 
+Player 4 ($1485) 
+Player 5 ($1500) 
+current player: 5
+
+Frame #5:
+|          GO          |               []               |
+| Mediterranean Avenue |               []               |
+|   Community Chest    |               []               |
+|    Baltic Avenue     |               []               |
+|      Income Tax      |           [Player 3]           |
+|   Reading Railroad   |               []               |
+|   Oriental Avenue    |               []               |
+|        Chance        | [Player 1, Player 4, Player 5] |
+|    Vermont Avenue    |               []               |
+|  Connecticut Avenue  |               []               |
+|         Jail         |               []               |
+|  St. Charles Place   |           [Player 2]           |
+Player 1 ($1600) 
+Player 2 ($1410) St. Charles Place
+Player 3 ($1350) 
+Player 4 ($1535) 
+Player 5 ($1300) 
 current player: 1

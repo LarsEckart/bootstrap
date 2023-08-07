@@ -38,11 +38,18 @@ class MonopolyTest {
     @Test
     void testOtherChances() {
         StoryBoard story = new StoryBoard();
-        ChancePile.stack(new ChanceCard.BankCard(), new ChanceCard.GoToStCharlesPlace(), new ChanceCard.GoBack3Spaces());
-        Monopoly monopoly = new Monopoly(3);
+        ChancePile.stack(new ChanceCard.BankCard()
+                , new ChanceCard.GoToStCharlesPlace()
+                , new ChanceCard.GoBack3Spaces()
+                , new ChanceCard.SpeedingFine()
+                , new ChanceCard.ChairmanOfTheBoard()
+        );
+        Monopoly monopoly = new Monopoly(5);
         story.addFrame(monopoly);
         story.addFrame(monopoly.move(7).endTurn());
         story.addFrame(monopoly.move(7).buyProperty().endTurn());
+        story.addFrame(monopoly.move(7).endTurn());
+        story.addFrame(monopoly.move(7).endTurn());
         story.addFrame(monopoly.move(7).endTurn());
         Approvals.verify(story);
     }

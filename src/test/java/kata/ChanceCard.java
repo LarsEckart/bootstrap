@@ -25,4 +25,23 @@ public abstract class ChanceCard implements AutomaticAction {
             monopoly.move(-3);
         }
     }
+
+    public static class SpeedingFine extends ChanceCard {
+
+        @Override
+        public void execute(Player player, Monopoly monopoly, Place place) {
+            player.money -= 15;
+        }
+    }
+
+    public static class ChairmanOfTheBoard extends ChanceCard {
+
+        @Override
+        public void execute(Player currentPlayer, Monopoly monopoly, Place place) {
+            monopoly.players.where(p -> p != currentPlayer).forEach(p -> {
+                p.money += 50;
+                currentPlayer.money -= 50;
+            });
+        }
+    }
 }
