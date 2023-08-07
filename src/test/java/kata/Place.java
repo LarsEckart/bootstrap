@@ -8,7 +8,7 @@ class Place {
     public static Place IncomeTax = new Place("Income Tax", 4, Integer.MAX_VALUE, (p, __, ___) -> p.money -= 200);
     public static Place ReadingRailroad = new Place("Reading Railroad", 5, 200, Rent.getNull());
     public static Place OrientalAvenue = new Place("Oriental Avenue", 6, 100, Rent.getNull());
-    public static Place Chance = new Place("Chance", 7, Integer.MAX_VALUE, new ChanceCard.BankCard());
+    public static Place Chance = new Place("Chance", 7, Integer.MAX_VALUE, ChancePile.get());
     public static Place VermontAvenue = new Place("Vermont Avenue", 8, 100, Rent.getNull());
     public static Place ConnecticutAvenue = new Place("Connecticut Avenue", 9, 120, Rent.getNull());
     public static Place Jail = new Place("Jail", 10, Integer.MAX_VALUE, Rent.getNull());
