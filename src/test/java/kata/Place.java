@@ -1,6 +1,6 @@
 package kata;
 
-class Place {
+public class Place {
     public static final Place GO = new Place("GO", 0, Integer.MAX_VALUE, Rent.getNull());
     public static Place MediterraneanAvenue = new Place("Mediterranean Avenue", 1, 60, Rent.getNull());
     public static Place CommunityChest = new Place("Community Chest", 2, Integer.MAX_VALUE, Rent.getNull());

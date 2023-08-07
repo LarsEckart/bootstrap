@@ -5,7 +5,7 @@ import org.lambda.query.Queryable;
 
 import java.util.List;
 
-class Monopoly {
+public class Monopoly {
 
     private Place[] board = {
             Place.GO,

@@ -1,9 +1,8 @@
 package kata;
 
-import com.spun.util.servlets.ValidationError;
 import org.lambda.query.Queryable;
 
-class Player {
+public class Player {
     private final String name;
     public Queryable<Place> properties = new Queryable<>(Place.class);
     private int location;

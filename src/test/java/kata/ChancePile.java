@@ -6,7 +6,7 @@ public class ChancePile implements AutomaticAction {
 
     public static ChancePile INSTANCE = new ChancePile();
 
-    private Stack<ChanceCard> cards = new Stack<>();
+    private final Stack<ChanceCard> cards = new Stack<>();
 
     private ChancePile() {
         cards.push(new ChanceCard.BankCard());
