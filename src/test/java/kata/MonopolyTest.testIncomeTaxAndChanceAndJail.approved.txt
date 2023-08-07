@@ -63,5 +63,5 @@ Frame #3:
 |         Jail         | [Player 1] |
 Player 1 ($1500) 
 Player 2 ($1300) 
-Player 3 ($1500) 
+Player 3 ($1550) 
 current player: 1

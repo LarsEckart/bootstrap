@@ -1,6 +1,7 @@
 package kata;
 
 import com.github.larseckart.tcr.FastTestCommitRevertMainExtension;
+import com.github.larseckart.tcr.TestCommitRevertExtension;
 import org.approvaltests.Approvals;
 import org.approvaltests.StoryBoard;
 import org.junit.jupiter.api.Test;
