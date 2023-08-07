@@ -25,6 +25,7 @@ class MonopolyTest {
     @Test
     void testIncomeTaxAndChanceAndJail() {
         StoryBoard story = new StoryBoard();
+        ChancePile.stack(new ChanceCard.BankCard());
         Monopoly monopoly = new Monopoly(3);
         story.addFrame(monopoly);
         story.addFrame(monopoly.move(10).endTurn());

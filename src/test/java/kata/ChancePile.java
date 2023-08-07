@@ -1,5 +1,6 @@
 package kata;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class ChancePile implements AutomaticAction {
@@ -14,6 +15,11 @@ public class ChancePile implements AutomaticAction {
 
     public static AutomaticAction get() {
         return INSTANCE;
+    }
+
+    public static void stack(ChanceCard... chanceCard) {
+        INSTANCE.cards.clear();
+        Arrays.stream(chanceCard).forEach(INSTANCE.cards::push);
     }
 
     @Override
