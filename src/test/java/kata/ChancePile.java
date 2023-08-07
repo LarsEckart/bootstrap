@@ -22,6 +22,10 @@ public class ChancePile implements AutomaticAction {
         Arrays.stream(chanceCard).forEach(item -> INSTANCE.cards.add(0, item));
     }
 
+    public static int size() {
+        return INSTANCE.cards.size();
+    }
+
     @Override
     public void execute(Player player, Monopoly monopoly, Place place) {
         ChanceCard card = cards.pop();

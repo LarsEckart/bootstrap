@@ -44,4 +44,11 @@ public abstract class ChanceCard implements AutomaticAction {
             });
         }
     }
+
+    public static class GetOutOfJailFree extends ChanceCard {
+        @Override
+        public void execute(Player player, Monopoly monopoly, Place place) {
+//            throw new UnsupportedOperationException("continue here");
+        }
+    }
 }

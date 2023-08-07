@@ -1,6 +1,5 @@
 package kata;
 
-import com.github.larseckart.tcr.TestCommitRevertExtension;
 import com.github.larseckart.tcr.TestCommitRevertMainExtension;
 import org.approvaltests.Approvals;
 import org.approvaltests.StoryBoard;
@@ -43,14 +42,19 @@ class MonopolyTest {
                 , new ChanceCard.GoBack3Spaces()
                 , new ChanceCard.SpeedingFine()
                 , new ChanceCard.ChairmanOfTheBoard()
+                , new ChanceCard.GetOutOfJailFree()
         );
-        Monopoly monopoly = new Monopoly(5);
+        int chanceCards = ChancePile.size();
+        Monopoly monopoly = new Monopoly(chanceCards);
         story.addFrame(monopoly);
-        story.addFrame(monopoly.move(7).endTurn());
-        story.addFrame(monopoly.move(7).buyProperty().endTurn());
-        story.addFrame(monopoly.move(7).endTurn());
-        story.addFrame(monopoly.move(7).endTurn());
-        story.addFrame(monopoly.move(7).endTurn());
+        for (int i = 0; i < chanceCards; i++) {
+            if (i == 1) {
+                story.addFrame(monopoly.move(7).buyProperty().endTurn());
+            } else {
+                story.addFrame(monopoly.move(7).endTurn());
+            }
+        }
+
         Approvals.verify(story);
     }
 

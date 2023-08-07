@@ -142,5 +142,5 @@ Player 2 ($1410) St. Charles Place
 Player 3 ($1350) 
 Player 4 ($1535) 
 Player 5 ($1250) 
-Player 6 ($1550) GetOutOfJailFree 
+Player 6 ($1550) 
 current player: 1
