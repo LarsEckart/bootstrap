@@ -1,0 +1,42 @@
+package kata;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Skyjo {
+
+    private Deck deck = new Deck();
+
+    private List<Player> players = new ArrayList<>();
+
+    public Skyjo(Player alice, Player bob) {
+        players.add(alice);
+        players.add(bob);
+        deck.shuffle();
+    }
+
+    public void startGame() {
+        for (Player player : players) {
+            for (int i = 0; i < 12; i++) {
+                player.dealInitialCards(deck.pop());
+            }
+        }
+    }
+
+    public void flipInitialCards() {
+        for (Player player : players) {
+            player.flip(1, 1);
+            player.flip(1, 2);
+        }
+    }
+
+    @Override
+    public String toString() {
+        String result = "Deck: " + deck.cardCount() + "\n" +
+                        "Players:\n";
+        for (Player player : players) {
+            result += player.toString() + "\n";
+        }
+        return result;
+    }
+}

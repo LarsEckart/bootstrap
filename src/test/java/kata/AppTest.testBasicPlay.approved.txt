@@ -1,0 +1,39 @@
+Initial:
+Deck: 150
+Players:
+Alice
+no cards yet
+
+Bob
+no cards yet
+
+
+
+Frame #1:
+Deck: 126
+Players:
+Alice
+<X1X><X1X><X11X><X12X>
+<X8X><X-2X><X3X><X4X>
+<X10X><X12X><X0X><X9X>
+
+Bob
+<X2X><X3X><X0X><X2X>
+<X4X><X9X><X-2X><X2X>
+<X11X><X6X><X0X><X10X>
+
+
+
+Frame #2:
+Deck: 126
+Players:
+Alice
+<1><1><X11X><X12X>
+<X8X><X-2X><X3X><X4X>
+<X10X><X12X><X0X><X9X>
+
+Bob
+<2><3><X0X><X2X>
+<X4X><X9X><X-2X><X2X>
+<X11X><X6X><X0X><X10X>
+
