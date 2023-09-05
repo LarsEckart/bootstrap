@@ -20,4 +20,12 @@ class Player {
     public void flip(int row, int column) {
         cards.flip(row, column);
     }
+
+    public int score() {
+        return cards.score();
+    }
+
+    public String name() {
+        return name;
+    }
 }

@@ -33,4 +33,8 @@ class Cards {
             cards.get(index).flip();
         }
     }
+
+    public int score() {
+        return cards.stream().filter(c -> c.flipped()).map(Card::value).reduce(0, Integer::sum);
+    }
 }

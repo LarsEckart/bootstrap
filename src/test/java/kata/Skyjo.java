@@ -1,13 +1,10 @@
 package kata;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class Skyjo {
 
     private Deck deck = new Deck();
-
-    private List<Player> players = new ArrayList<>();
+    private Players players = new Players();
+    private boolean gameStarted;
 
     public Skyjo(Player alice, Player bob) {
         players.add(alice);
@@ -28,6 +25,7 @@ class Skyjo {
             player.flip(1, 1);
             player.flip(1, 2);
         }
+        gameStarted = true;
     }
 
     @Override
@@ -37,6 +35,13 @@ class Skyjo {
         for (Player player : players) {
             result += player.toString() + "\n";
         }
+        if (gameStarted) {
+            result += "next is " + currentPlayer().name() + "\n";
+        }
         return result;
+    }
+
+    private Player currentPlayer() {
+        return players.withHighestScore();
     }
 }

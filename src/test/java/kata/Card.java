@@ -16,4 +16,12 @@ class Card {
     public String toString() {
         return flipped ? "<" + value + ">" : "<X" + value + "X>";
     }
+
+    public int value() {
+        return value;
+    }
+
+    public boolean flipped() {
+        return flipped;
+    }
 }
