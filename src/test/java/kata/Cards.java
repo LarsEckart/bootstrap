@@ -28,41 +28,9 @@ class Cards {
     }
 
     public void flip(int row, int column) {
-        if (row == 1 && column == 1) {
-            cards.get(0).flip();
-        }
-        if (row == 1 && column == 2) {
-            cards.get(1).flip();
-        }
-        if (row == 1 && column == 3) {
-            cards.get(2).flip();
-        }
-        if (row == 1 && column == 4) {
-            cards.get(3).flip();
-        }
-        if (row == 2 && column == 1) {
-            cards.get(4).flip();
-        }
-        if (row == 2 && column == 2) {
-            cards.get(5).flip();
-        }
-        if (row == 2 && column == 3) {
-            cards.get(6).flip();
-        }
-        if (row == 2 && column == 4) {
-            cards.get(7).flip();
-        }
-        if (row == 3 && column == 1) {
-            cards.get(8).flip();
-        }
-        if (row == 3 && column == 2) {
-            cards.get(9).flip();
-        }
-        if (row == 3 && column == 3) {
-            cards.get(10).flip();
-        }
-        if (row == 3 && column == 4) {
-            cards.get(11).flip();
+        int index = (row - 1) * 4 + column - 1;
+        if (index >= 0 && index < cards.size()) {
+            cards.get(index).flip();
         }
     }
 }
