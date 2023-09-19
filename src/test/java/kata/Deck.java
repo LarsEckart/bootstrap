@@ -2,6 +2,7 @@ package kata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ class Deck {
     List<Card> list = new ArrayList<>();
 
     public Deck() {
-        Map<Points, Integer> map = new HashMap<>();
+        Map<Points, Integer> map = new LinkedHashMap<>();
         map.put(Points.of(-2), 5);
         map.put(Points.of(-1), 10);
         map.put(Points.of(0), 15);

@@ -15,6 +15,10 @@ class Player {
     }
 
     public int score() {
-        return 0;
+        return this.cards.stream().filter(card -> card.flipped()).mapToInt(Card::value).sum();
+    }
+
+    public void flipCard(int column, int row) {
+        this.cards.get(0).flip();
     }
 }
