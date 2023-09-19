@@ -18,9 +18,11 @@ class Player {
         return this.cards.stream().filter(card -> card.flipped()).mapToInt(Card::value).sum();
     }
 
-    public void flipCard(int column, int row) {
-        if (column == 1 && row == 1) {
+    public void flipCard(int row, int column) {
+        if (row == 1 && column == 1) {
             this.cards.get(0).flip();
+        } else if (row == 1 && column == 2) {
+            this.cards.get(1).flip();
         }
     }
 }
