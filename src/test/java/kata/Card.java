@@ -1,13 +1,13 @@
 package kata;
 
 class Card {
-    private final int value;
+    private final Points points;
 
-    Card(int value) {
-        this.value = value;
+    Card(Points points) {
+        this.points = points;
     }
 
     public int value() {
-        return this.value;
+        return this.points.value();
     }
 }

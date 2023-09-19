@@ -1,7 +1,9 @@
 package kata;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class Deck {
     int numberCards = 150;
@@ -9,21 +11,33 @@ class Deck {
     List<Card> list = new ArrayList<>();
 
     public Deck() {
-        for (int i = 1; i <= 12; i++) {
-            for (int j = 1; j <= 10; j++) {
-                list.add(new Card(i));
-            }
-        }
+        Map<Points, Integer> map = new HashMap<>();
+        map.put(Points.of(-2), 5);
+        map.put(Points.of(-1), 10);
+        map.put(Points.of(0), 15);
+        map.put(Points.of(1), 10);
+        map.put(Points.of(2), 10);
+        map.put(Points.of(3), 10);
+        map.put(Points.of(4), 10);
+        map.put(Points.of(5), 10);
+        map.put(Points.of(6), 10);
+        map.put(Points.of(7), 10);
+        map.put(Points.of(8), 10);
+        map.put(Points.of(9), 10);
+        map.put(Points.of(10), 10);
+        map.put(Points.of(11), 10);
+        map.put(Points.of(12), 10);
 
-        for (int i = 0; i < 15; i++) {
-            list.add(new Card(0));
-        }
+        fillDeck(map);
+    }
 
-        for (int i = 0; i < 10; i++) {
-            list.add(new Card(-1));
-        }
-        for (int i = 0; i < 5; i++) {
-            list.add(new Card(-2));
+    private void fillDeck(Map<Points, Integer> kvMap) {
+        kvMap.forEach(this::fillDeck);
+    }
+
+    private void fillDeck(Points value, int amount) {
+        for (int i = 0; i < amount; i++) {
+            list.add(new Card(value));
         }
     }
 
