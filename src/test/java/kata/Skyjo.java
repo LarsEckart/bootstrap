@@ -22,4 +22,14 @@ class Skyjo {
     public void registerPlayer(Player alice) {
         this.players.add(alice);
     }
+
+    public Player nextPlayer() {
+        Player highest = players.get(0);
+        for (Player player : players) {
+            if(player.score() > highest.score()) {
+                highest = player;
+            }
+        }
+        return highest;
+    }
 }

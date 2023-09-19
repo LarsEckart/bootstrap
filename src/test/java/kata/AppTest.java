@@ -23,4 +23,23 @@ class AppTest {
         assertThat(Alice.numberOfCards()).isEqualTo(12);
         assertThat(Bob.numberOfCards()).isEqualTo(12);
     }
+
+    @Test
+    void after_dealing_players_flip_two_cards_and_one_with_highest_score_starts_the_game() {
+        // problem: test passes but from looking at test we dont understand why.
+        Deck deck = new Deck();
+        Skyjo skyjo = new Skyjo(deck);
+        Player Alice = new Player();
+        Player Bob = new Player();
+        skyjo.registerPlayer(Alice);
+        skyjo.registerPlayer(Bob);
+
+        skyjo.deal();
+        Alice.flipCard(1, 1);
+        Alice.flipCard(1, 2);
+        Bob.flipCard(1, 1);
+        Bob.flipCard(1, 2);
+
+        assertThat(skyjo.nextPlayer()).isEqualTo(Alice);
+    }
 }
