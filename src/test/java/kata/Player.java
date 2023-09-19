@@ -19,10 +19,6 @@ class Player {
     }
 
     public void flipCard(int row, int column) {
-        if (row == 1 && column == 1) {
-            this.cards.get(0).flip();
-        } else if (row == 1 && column == 2) {
-            this.cards.get(1).flip();
-        }
+        this.cards.get(row * 3 + column).flip();
     }
 }
