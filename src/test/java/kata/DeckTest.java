@@ -30,36 +30,8 @@ class DeckTest {
         assertEquals(149, deck.numberOfCards());
     }
 
-    @Test
-    void taking_all_150_cards_yields_10_with_value_12() {
-        Deck deck = new Deck();
-
-        int counterOfTwelves = 0;
-        for (int i = 0; i < 150; i++) {
-            if (deck.takeFromTop().value() == 12) {
-                counterOfTwelves++;
-            }
-        }
-
-        assertEquals(10, counterOfTwelves);
-    }
-
-    @Test
-    void taking_all_150_cards_yields_10_with_value_11() {
-        Deck deck = new Deck();
-
-        int counterOfElevens = 0;
-        for (int i = 0; i < 150; i++) {
-            if (deck.takeFromTop().value() == 11) {
-                counterOfElevens++;
-            }
-        }
-
-        assertEquals(10, counterOfElevens);
-    }
-
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12})
+    @ValueSource(ints = {-1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12})
     void taking_all_150_cards_yields_10_with_value(int value) {
         Deck deck = new Deck();
 
@@ -71,5 +43,33 @@ class DeckTest {
         }
 
         assertEquals(10, counter);
+    }
+
+    @Test
+    void taking_all_150_cards_yields_15_cards_with_value_0() {
+        Deck deck = new Deck();
+
+        int counter = 0;
+        for (int i = 0; i < 150; i++) {
+            if (deck.takeFromTop().value() == 0) {
+                counter++;
+            }
+        }
+
+        assertEquals(15, counter);
+    }
+
+    @Test
+    void taking_all_150_cards_yields_5_cards_with_value_minus_2() {
+        Deck deck = new Deck();
+
+        int counter = 0;
+        for (int i = 0; i < 150; i++) {
+            if (deck.takeFromTop().value() == -2) {
+                counter++;
+            }
+        }
+
+        assertEquals(5, counter);
     }
 }

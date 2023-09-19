@@ -15,8 +15,15 @@ class Deck {
             }
         }
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 15; i++) {
+            list.add(new Card(0));
+        }
+
+        for (int i = 0; i < 10; i++) {
             list.add(new Card(-1));
+        }
+        for (int i = 0; i < 5; i++) {
+            list.add(new Card(-2));
         }
     }
 
