@@ -1,7 +1,5 @@
 package kata;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,5 +12,9 @@ class Player {
 
     public void addCard(Card card) {
         this.cards.add(card);
+    }
+
+    public int score() {
+        return 0;
     }
 }
