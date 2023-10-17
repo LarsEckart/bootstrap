@@ -5,6 +5,11 @@ import java.util.List;
 
 class Player {
     private List<Card> cards = new ArrayList<>();
+    private String name;
+
+    public Player(String name) {
+        this.name = name;
+    }
 
     public int numberOfCards() {
         return cards.size();
@@ -26,6 +31,8 @@ class Player {
     public String toString() {
         StringBuffer sb = new StringBuffer();
 
+        sb.append(this.name + ": " + "\n");
+
         // print cards in a 3x4 grid
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 3; column++) {
@@ -36,5 +43,9 @@ class Player {
         }
 
         return sb.toString();
+    }
+
+    public String name() {
+        return this.name;
     }
 }

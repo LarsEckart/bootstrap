@@ -48,6 +48,8 @@ class Skyjo {
 
         sb.append("Discard pile: " + discardPile.toString());
         sb.append("\n");
+        sb.append("Next player: " + nextPlayer().name());
+        sb.append("\n");
 
         return sb.toString();
     }

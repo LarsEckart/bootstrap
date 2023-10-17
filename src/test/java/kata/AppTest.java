@@ -20,8 +20,8 @@ class AppTest {
     void deals_12_cards_to_each_player() {
         Deck deck = new Deck();
         Skyjo skyjo = new Skyjo(deck);
-        Player Alice = new Player();
-        Player Bob = new Player();
+        Player Alice = new Player("Alice");
+        Player Bob = new Player("Bob");
         skyjo.registerPlayer(Alice);
         skyjo.registerPlayer(Bob);
 
@@ -36,8 +36,8 @@ class AppTest {
         // problem: test passes but from looking at test we dont understand why.
         Deck deck = new Deck();
         Skyjo skyjo = new Skyjo(deck);
-        Player Alice = new Player();
-        Player Bob = new Player();
+        Player Alice = new Player("Alice");
+        Player Bob = new Player("Bob");
         skyjo.registerPlayer(Alice);
         skyjo.registerPlayer(Bob);
 
