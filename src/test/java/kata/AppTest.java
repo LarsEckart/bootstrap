@@ -1,5 +1,6 @@
 package kata;
 
+import org.approvaltests.Approvals;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -41,5 +42,24 @@ class AppTest {
         Bob.flipCard(1, 2);
 
         assertThat(skyjo.nextPlayer()).isEqualTo(Alice);
+    }
+
+    @Test
+    void print_deck_state() {
+        // problem: test passes but from looking at test we dont understand why.
+        Deck deck = new Deck();
+        Skyjo skyjo = new Skyjo(deck);
+        Player Alice = new Player();
+        Player Bob = new Player();
+        skyjo.registerPlayer(Alice);
+        skyjo.registerPlayer(Bob);
+
+        skyjo.deal();
+        Alice.flipCard(1, 1);
+        Alice.flipCard(1, 2);
+        Bob.flipCard(1, 1);
+        Bob.flipCard(1, 2);
+
+        Approvals.verify(skyjo);
     }
 }
