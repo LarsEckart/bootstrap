@@ -1,5 +1,7 @@
 package kata;
 
+import java.util.Objects;
+
 class Card {
     private final Points points;
     private boolean flipped;
@@ -18,5 +20,26 @@ class Card {
 
     public boolean flipped() {
         return this.flipped;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+               "points=" + points +
+               ", flipped=" + flipped +
+               '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return Objects.equals(points, card.points);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(points);
     }
 }
