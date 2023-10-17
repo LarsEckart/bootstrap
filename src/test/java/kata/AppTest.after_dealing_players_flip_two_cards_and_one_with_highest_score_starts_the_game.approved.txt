@@ -8,3 +8,4 @@
 |XX| |XX| |XX| 
 |XX| |XX| |XX| 
 
+Discard pile: 10

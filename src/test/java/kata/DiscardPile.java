@@ -10,4 +10,9 @@ class DiscardPile {
     public Card takeFromTop() {
         return card;
     }
+
+    @Override
+    public String toString() {
+        return "" + this.card.value();
+    }
 }

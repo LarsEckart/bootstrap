@@ -6,6 +6,7 @@ import java.util.List;
 class Skyjo {
     private final Deck deck;
     private List<Player> players = new ArrayList<>();
+    private DiscardPile discardPile;
 
     public Skyjo(Deck deck) {
         this.deck = deck;
@@ -17,6 +18,8 @@ class Skyjo {
                 player.addCard(this.deck.takeFromTop());
             }
         }
+
+        discardPile = new DiscardPile(this.deck.takeFromTop());
     }
 
     public void registerPlayer(Player alice) {
@@ -30,6 +33,7 @@ class Skyjo {
                 highest = player;
             }
         }
+
         return highest;
     }
 
@@ -41,6 +45,9 @@ class Skyjo {
             sb.append(player.toString());
             sb.append("\n");
         }
+
+        sb.append("Discard pile: " + discardPile.toString());
+        sb.append("\n");
 
         return sb.toString();
     }
