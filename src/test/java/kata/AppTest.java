@@ -33,7 +33,7 @@ class AppTest {
     }
 
     @Test
-    void after_dealing_players_flip_two_cards_and_one_with_highest_score_starts_the_game() {
+    void game_play() {
         // problem: test passes but from looking at test we dont understand why.
         Deck deck = new Deck();
         Skyjo skyjo = new Skyjo(deck);
@@ -52,7 +52,8 @@ class AppTest {
         storyboard.add(skyjo);
         skyjo.on(new PlayerTakesCardFromDeckEvent());
         storyboard.add(skyjo);
-        skyjo.on(new PlayerSwapsCardWithDiscardPileEvent(2, 2));
+        skyjo.on(new PlayerSwapsCardWithDiscardPileEvent(1, 1));
+        storyboard.add(skyjo);
 
         Approvals.verify(storyboard);
     }

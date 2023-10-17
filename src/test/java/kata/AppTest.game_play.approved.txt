@@ -30,3 +30,19 @@ Bob:
 
 Discard pile: 10
 Next player: Alice
+
+
+Frame #2:
+Alice: 
+|10| |12| |XX| |XX|
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+Bob: 
+|11| |11| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 10
+Next player: Alice
