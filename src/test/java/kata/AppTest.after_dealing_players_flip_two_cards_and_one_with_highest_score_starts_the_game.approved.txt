@@ -1,14 +1,36 @@
+Initial:
 Alice: 
 |XX| |XX| |XX| 
 |XX| |12| |12| 
 |XX| |XX| |XX| 
 |XX| |XX| |XX| 
 
+
 Bob: 
 |XX| |XX| |XX| 
 |XX| |11| |11| 
 |XX| |XX| |XX| 
 |XX| |XX| |XX| 
+
+
+Discard pile: 10
+Next player: Alice
+
+
+Frame #1:
+Alice: 
+|XX| |XX| |XX| 
+|XX| |12| |12| 
+|XX| |XX| |XX| 
+|XX| |XX| |XX| 
+Pending card: 10
+
+Bob: 
+|XX| |XX| |XX| 
+|XX| |11| |11| 
+|XX| |XX| |XX| 
+|XX| |XX| |XX| 
+
 
 Discard pile: 10
 Next player: Alice

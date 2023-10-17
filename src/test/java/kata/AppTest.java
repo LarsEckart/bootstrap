@@ -2,6 +2,7 @@ package kata;
 
 import com.github.larseckart.tcr.TestCommitRevertMainExtension;
 import org.approvaltests.Approvals;
+import org.approvaltests.StoryBoard;
 import org.approvaltests.reporters.UseReporter;
 import org.approvaltests.reporters.intellij.IntelliJReporter;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -46,7 +47,12 @@ class AppTest {
         Alice.flipCard(1, 2);
         Bob.flipCard(1, 1);
         Bob.flipCard(1, 2);
+        var storyboard = new StoryBoard();
 
-        Approvals.verify(skyjo);
+        storyboard.add(skyjo);
+        skyjo.on(new PlayerTakesCardFromDeckEvent());
+        storyboard.add(skyjo);
+
+        Approvals.verify(storyboard);
     }
 }

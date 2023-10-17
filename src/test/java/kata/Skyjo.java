@@ -53,4 +53,11 @@ class Skyjo {
 
         return sb.toString();
     }
+
+    public void on(PlayerTakesCardFromDeckEvent playerTakesCardFromDeckEvent) {
+        var card = this.deck.takeFromTop();
+
+        this.nextPlayer().acceptIncomingCard(card);
+
+    }
 }

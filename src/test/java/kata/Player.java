@@ -6,6 +6,7 @@ import java.util.List;
 class Player {
     private List<Card> cards = new ArrayList<>();
     private String name;
+    private Card pendingCard;
 
     public Player(String name) {
         this.name = name;
@@ -42,10 +43,20 @@ class Player {
             sb.append("\n");
         }
 
+        if (pendingCard != null) {
+            sb.append("Pending card: ").append(this.pendingCard.value());
+        }
+
+        sb.append("\n");
+
         return sb.toString();
     }
 
     public String name() {
         return this.name;
+    }
+
+    public void acceptIncomingCard(Card card) {
+        this.pendingCard = card;
     }
 }
