@@ -1,0 +1,10 @@
+|XX| |XX| |XX| 
+|XX| |12| |12| 
+|XX| |XX| |XX| 
+|XX| |XX| |XX| 
+
+|XX| |XX| |XX| 
+|XX| |11| |11| 
+|XX| |XX| |XX| 
+|XX| |XX| |XX| 
+

@@ -32,4 +32,16 @@ class Skyjo {
         }
         return highest;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (Player player : players) {
+            sb.append(player.toString());
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
 }
