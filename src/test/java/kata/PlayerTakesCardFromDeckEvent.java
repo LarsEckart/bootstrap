@@ -1,4 +1,5 @@
 package kata;
 
-class PlayerTakesCardFromDeckEvent {
+class PlayerTakesCardFromDeckEvent extends Event {
+
 }

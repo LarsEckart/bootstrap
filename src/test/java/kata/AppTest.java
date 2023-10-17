@@ -52,6 +52,7 @@ class AppTest {
         storyboard.add(skyjo);
         skyjo.on(new PlayerTakesCardFromDeckEvent());
         storyboard.add(skyjo);
+        skyjo.on(new PlayerSwapsCardWithDiscardPileEvent(2, 2));
 
         Approvals.verify(storyboard);
     }

@@ -25,7 +25,7 @@ class Player {
     }
 
     public void flipCard(int row, int column) {
-        this.cards.get(row * 3 + column).flip();
+        this.cards.get(toIndex(row, column)).flip();
     }
 
     @Override
@@ -35,9 +35,9 @@ class Player {
         sb.append(this.name + ": " + "\n");
 
         // print cards in a 3x4 grid
-        for (int row = 0; row < 4; row++) {
-            for (int column = 0; column < 3; column++) {
-                sb.append(cards.get(row * 3 + column).toString());
+        for (int row = 1; row <= 3; row++) {
+            for (int column = 1; column <= 4; column++) {
+                sb.append(cards.get(toIndex(row, column)).toString());
                 sb.append(" ");
             }
             sb.append("\n");
@@ -50,6 +50,10 @@ class Player {
         sb.append("\n");
 
         return sb.toString();
+    }
+
+    private static int toIndex(int row, int column) {
+        return (row - 1) * 3 + column;
     }
 
     public String name() {
