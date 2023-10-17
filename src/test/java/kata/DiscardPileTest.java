@@ -10,10 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class DiscardPileTest {
 
     @Test
-    void apple_sauce() {
-        DiscardPile discardPile = new DiscardPile(new Card(Points.of(5)));
+    void card_can_be_taken() {
+        var discardPile = new DiscardPile(new Card(Points.of(5)));
 
-        Card card = discardPile.takeFromTop();
+        var card = discardPile.takeFromTop();
 
         assertThat(card).isEqualTo(new Card(Points.of(5)));
     }
