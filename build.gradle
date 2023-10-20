@@ -2,12 +2,13 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'application'
+    id 'com.diffplug.spotless' version '6.22.0'
     id 'info.solidsoft.pitest' version '1.15.0'
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -16,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.json:json:20231013")
+    implementation 'io.vavr:vavr:1.0.0-alpha-4'
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -30,6 +31,7 @@ dependencies {
 tasks.withType(JavaCompile) {
     options.compilerArgs.add("-Xlint:all")
     options.incremental = true
+    dependsOn 'spotlessApply'
 }
 
 
@@ -56,7 +58,7 @@ test {
 }
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.11"
 }
 
 jacocoTestReport {
@@ -78,4 +80,11 @@ pitest {
     threads = 4
     outputFormats = ['XML', 'HTML']
     timestampedReports = false
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+        formatAnnotations()
+    }
 }
