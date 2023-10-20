@@ -1,19 +1,17 @@
 package kata;
 
-import com.github.larseckart.tcr.TestCommitRevertMainExtension;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
 
 class DiscardPileTest {
 
-    @Test
-    void card_can_be_taken() {
-        var discardPile = new DiscardPile(new Card(Points.of(5)));
+  @Test
+  void card_can_be_taken() {
+    var discardPile = new DiscardPile(new Card(Points.of(5)));
 
-        var card = discardPile.takeFromTop();
+    var card = discardPile.takeFromTop();
 
-        assertThat(card).isEqualTo(new Card(Points.of(5)));
-    }
+    assertThat(card).isEqualTo(new Card(Points.of(5)));
+  }
 }

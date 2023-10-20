@@ -86,5 +86,8 @@ spotless {
     java {
         googleJavaFormat()
         formatAnnotations()
+        target project.fileTree(project.rootDir) {
+            include '**/*.java'
+        }
     }
 }

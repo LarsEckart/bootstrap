@@ -1,6 +1,5 @@
 package kata;
 
 class PlayerSwapsCardWithDiscardPileEvent extends Event {
-    public PlayerSwapsCardWithDiscardPileEvent(int row, int column) {
-    }
+  public PlayerSwapsCardWithDiscardPileEvent(int row, int column) {}
 }

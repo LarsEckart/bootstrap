@@ -1,4 +1,3 @@
 package kata;
 
-class Event {
-}
+class Event {}
