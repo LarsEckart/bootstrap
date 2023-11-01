@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 // @ExtendWith(TestCommitRevertMainExtension.class)
 // @UseReporter(BeyondCompareMacReporter.class)
-class AppTest {
+class SkyjoTest {
 
   @Test
   void deals_12_cards_to_each_player() {
