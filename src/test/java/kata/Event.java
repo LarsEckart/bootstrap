@@ -1,4 +1,4 @@
 package kata;
 
 sealed interface Event
-    permits PlayerFlipsCard, PlayerSwapsCardWithDiscardPileEvent, PlayerTakesCardFromDeckEvent {}
+        permits PlayerFlipsCard, PlayerSwapsTakenCardWithCardAtPosition, PlayerTakesCardFromDeck, PlayerTakesCardFromDiscardPile {}

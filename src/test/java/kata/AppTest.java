@@ -50,13 +50,17 @@ class AppTest {
     storyboard.add(skyjo);
     skyjo.start();
     storyboard.add(skyjo);
-    skyjo.on(new PlayerTakesCardFromDeckEvent());
+    skyjo.on(new PlayerTakesCardFromDeck());
     storyboard.add(skyjo);
-    skyjo.on(new PlayerSwapsCardWithDiscardPileEvent(1, 1));
+    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(1, 1));
     storyboard.add(skyjo);
-    skyjo.on(new PlayerTakesCardFromDeckEvent());
+    skyjo.on(new PlayerTakesCardFromDeck());
     storyboard.add(skyjo);
-    skyjo.on(new PlayerSwapsCardWithDiscardPileEvent(1, 3));
+    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(1, 3));
+    storyboard.add(skyjo);
+    skyjo.on(new PlayerTakesCardFromDiscardPile());
+    storyboard.add(skyjo);
+    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(1, 3));
     storyboard.add(skyjo);
 
     Approvals.verify(storyboard);
