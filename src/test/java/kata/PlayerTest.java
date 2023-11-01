@@ -16,7 +16,7 @@ class PlayerTest {
     Player player = new Player("any");
     Deck deck = new Deck();
     for (int i = 0; i < 12; i++) {
-      player.addCard(deck.takeFromTop());
+      player.addCard(deck.dealFromTop());
     }
 
     assertEquals(0, player.score());
@@ -27,7 +27,7 @@ class PlayerTest {
     Player player = new Player("any");
     Deck deck = new Deck();
     for (int i = 0; i < 12; i++) {
-      player.addCard(deck.takeFromTop());
+      player.addCard(deck.dealFromTop());
     }
 
     player.flipCard(1, 1);
@@ -40,7 +40,7 @@ class PlayerTest {
     Player player = new Player("any");
     Deck deck = new Deck();
     for (int i = 0; i < 12; i++) {
-      player.addCard(deck.takeFromTop());
+      player.addCard(deck.dealFromTop());
     }
 
     player.flipCard(1, 1);
@@ -53,7 +53,7 @@ class PlayerTest {
     Player player = new Player("any");
     Deck deck = new Deck();
     for (int i = 0; i < 12; i++) {
-      player.addCard(deck.takeFromTop());
+      player.addCard(deck.dealFromTop());
     }
 
     player.flipCard(1, 1);
@@ -66,7 +66,7 @@ class PlayerTest {
     Player player = new Player("any");
     Deck deck = new Deck();
     for (int i = 0; i < 12; i++) {
-      player.addCard(deck.takeFromTop());
+      player.addCard(deck.dealFromTop());
     }
 
     player.flipCard(1, 2);
@@ -79,7 +79,7 @@ class PlayerTest {
     Player player = new Player("any");
     Deck deck = new Deck();
     for (int i = 0; i < 12; i++) {
-      player.addCard(deck.takeFromTop());
+      player.addCard(deck.dealFromTop());
     }
 
     player.flipCard(1, 3);
@@ -92,7 +92,7 @@ class PlayerTest {
     Player player = new Player("any");
     Deck deck = new Deck();
     for (int i = 0; i < 12; i++) {
-      player.addCard(deck.takeFromTop());
+      player.addCard(deck.dealFromTop());
     }
 
     player.flipCard(1, 4);
@@ -105,7 +105,7 @@ class PlayerTest {
     Player player = new Player("any");
     Deck deck = new Deck();
     for (int i = 0; i < 12; i++) {
-      player.addCard(deck.takeFromTop());
+      player.addCard(deck.dealFromTop());
     }
 
     player.flipCard(1, 1);

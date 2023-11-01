@@ -6,6 +6,7 @@ import java.util.List;
 class Skyjo {
   private final Deck deck;
   private List<Player> players = new ArrayList<>();
+  private Player currentPlayer;
   private DiscardPile discardPile;
 
   public Skyjo(Deck deck) {
@@ -26,7 +27,7 @@ class Skyjo {
     this.players.add(alice);
   }
 
-  public Player nextPlayer() {
+  public Player playerWithHighestScore() {
     Player highest = players.get(0);
     for (Player player : players) {
       if (player.score() > highest.score()) {
@@ -48,15 +49,46 @@ class Skyjo {
 
     sb.append("Discard pile: " + discardPile.toString());
     sb.append("\n");
-    sb.append("Next player: " + nextPlayer().name());
-    sb.append("\n");
+
+    if (currentPlayer != null) {
+      sb.append("Current player: " + currentPlayer.name());
+      sb.append("\n");
+    }
 
     return sb.toString();
   }
 
   public void on(Event event) {
+    switch (event) {
+      case PlayerTakesCardFromDeckEvent ignored -> onPlayerTakesCardFromDeck(ignored);
+      case PlayerSwapsCardWithDiscardPileEvent ignored -> onPlayerSwapsCardWithDiscardPileEvent(
+          ignored);
+      case PlayerFlipsCard ignored -> onPlayerFlipsCard(ignored);
+    }
+  }
+
+  public void onPlayerFlipsCard(PlayerFlipsCard event) {
+    event.player().flipCard(event.row(), event.column());
+  }
+
+  public void onPlayerSwapsCardWithDiscardPileEvent(PlayerSwapsCardWithDiscardPileEvent event) {
+    var card = currentPlayer.swap(event.row(), event.column());
+    card.flip();
+    this.discardPile = new DiscardPile(card);
+    currentPlayer = determineNextPlayer();
+  }
+
+  private Player determineNextPlayer() {
+    return players.get((players.indexOf(currentPlayer) + 1) % players.size());
+  }
+
+  public void onPlayerTakesCardFromDeck(PlayerTakesCardFromDeckEvent event) {
     var card = this.deck.takeFromTop();
 
-    this.nextPlayer().acceptIncomingCard(card);
+    currentPlayer.acceptIncomingCard(card);
+  }
+
+  public void start() {
+    currentPlayer = playerWithHighestScore();
   }
 }

@@ -38,13 +38,17 @@ class AppTest {
     skyjo.registerPlayer(Alice);
     skyjo.registerPlayer(Bob);
 
-    skyjo.deal();
-    Alice.flipCard(1, 1);
-    Alice.flipCard(1, 2);
-    Bob.flipCard(1, 1);
-    Bob.flipCard(1, 2);
     var storyboard = new StoryBoard();
+    skyjo.deal();
+    storyboard.add(skyjo);
 
+    skyjo.on(new PlayerFlipsCard(Alice, 1, 1));
+    skyjo.on(new PlayerFlipsCard(Alice, 1, 2));
+    skyjo.on(new PlayerFlipsCard(Bob, 1, 1));
+    skyjo.on(new PlayerFlipsCard(Bob, 1, 2));
+
+    storyboard.add(skyjo);
+    skyjo.start();
     storyboard.add(skyjo);
     skyjo.on(new PlayerTakesCardFromDeckEvent());
     storyboard.add(skyjo);

@@ -1,3 +1,3 @@
 package kata;
 
-class PlayerTakesCardFromDeckEvent extends Event {}
+final record PlayerTakesCardFromDeckEvent() implements Event {}

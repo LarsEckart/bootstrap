@@ -63,4 +63,11 @@ class Player {
   public void acceptIncomingCard(Card card) {
     this.pendingCard = card;
   }
+
+  public Card swap(int row, int column) {
+    Card card = cards.get(toIndex(row, column));
+    cards.set(toIndex(row, column), pendingCard);
+    pendingCard = null;
+    return card;
+  }
 }

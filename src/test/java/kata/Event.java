@@ -1,3 +1,4 @@
 package kata;
 
-class Event {}
+sealed interface Event
+    permits PlayerFlipsCard, PlayerSwapsCardWithDiscardPileEvent, PlayerTakesCardFromDeckEvent {}
