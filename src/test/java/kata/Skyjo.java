@@ -15,7 +15,7 @@ class Skyjo {
   public void deal() {
     for (Player player : players) {
       for (int i = 0; i < 12; i++) {
-        player.addCard(this.deck.takeFromTop());
+        player.addCard(this.deck.dealFromTop());
       }
     }
 

@@ -42,10 +42,16 @@ class Deck {
   }
 
   public Card takeFromTop() {
-    return list.get(--numberCards);
+    Card card = list.get(--numberCards);
+    card.flip();
+    return card;
   }
 
   public int numberOfCards() {
     return numberCards;
+  }
+
+  public Card dealFromTop() {
+    return list.get(--numberCards);
   }
 }

@@ -1,6 +1,7 @@
 package kata;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -64,5 +65,13 @@ class DeckTest {
     }
 
     assertEquals(5, counter);
+  }
+
+  @Test
+  void taking_from_deck_then_card_is_flipped() {
+    Deck deck = new Deck();
+    Card card = deck.takeFromTop();
+
+    assertTrue(card.flipped());
   }
 }
