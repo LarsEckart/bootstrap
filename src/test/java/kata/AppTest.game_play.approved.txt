@@ -79,3 +79,37 @@ Bob:
 
 Discard pile: 12
 Current player: Bob
+
+
+Frame #5:
+Alice: 
+|10| |12| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Bob: 
+|11| |11| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+Pending card: 10
+
+Discard pile: 12
+Current player: Bob
+
+
+Frame #6:
+Alice: 
+|10| |12| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Bob: 
+|11| |11| |10| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 11
+Current player: Alice
