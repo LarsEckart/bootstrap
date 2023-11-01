@@ -6,7 +6,7 @@ import com.github.larseckart.tcr.TestCommitRevertMainExtension;
 import org.approvaltests.Approvals;
 import org.approvaltests.StoryBoard;
 import org.approvaltests.reporters.UseReporter;
-import org.approvaltests.reporters.intellij.IntelliJReporter;
+import org.approvaltests.reporters.macosx.BeyondCompareMacReporter;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @ExtendWith(TestCommitRevertMainExtension.class)
-@UseReporter(IntelliJReporter.class)
+@UseReporter(BeyondCompareMacReporter.class)
 class AppTest {
 
   @Test
