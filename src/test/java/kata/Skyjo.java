@@ -61,7 +61,7 @@ class Skyjo {
     public void on(Event event) {
         switch (event) {
             case PlayerTakesCardFromDeck e -> onPlayerTakesCardFromDeck(e);
-            case PlayerSwapsTakenCardWithCardAtPosition e -> onPlayerSwapsCardWithDiscardPileEvent(e);
+            case PlayerSwapsTakenCardWithCardAtPosition e -> onPlayerSwapsTakenCardWithCardAtPosition(e);
             case PlayerFlipsCard e -> onPlayerFlipsCard(e);
             case PlayerTakesCardFromDiscardPile e -> onPlayerTakesCardFromDiscardPile(e);
         }
@@ -72,11 +72,11 @@ class Skyjo {
         currentPlayer.acceptIncomingCard(card);
     }
 
-    public void onPlayerFlipsCard(PlayerFlipsCard event) {
+    private void onPlayerFlipsCard(PlayerFlipsCard event) {
         event.player().flipCard(event.row(), event.column());
     }
 
-    public void onPlayerSwapsCardWithDiscardPileEvent(PlayerSwapsTakenCardWithCardAtPosition event) {
+    private void onPlayerSwapsTakenCardWithCardAtPosition(PlayerSwapsTakenCardWithCardAtPosition event) {
         var card = currentPlayer.swap(event.row(), event.column());
         card.flip();
         this.discardPile = new DiscardPile(card);
