@@ -70,4 +70,10 @@ class Player {
     pendingCard = null;
     return card;
   }
+
+  public Card getPendingCard() {
+    Card card = pendingCard;
+    pendingCard = null;
+    return card;
+  }
 }

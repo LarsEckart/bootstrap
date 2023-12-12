@@ -63,6 +63,13 @@ class SkyjoTest {
     skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(1, 3));
     storyboard.add(skyjo);
 
+    // Player takes card from deck, puts it on discard pile, and flips one of their own cards.
+    skyjo.on(new PlayerTakesCardFromDeck());
+    skyjo.on(new PlayerPutsCardOnDiscardPile());
+    storyboard.add(skyjo);
+    skyjo.on(new PlayerFlipsCardDuringGame(Bob, 1, 4));
+    storyboard.add(skyjo);
+
     Approvals.verify(storyboard);
   }
 }

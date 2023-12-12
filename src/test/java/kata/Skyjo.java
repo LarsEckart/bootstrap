@@ -64,7 +64,21 @@ class Skyjo {
             case PlayerSwapsTakenCardWithCardAtPosition e -> onPlayerSwapsTakenCardWithCardAtPosition(e);
             case PlayerFlipsCard e -> onPlayerFlipsCard(e);
             case PlayerTakesCardFromDiscardPile e -> onPlayerTakesCardFromDiscardPile(e);
+            case PlayerPutsCardOnDiscardPile e -> onPlayerPutsCardOnDiscardPile(e);
+            case PlayerFlipsCardDuringGame e -> onPlayerFlipsCardDuringGame(e);
         }
+    }
+
+    private void onPlayerFlipsCardDuringGame(PlayerFlipsCardDuringGame e) {
+        e.player().flipCard(e.row(), e.column());
+
+        currentPlayer = determineNextPlayer();
+    }
+
+    private void onPlayerPutsCardOnDiscardPile(PlayerPutsCardOnDiscardPile e) {
+        Card card = currentPlayer.getPendingCard();
+
+        discardPile = new DiscardPile(card);
     }
 
     private void onPlayerTakesCardFromDiscardPile(PlayerTakesCardFromDiscardPile event) {
