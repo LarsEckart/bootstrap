@@ -76,7 +76,7 @@ class Skyjo {
             throw new IllegalStateException("Cannot flip card that is already flipped.");
         }
 
-        e.player().flipCard(Position.atRow(e.row()).atColumn(e.column()));
+        e.player().flipCard(e.position());
 
         currentPlayer = determineNextPlayer();
     }
@@ -93,7 +93,7 @@ class Skyjo {
     }
 
     private void onPlayerFlipsCard(PlayerFlipsCard event) {
-        event.player().flipCard(Position.atRow(event.row()).atColumn(event.column()));
+        event.player().flipCard(event.position());
     }
 
     private void onPlayerSwapsTakenCardWithCardAtPosition(PlayerSwapsTakenCardWithCardAtPosition event) {

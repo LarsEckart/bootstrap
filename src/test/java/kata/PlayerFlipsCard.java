@@ -1,4 +1,6 @@
 package kata;
 
-@Deprecated
-public record PlayerFlipsCard(Player player, int row, int column) implements Event {}
+import kata.position.Position;
+
+public record PlayerFlipsCard(Player player, Position position) implements Event {
+}

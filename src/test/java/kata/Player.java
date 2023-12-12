@@ -43,7 +43,7 @@ class Player {
 
     sb.append(this.name + ": " + "\n");
 
-    // print cards in a 3x4 grid
+    // TODO: iterate over positions?
     for (int row = 1; row <= 3; row++) {
       for (int column = 1; column <= 4; column++) {
         sb.append(cards.get(Position.atRow(row).atColumn(column).toIndex()).toString());

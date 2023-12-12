@@ -3,6 +3,7 @@ package kata;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import kata.position.Position;
 import org.approvaltests.Approvals;
 import org.approvaltests.StoryBoard;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -43,16 +44,16 @@ class SkyjoTest {
     skyjo.deal();
     storyboard.add(skyjo);
 
-    skyjo.on(new PlayerFlipsCard(Alice, 1, 1));
-    skyjo.on(new PlayerFlipsCard(Alice, 1, 2));
-    skyjo.on(new PlayerFlipsCard(Bob, 1, 1));
-    skyjo.on(new PlayerFlipsCard(Bob, 1, 2));
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
 
     storyboard.add(skyjo);
     skyjo.start();
 
     assertThatExceptionOfType(IllegalStateException.class)
-            .isThrownBy(() -> skyjo.on(new PlayerFlipsCardDuringGame(Alice, 1, 1)))
+            .isThrownBy(() -> skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.atRow(1).atColumn(1))))
             .withMessage("Cannot flip card that is already flipped.");
 
   }
@@ -71,10 +72,10 @@ class SkyjoTest {
     skyjo.deal();
     storyboard.add(skyjo);
 
-    skyjo.on(new PlayerFlipsCard(Alice, 1, 1));
-    skyjo.on(new PlayerFlipsCard(Alice, 1, 2));
-    skyjo.on(new PlayerFlipsCard(Bob, 1, 1));
-    skyjo.on(new PlayerFlipsCard(Bob, 1, 2));
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
 
     storyboard.add(skyjo);
     skyjo.start();
@@ -96,7 +97,7 @@ class SkyjoTest {
     skyjo.on(new PlayerTakesCardFromDeck());
     skyjo.on(new PlayerPutsCardOnDiscardPile());
     storyboard.add(skyjo);
-    skyjo.on(new PlayerFlipsCardDuringGame(Bob, 1, 4));
+    skyjo.on(new PlayerFlipsCardDuringGame(Bob, Position.atRow(1).atColumn(4)));
     storyboard.add(skyjo);
 
     Approvals.verify(storyboard);

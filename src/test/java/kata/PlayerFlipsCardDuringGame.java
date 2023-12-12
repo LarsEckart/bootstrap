@@ -2,13 +2,8 @@ package kata;
 
 import kata.position.Position;
 
-/**
- * @deprecated use with Position instead
- *
- */
-@Deprecated
-final record PlayerFlipsCardDuringGame(Player player, int row, int column) implements Event {
+final record PlayerFlipsCardDuringGame(Player player, Position position) implements Event {
     public boolean isValidMove() {
-        return !this.player().cardAlreadyFlipped(Position.atRow(this.row()).atColumn(this.column()));
+        return !this.player().cardAlreadyFlipped(position);
     }
 }
