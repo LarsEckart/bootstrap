@@ -32,7 +32,6 @@ class SkyjoTest {
 
   @Test
   void player_cannot_flip_card_that_is_already_flipped() {
-// problem: test passes but from looking at test we dont understand why.
     Deck deck = new Deck();
     Skyjo skyjo = new Skyjo(deck);
     Player Alice = new Player("Alice");
