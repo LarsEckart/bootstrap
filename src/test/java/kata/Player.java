@@ -74,4 +74,8 @@ class Player {
     pendingCard = null;
     return card;
   }
+
+  public boolean cardAlreadyFlipped(Position position) {
+    return cards.get(position.toIndex()).flipped();
+  }
 }

@@ -10,3 +10,7 @@
 * ~~time for a position class?~~
 * does Position need more input validation?
 * handle invalid input. player cannot flip card that is already flipped
+* PlayerFlipsCard needs to use Position class
+
+
+# question: who owns the validation logic around game events?

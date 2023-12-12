@@ -1,6 +1,7 @@
 package kata;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.approvaltests.Approvals;
 import org.approvaltests.StoryBoard;
@@ -26,6 +27,34 @@ class SkyjoTest {
 
     assertThat(Alice.numberOfCards()).isEqualTo(12);
     assertThat(Bob.numberOfCards()).isEqualTo(12);
+  }
+
+  @Test
+  void player_cannot_flip_card_that_is_already_flipped() {
+// problem: test passes but from looking at test we dont understand why.
+    Deck deck = new Deck();
+    Skyjo skyjo = new Skyjo(deck);
+    Player Alice = new Player("Alice");
+    Player Bob = new Player("Bob");
+    skyjo.registerPlayer(Alice);
+    skyjo.registerPlayer(Bob);
+
+    var storyboard = new StoryBoard();
+    skyjo.deal();
+    storyboard.add(skyjo);
+
+    skyjo.on(new PlayerFlipsCard(Alice, 1, 1));
+    skyjo.on(new PlayerFlipsCard(Alice, 1, 2));
+    skyjo.on(new PlayerFlipsCard(Bob, 1, 1));
+    skyjo.on(new PlayerFlipsCard(Bob, 1, 2));
+
+    storyboard.add(skyjo);
+    skyjo.start();
+
+    assertThatExceptionOfType(IllegalStateException.class)
+            .isThrownBy(() -> skyjo.on(new PlayerFlipsCardDuringGame(Alice, 1, 1)))
+            .withMessage("Cannot flip card that is already flipped.");
+
   }
 
   @Test
