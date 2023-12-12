@@ -1,5 +1,7 @@
 package kata;
 
+import kata.position.Position;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +72,7 @@ class Skyjo {
     }
 
     private void onPlayerFlipsCardDuringGame(PlayerFlipsCardDuringGame e) {
-        e.player().flipCard(new Position(e.row(), e.column()));
+        e.player().flipCard(Position.atRow(e.row()).atColumn(e.column()));
 
         currentPlayer = determineNextPlayer();
     }
@@ -87,11 +89,11 @@ class Skyjo {
     }
 
     private void onPlayerFlipsCard(PlayerFlipsCard event) {
-        event.player().flipCard(new Position(event.row(), event.column()));
+        event.player().flipCard(Position.atRow(event.row()).atColumn(event.column()));
     }
 
     private void onPlayerSwapsTakenCardWithCardAtPosition(PlayerSwapsTakenCardWithCardAtPosition event) {
-        var card = currentPlayer.swap(new Position(event.row(), event.column()));
+        var card = currentPlayer.swap(Position.atRow(event.row()).atColumn(event.column()));
         card.flip();
         this.discardPile = new DiscardPile(card);
         currentPlayer = determineNextPlayer();

@@ -7,5 +7,6 @@
 * shuffle the deck
 * print unflipped card scores (debug mode?)
 * two methods for flipping card: one advances player/one does not
-* time for a position class?
+* ~~time for a position class?~~
+* does Position need more input validation?
 * handle invalid input. player cannot flip card that is already flipped

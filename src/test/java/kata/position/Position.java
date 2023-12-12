@@ -1,4 +1,4 @@
-package kata;
+package kata.position;
 
 import java.util.Objects;
 
@@ -6,9 +6,17 @@ public final class Position {
     private final int row;
     private final int column;
 
-    public Position(int row, int column) {
+    Position(int row, int column) {
         this.row = row;
         this.column = column;
+    }
+
+    public static PositionWithRow atRow(int row) {
+        return new PositionWithRow(row);
+    }
+
+    public static PositionWithColumn atColumn(int column) {
+        return new PositionWithColumn(column);
     }
 
     public int toIndex() {
