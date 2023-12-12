@@ -30,7 +30,7 @@ class PlayerTest {
       player.addCard(deck.dealFromTop());
     }
 
-    player.flipCard(1, 1);
+    player.flipCard(new Position(1, 1));
 
     assertEquals(12, player.score());
   }
@@ -43,7 +43,7 @@ class PlayerTest {
       player.addCard(deck.dealFromTop());
     }
 
-    player.flipCard(1, 1);
+    player.flipCard(new Position(1, 1));
 
     Approvals.verify(player.toString());
   }
@@ -56,7 +56,7 @@ class PlayerTest {
       player.addCard(deck.dealFromTop());
     }
 
-    player.flipCard(1, 1);
+    player.flipCard(new Position(1, 1));
 
     Approvals.verify(player.toString());
   }
@@ -69,7 +69,7 @@ class PlayerTest {
       player.addCard(deck.dealFromTop());
     }
 
-    player.flipCard(1, 2);
+    player.flipCard(new Position(1, 2));
 
     Approvals.verify(player.toString());
   }
@@ -82,7 +82,7 @@ class PlayerTest {
       player.addCard(deck.dealFromTop());
     }
 
-    player.flipCard(1, 3);
+    player.flipCard(new Position(1, 3));
 
     Approvals.verify(player.toString());
   }
@@ -95,7 +95,7 @@ class PlayerTest {
       player.addCard(deck.dealFromTop());
     }
 
-    player.flipCard(1, 4);
+    player.flipCard(new Position(1, 4));
 
     Approvals.verify(player.toString());
   }
@@ -108,8 +108,8 @@ class PlayerTest {
       player.addCard(deck.dealFromTop());
     }
 
-    player.flipCard(1, 1);
-    player.flipCard(1, 2);
+    player.flipCard(new Position(1, 1));
+    player.flipCard(new Position(1, 2));
 
     assertEquals(24, player.score());
   }

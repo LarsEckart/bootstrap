@@ -24,8 +24,15 @@ class Player {
     return this.cards.stream().filter(card -> card.flipped()).mapToInt(Card::value).sum();
   }
 
-  public void flipCard(int row, int column) {
-    this.cards.get(toIndex(row, column)).flip();
+  public void flipCard(Position position) {
+    this.cards.get(position.toIndex()).flip();
+  }
+
+  public Card swap(Position position) {
+    Card card = cards.get(position.toIndex());
+    cards.set(position.toIndex(), pendingCard);
+    pendingCard = null;
+    return card;
   }
 
   @Override
@@ -37,7 +44,7 @@ class Player {
     // print cards in a 3x4 grid
     for (int row = 1; row <= 3; row++) {
       for (int column = 1; column <= 4; column++) {
-        sb.append(cards.get(toIndex(row, column)).toString());
+        sb.append(cards.get(new Position(row, column).toIndex()).toString());
         sb.append(" ");
       }
       sb.append("\n");
@@ -52,23 +59,12 @@ class Player {
     return sb.toString();
   }
 
-  private static int toIndex(int row, int column) {
-    return (row - 1) * 3 + column;
-  }
-
   public String name() {
     return this.name;
   }
 
   public void acceptIncomingCard(Card card) {
     this.pendingCard = card;
-  }
-
-  public Card swap(int row, int column) {
-    Card card = cards.get(toIndex(row, column));
-    cards.set(toIndex(row, column), pendingCard);
-    pendingCard = null;
-    return card;
   }
 
   public Card getPendingCard() {

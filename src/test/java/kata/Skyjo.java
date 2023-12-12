@@ -70,7 +70,7 @@ class Skyjo {
     }
 
     private void onPlayerFlipsCardDuringGame(PlayerFlipsCardDuringGame e) {
-        e.player().flipCard(e.row(), e.column());
+        e.player().flipCard(new Position(e.row(), e.column()));
 
         currentPlayer = determineNextPlayer();
     }
@@ -87,11 +87,11 @@ class Skyjo {
     }
 
     private void onPlayerFlipsCard(PlayerFlipsCard event) {
-        event.player().flipCard(event.row(), event.column());
+        event.player().flipCard(new Position(event.row(), event.column()));
     }
 
     private void onPlayerSwapsTakenCardWithCardAtPosition(PlayerSwapsTakenCardWithCardAtPosition event) {
-        var card = currentPlayer.swap(event.row(), event.column());
+        var card = currentPlayer.swap(new Position(event.row(), event.column()));
         card.flip();
         this.discardPile = new DiscardPile(card);
         currentPlayer = determineNextPlayer();
