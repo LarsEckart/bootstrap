@@ -44,7 +44,6 @@ public final class Position {
             };
             default -> throw new IllegalArgumentException("Invalid row: " + this.row);
         };
-
     }
 
     public static Position fromIndex(int index) {

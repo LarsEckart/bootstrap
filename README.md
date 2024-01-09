@@ -11,6 +11,7 @@
 * handle invalid input. player cannot flip card that is already flipped
 * three-in-a-row logic
 * win condition
+next time lars does more typing and James talks and thinks
 
 
 # question: who owns the validation logic around game events?
