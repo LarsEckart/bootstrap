@@ -9,6 +9,7 @@ class Player {
   private List<Card> cards = new ArrayList<>();
   private String name;
   private Card pendingCard;
+  public boolean playedLastTurn;
 
   public Player(String name) {
     this.name = name;
@@ -78,4 +79,9 @@ class Player {
   public boolean cardAlreadyFlipped(Position position) {
     return cards.get(position.toIndex()).flipped();
   }
+
+  public boolean allCardsFlipped() {
+    return cards.stream().allMatch(Card::flipped);
+  }
+
 }

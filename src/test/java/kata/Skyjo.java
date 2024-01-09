@@ -10,6 +10,7 @@ class Skyjo {
     private List<Player> players = new ArrayList<>();
     private Player currentPlayer;
     private DiscardPile discardPile;
+    private boolean lastRound;
 
     public Skyjo(Deck deck) {
         this.deck = deck;
@@ -69,6 +70,8 @@ class Skyjo {
             case PlayerPutsCardOnDiscardPile e -> onPlayerPutsCardOnDiscardPile(e);
             case PlayerFlipsCardDuringGame e -> onPlayerFlipsCardDuringGame(e);
         }
+
+
     }
 
     private void onPlayerFlipsCardDuringGame(PlayerFlipsCardDuringGame e) {
@@ -77,6 +80,12 @@ class Skyjo {
         }
 
         e.player().flipCard(e.position());
+
+        if (e.player().allCardsFlipped()) {
+            e.player().playedLastTurn = true;
+
+            this.lastRound = true;
+        }
 
         currentPlayer = determineNextPlayer();
     }
@@ -101,6 +110,12 @@ class Skyjo {
         card.flip();
         this.discardPile = new DiscardPile(card);
         currentPlayer = determineNextPlayer();
+/*
+        if (event.player().allCardsFlipped()) {
+            event.player().playedLastTurn = true;
+
+            this.lastRound = true;
+        }*/
     }
 
     private Player determineNextPlayer() {
@@ -115,5 +130,14 @@ class Skyjo {
 
     public void start() {
         currentPlayer = playerWithHighestScore();
+    }
+
+    public boolean gameFinished() {
+        boolean atLeastOnePlayerFinished = players.stream().filter(player -> !player.allCardsFlipped()).count() == 1;
+        // boolean bobPlayedLastTime = players.stream().filter(player -> player.allCardsFlipped()).allMatch(player -> player.playedLastTurn());
+
+        // TODO: add consideration for last turn, handle on events that advance the game
+
+        return atLeastOnePlayerFinished;
     }
 }

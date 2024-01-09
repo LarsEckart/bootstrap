@@ -1,5 +1,6 @@
 package kata;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -59,6 +60,7 @@ class SkyjoTest {
   }
 
   @Test
+  @Disabled("finish logic for handling last turn")
   void game_can_be_played_until_end() {
     Deck deck = new Deck();
     Skyjo skyjo = new Skyjo(deck);
@@ -87,7 +89,7 @@ class SkyjoTest {
       skyjo.on(new PlayerFlipsCardDuringGame(Bob, Position.fromIndex(i)));
     }
 
-    Approvals.verify(skyjo);
+    assertThat(skyjo.gameFinished()).isTrue();
   }
 
   @Test

@@ -175,7 +175,7 @@ Alice:
 
 Bob: 
 |11| |11| |10| |11| 
-|11| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
 
