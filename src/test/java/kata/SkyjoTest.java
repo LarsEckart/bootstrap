@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import kata.position.Position;
 import org.approvaltests.Approvals;
 import org.approvaltests.StoryBoard;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -58,6 +59,38 @@ class SkyjoTest {
   }
 
   @Test
+  void game_can_be_played_until_end() {
+    Deck deck = new Deck();
+    Skyjo skyjo = new Skyjo(deck);
+    Player Alice = new Player("Alice");
+    Player Bob = new Player("Bob");
+    skyjo.registerPlayer(Alice);
+    skyjo.registerPlayer(Bob);
+
+    skyjo.deal();
+
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+
+    skyjo.start();
+
+    for (int i = 2; i < 12; i++) {
+      System.out.println(skyjo);
+      skyjo.on(new PlayerTakesCardFromDeck());
+      skyjo.on(new PlayerPutsCardOnDiscardPile());
+      skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.fromIndex(i)));
+
+      skyjo.on(new PlayerTakesCardFromDeck());
+      skyjo.on(new PlayerPutsCardOnDiscardPile());
+      skyjo.on(new PlayerFlipsCardDuringGame(Bob, Position.fromIndex(i)));
+    }
+
+    Approvals.verify(skyjo);
+  }
+
+  @Test
   void game_play() {
     // problem: test passes but from looking at test we dont understand why.
     Deck deck = new Deck();
@@ -101,4 +134,5 @@ class SkyjoTest {
 
     Approvals.verify(storyboard);
   }
+
 }
