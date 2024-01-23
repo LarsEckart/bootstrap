@@ -6,8 +6,18 @@ class Card {
   private final Points points;
   private boolean flipped;
 
-  Card(Points points) {
+  private Card(Points points) {
     this.points = points;
+  }
+
+    static Card of(Points points) {
+        return new Card(points);
+    }
+
+  public static Card faceUp(Points points) {
+    Card card = new Card(points);
+    card.flip();
+    return card;
   }
 
   public int value() {

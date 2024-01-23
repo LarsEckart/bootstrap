@@ -8,10 +8,10 @@ class DiscardPileTest {
 
   @Test
   void card_can_be_taken() {
-    var discardPile = new DiscardPile(new Card(Points.of(5)));
+    var discardPile = new DiscardPile(Card.of(Points.of(5)));
 
     var card = discardPile.takeFromTop();
 
-    assertThat(card).isEqualTo(new Card(Points.of(5)));
+    assertThat(card).isEqualTo(Card.of(Points.of(5)));
   }
 }

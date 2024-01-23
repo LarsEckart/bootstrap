@@ -37,7 +37,7 @@ class Deck {
 
   private void fillDeck(Points value, int amount) {
     for (int i = 0; i < amount; i++) {
-      list.add(new Card(value));
+      list.add(Card.of(value));
     }
   }
 
