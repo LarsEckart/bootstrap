@@ -3,10 +3,8 @@ package kata;
 import kata.position.Position;
 
 import java.util.ArrayList;
-import java.util.List;
 
 class Player {
-  private List<Card> cards = new ArrayList<>();
   private String name;
   private Card pendingCard;
   public boolean playedLastTurn;
@@ -14,7 +12,7 @@ class Player {
 
   public Player(String name) {
     this.name = name;
-    this.playingCards = new PlayingCards(this.cards);
+    this.playingCards = new PlayingCards();
   }
 
   public int numberOfCards() {
@@ -71,11 +69,11 @@ class Player {
   }
 
   public boolean cardAlreadyFlipped(Position position) {
-    return cards.get(position.toIndex()).flipped();
+    return playingCards.cardAlreadyFlipped(position);
   }
 
   public boolean allCardsFlipped() {
-    return cards.stream().allMatch(Card::flipped);
+    return this.playingCards.allCardsFlipped();
   }
 
 }

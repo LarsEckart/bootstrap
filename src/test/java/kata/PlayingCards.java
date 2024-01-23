@@ -2,21 +2,18 @@ package kata;
 
 import kata.position.Position;
 
+import java.util.ArrayList;
 import java.util.List;
 
 final class PlayingCards {
     private final List<Card> cards;
 
-    public PlayingCards(List<Card> cards) {
-        this.cards = cards;
-    }
-
-    public List<Card> cards() {
-        return cards;
+    public PlayingCards() {
+        this.cards = new ArrayList<Card>();
     }
 
     public int score() {
-        return cards().stream().filter(card -> card.flipped()).mapToInt(Card::value).sum();
+        return cards.stream().filter(Card::flipped).mapToInt(Card::value).sum();
     }
 
     public int numberOfCards() {
@@ -24,11 +21,11 @@ final class PlayingCards {
     }
 
     public void addCard(Card card) {
-        this.cards.add(card);
+        cards.add(card);
     }
 
     public void flipCard(Position position) {
-        this.cards.get(position.toIndex()).flip();
+        cards.get(position.toIndex()).flip();
     }
 
     public Card swap(Position position, Card newCard) {
@@ -37,9 +34,17 @@ final class PlayingCards {
         return card;
     }
 
+    public boolean cardAlreadyFlipped(Position position) {
+        return cards.get(position.toIndex()).flipped();
+    }
+
+    public boolean allCardsFlipped() {
+        return cards.stream().allMatch(Card::flipped);
+    }
+
     @Override
     public String toString() {
-        var sb = new StringBuffer();
+        var sb = new StringBuilder();
         for (int row = 1; row <= 3; row++) {
             for (int column = 1; column <= 4; column++) {
                 sb.append(cards.get(Position.atRow(row).atColumn(column).toIndex()).toString());
