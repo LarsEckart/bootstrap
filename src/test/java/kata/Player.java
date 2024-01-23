@@ -10,30 +10,31 @@ class Player {
   private String name;
   private Card pendingCard;
   public boolean playedLastTurn;
+  public PlayingCards playingCards;
 
   public Player(String name) {
     this.name = name;
+    this.playingCards = new PlayingCards(this.cards);
   }
 
   public int numberOfCards() {
-    return cards.size();
+    return playingCards.numberOfCards();
   }
 
   public void addCard(Card card) {
-    this.cards.add(card);
+    this.playingCards.addCard(card);
   }
 
   public int score() {
-    return this.cards.stream().filter(card -> card.flipped()).mapToInt(Card::value).sum();
+    return playingCards.score();
   }
 
   public void flipCard(Position position) {
-    this.cards.get(position.toIndex()).flip();
+    this.playingCards.flipCard(position);
   }
 
   public Card swap(Position position) {
-    Card card = cards.get(position.toIndex());
-    cards.set(position.toIndex(), pendingCard);
+    Card card = this.playingCards.swap(position, pendingCard);
     pendingCard = null;
     return card;
   }
@@ -44,14 +45,7 @@ class Player {
 
     sb.append(this.name + ": " + "\n");
 
-    // TODO: iterate over positions?
-    for (int row = 1; row <= 3; row++) {
-      for (int column = 1; column <= 4; column++) {
-        sb.append(cards.get(Position.atRow(row).atColumn(column).toIndex()).toString());
-        sb.append(" ");
-      }
-      sb.append("\n");
-    }
+    sb.append(this.playingCards);
 
     if (pendingCard != null) {
       sb.append("Pending card: ").append(this.pendingCard.value());
