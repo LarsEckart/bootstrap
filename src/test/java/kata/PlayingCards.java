@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 final class PlayingCards {
@@ -38,25 +39,26 @@ final class PlayingCards {
         index++;
     }
 
-    public void flipCard(Position position) {
+    public Optional<Card> flipCard(Position position) {
         cards.get(position).flip();
-        checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring();
+        return checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring();
+
     }
 
     public Card swap(Position position, Card newCard) {
         Card card = cards.get(position);
         cards.put(position, newCard);
-        checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring();
-
-        return card;
+        return checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring().orElse(card);
     }
 
-    private void checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring() {
+    private Optional<Card> checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring() {
         for (int i = 1; i <= 4; i++) {
             if (allTheSame(Position.allInVerticalRow(i))) {
                 excludedPositions.addAll(Position.allInVerticalRow(i));
+                return Optional.of(Position.allInVerticalRow(i).stream().map(cards::get).toList().get(0));
             }
         }
+        return Optional.empty();
     }
 
     private boolean allTheSame(Set<Position> positions) {
