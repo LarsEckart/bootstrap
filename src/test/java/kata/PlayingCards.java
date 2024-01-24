@@ -55,6 +55,7 @@ final class PlayingCards {
         for (int i = 1; i <= 4; i++) {
             if (allTheSame(Position.allInVerticalRow(i))) {
                 excludedPositions.addAll(Position.allInVerticalRow(i));
+                // or we replace the cards at that position with null object cards?!
                 return Optional.of(Position.allInVerticalRow(i).stream().map(cards::get).toList().get(0));
             }
         }

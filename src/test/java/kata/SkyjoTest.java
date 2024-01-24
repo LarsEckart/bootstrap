@@ -137,4 +137,36 @@ class SkyjoTest {
     Approvals.verify(storyboard);
   }
 
+  @Test
+  void when_three_cards_in_vertical_row_are_the_same_then_player_puts_them_on_discrad_pile() {
+    Deck deck = new Deck();
+    Skyjo skyjo = new Skyjo(deck);
+    Player Alice = new Player("Alice");
+    Player Bob = new Player("Bob");
+    skyjo.registerPlayer(Alice);
+    skyjo.registerPlayer(Bob);
+
+    var storyboard = new StoryBoard();
+    skyjo.deal();
+    storyboard.add(skyjo);
+
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(2).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+
+    storyboard.add(skyjo);
+    skyjo.start();
+
+    // Player takes card from deck, puts it on discard pile, and flips one of their own cards.
+    skyjo.on(new PlayerTakesCardFromDeck());
+    skyjo.on(new PlayerPutsCardOnDiscardPile());
+    storyboard.add(skyjo);
+    skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.atRow(3).atColumn(1)));
+    storyboard.add(skyjo);
+
+    Approvals.verify(storyboard);
+  }
+
+
 }
