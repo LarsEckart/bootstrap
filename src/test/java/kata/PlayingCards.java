@@ -44,11 +44,15 @@ final class PlayingCards {
     public Card swap(Position position, Card newCard) {
         Card card = cards.get(position);
         cards.put(position, newCard);
-        if (this.cards.get(Position.atRow(1).atColumn(1)).value() == this.cards.get(Position.atRow(2).atColumn(1)).value() && this.cards.get(Position.atRow(2).atColumn(1)).value() == this.cards.get(Position.atRow(3).atColumn(1)).value()) {
-            excludedPositions.add(Position.fromIndex(0));
-            excludedPositions.add(Position.fromIndex(4));
-            excludedPositions.add(Position.fromIndex(8));
+        for (int i = 1; i <= 4; i++) {
+            if (this.cards.get(Position.atRow(1).atColumn(i)).value() == this.cards.get(Position.atRow(2).atColumn(i)).value()
+                && this.cards.get(Position.atRow(2).atColumn(i)).value() == this.cards.get(Position.atRow(3).atColumn(i)).value()) {
+                excludedPositions.add(Position.atRow(1).atColumn(i));
+                excludedPositions.add(Position.atRow(2).atColumn(i));
+                excludedPositions.add(Position.atRow(3).atColumn(i));
+            }
         }
+
         return card;
     }
 
