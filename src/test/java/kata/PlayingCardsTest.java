@@ -33,7 +33,7 @@ class PlayingCardsTest {
 
     // SMELL: this test depends on the Deck not being shuffled
     @Test
-    @Disabled("clean up first")
+//    @Disabled("clean up first")
     void flipping_causing_3_in_a_vertical_row_also_excludes_them() {
 
         Deck deck = new Deck();

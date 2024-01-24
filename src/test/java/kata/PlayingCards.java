@@ -2,9 +2,9 @@ package kata;
 
 import kata.position.Position;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -40,6 +40,7 @@ final class PlayingCards {
 
     public void flipCard(Position position) {
         cards.get(position).flip();
+        checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring();
     }
 
     public Card swap(Position position, Card newCard) {
@@ -60,7 +61,9 @@ final class PlayingCards {
 
     private boolean allTheSame(Set<Position> positions) {
         int pointsOfFirstCard = cards.get(positions.iterator().next()).value();
-        return positions.stream().map(cards::get).allMatch(p -> p.value() == pointsOfFirstCard);
+        List<Card> cardsInVerticalRow = positions.stream().map(cards::get).toList();
+        long howManyFlippped = cardsInVerticalRow.stream().filter(Card::flipped).count();
+        return cardsInVerticalRow.stream().filter(Card::flipped).allMatch(p -> p.value() == pointsOfFirstCard) && howManyFlippped == 3;
     }
 
     public boolean cardAlreadyFlipped(Position position) {
