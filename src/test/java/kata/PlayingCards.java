@@ -2,6 +2,7 @@ package kata;
 
 import kata.position.Position;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -44,16 +45,22 @@ final class PlayingCards {
     public Card swap(Position position, Card newCard) {
         Card card = cards.get(position);
         cards.put(position, newCard);
-        for (int i = 1; i <= 4; i++) {
-            if (this.cards.get(Position.atRow(1).atColumn(i)).value() == this.cards.get(Position.atRow(2).atColumn(i)).value()
-                && this.cards.get(Position.atRow(2).atColumn(i)).value() == this.cards.get(Position.atRow(3).atColumn(i)).value()) {
-                excludedPositions.add(Position.atRow(1).atColumn(i));
-                excludedPositions.add(Position.atRow(2).atColumn(i));
-                excludedPositions.add(Position.atRow(3).atColumn(i));
-            }
-        }
+        checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring();
 
         return card;
+    }
+
+    private void checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring() {
+        for (int i = 1; i <= 4; i++) {
+            if (allTheSame(Position.allInVerticalRow(i))) {
+                excludedPositions.addAll(Position.allInVerticalRow(i));
+            }
+        }
+    }
+
+    private boolean allTheSame(Set<Position> positions) {
+        int pointsOfFirstCard = cards.get(positions.iterator().next()).value();
+        return positions.stream().map(cards::get).allMatch(p -> p.value() == pointsOfFirstCard);
     }
 
     public boolean cardAlreadyFlipped(Position position) {

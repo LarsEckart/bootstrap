@@ -1,6 +1,7 @@
 package kata.position;
 
 import java.util.Objects;
+import java.util.Set;
 
 public final class Position {
     private final int row;
@@ -17,6 +18,13 @@ public final class Position {
 
     public static PositionWithColumn atColumn(int column) {
         return new PositionWithColumn(column);
+    }
+
+    public static Set<Position> allInVerticalRow(int verticalRow) {
+        return Set.of(
+                Position.atRow(1).atColumn(verticalRow),
+                Position.atRow(2).atColumn(verticalRow),
+                Position.atRow(3).atColumn(verticalRow));
     }
 
     public int toIndex() {
