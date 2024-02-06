@@ -5,7 +5,7 @@
 
 ## Next
 
-* win condition
+* win condition, determine that all players have played last turn, even when not all cards flipped
 
 
 ## Later

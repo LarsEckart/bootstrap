@@ -116,15 +116,15 @@ class SkyjoTest {
     storyboard.add(skyjo);
     skyjo.on(new PlayerTakesCardFromDeck());
     storyboard.add(skyjo);
-    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(1, 1));
+    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(Position.atRow(1).atColumn(1)));
     storyboard.add(skyjo);
     skyjo.on(new PlayerTakesCardFromDeck());
     storyboard.add(skyjo);
-    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(1, 3));
+    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(Position.atRow(1).atColumn(3)));
     storyboard.add(skyjo);
     skyjo.on(new PlayerTakesCardFromDiscardPile());
     storyboard.add(skyjo);
-    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(1, 3));
+    skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(Position.atRow(1).atColumn(3)));
     storyboard.add(skyjo);
 
     // Player takes card from deck, puts it on discard pile, and flips one of their own cards.
@@ -168,5 +168,70 @@ class SkyjoTest {
     Approvals.verify(storyboard);
   }
 
+  @Test
+  void quick_game_to_determine_if_game_is_over() {
+    Deck deck = new Deck();
+    Skyjo skyjo = new Skyjo(deck);
+    Player Alice = new Player("Alice");
+    Player Bob = new Player("Bob");
+    skyjo.registerPlayer(Alice);
+    skyjo.registerPlayer(Bob);
 
+    var storyboard = new StoryBoard();
+    skyjo.deal();
+    storyboard.add(skyjo);
+
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+
+    storyboard.add(skyjo);
+    skyjo.start();
+
+    for (int i = 2; i < 12; i++) {
+        skyjo.on(new PlayerTakesCardFromDeck());
+        skyjo.on(new PlayerPutsCardOnDiscardPile());
+        skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.fromIndex(i)));
+
+        skyjo.on(new PlayerTakesCardFromDeck());
+        skyjo.on(new PlayerPutsCardOnDiscardPile());
+        skyjo.on(new PlayerFlipsCardDuringGame(Bob, Position.fromIndex(i)));
+    }
+
+    assertThat(skyjo.gameFinished()).isTrue();
+  }
+
+  @Test
+  void game_is_over_but_one_player_has_many_unflipped_cards_left() {
+    Deck deck = new Deck();
+    Skyjo skyjo = new Skyjo(deck);
+    Player Alice = new Player("Alice");
+    Player Bob = new Player("Bob");
+    skyjo.registerPlayer(Alice);
+    skyjo.registerPlayer(Bob);
+
+    var storyboard = new StoryBoard();
+    skyjo.deal();
+    storyboard.add(skyjo);
+
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+
+    storyboard.add(skyjo);
+    skyjo.start();
+
+    for (int i = 2; i < 12; i++) {
+        skyjo.on(new PlayerTakesCardFromDeck());
+        skyjo.on(new PlayerPutsCardOnDiscardPile());
+        skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.fromIndex(i)));
+
+        skyjo.on(new PlayerTakesCardFromDeck());
+        skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(Position.fromIndex(1)));
+    }
+
+    assertThat(skyjo.gameFinished()).isTrue();
+  }
 }

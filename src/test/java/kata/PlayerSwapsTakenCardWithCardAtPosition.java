@@ -1,3 +1,5 @@
 package kata;
 
-final record PlayerSwapsTakenCardWithCardAtPosition(int row, int column) implements Event {}
+import kata.position.Position;
+
+final record PlayerSwapsTakenCardWithCardAtPosition(Position position) implements Event {}

@@ -53,7 +53,11 @@ final class PlayingCards {
         for (int i = 1; i <= 4; i++) {
             if (allTheSame(Position.allInVerticalRow(i))) {
                 Set<Position> c = Position.allInVerticalRow(i);
-                Card card = cards.get(c.iterator().next());
+                Position next = c.iterator().next();
+                Card card = cards.get(next);
+                if (card instanceof NoCard)
+                    continue;
+
                 c.forEach(p -> cards.put(p, Card.noCard()));
                 return Optional.of(card);
             }
