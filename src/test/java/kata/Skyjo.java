@@ -4,6 +4,7 @@ import kata.position.Position;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 class Skyjo {
     private final Deck deck;
@@ -79,7 +80,9 @@ class Skyjo {
             throw new IllegalStateException("Cannot flip card that is already flipped.");
         }
 
-        e.player().flipCard(e.position());
+        Optional<Card> card = e.player().flipCard(e.position());
+
+        card.ifPresent(c -> this.discardPile = new DiscardPile(c));
 
         if (e.player().allCardsFlipped()) {
             e.player().playedLastTurn = true;

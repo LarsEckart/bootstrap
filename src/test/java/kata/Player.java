@@ -2,7 +2,7 @@ package kata;
 
 import kata.position.Position;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 class Player {
   private String name;
@@ -27,8 +27,8 @@ class Player {
     return playingCards.score();
   }
 
-  public void flipCard(Position position) {
-    this.playingCards.flipCard(position);
+  public Optional<Card> flipCard(Position position) {
+    return this.playingCards.flipCard(position);
   }
 
   public Card swap(Position position) {
