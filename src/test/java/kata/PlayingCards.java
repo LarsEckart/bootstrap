@@ -2,7 +2,6 @@ package kata;
 
 import kata.position.Position;
 
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +10,7 @@ import java.util.Set;
 
 final class PlayingCards {
     private final Map<Position, Card> cards;
-    private int index = 0;
-    private final Set<Position> excludedPositions = new HashSet<>();
+    private int currentCardCount = 0;
 
     public PlayingCards() {
         this.cards = new LinkedHashMap<>();
@@ -22,7 +20,7 @@ final class PlayingCards {
         int sum = 0;
         for (Map.Entry<Position, Card> entry : cards.entrySet()) {
             Card card = entry.getValue();
-            if (card.flipped() && !excludedPositions.contains(entry.getKey())) {
+            if (card.flipped()) {
                 int value = card.value();
                 sum += value;
             }
@@ -35,8 +33,8 @@ final class PlayingCards {
     }
 
     public void addCard(Card card) {
-        cards.put(Position.fromIndex(index), card);
-        index++;
+        cards.put(Position.fromIndex(currentCardCount), card);
+        currentCardCount++;
     }
 
     public Optional<Card> flipCard(Position position) {
@@ -54,9 +52,10 @@ final class PlayingCards {
     private Optional<Card> checkIfThreeInAVerticalRowAndIfSoExcludeThemFromScoring() {
         for (int i = 1; i <= 4; i++) {
             if (allTheSame(Position.allInVerticalRow(i))) {
-                excludedPositions.addAll(Position.allInVerticalRow(i));
-                // or we replace the cards at that position with null object cards?!
-                return Optional.of(Position.allInVerticalRow(i).stream().map(cards::get).toList().get(0));
+                Set<Position> c = Position.allInVerticalRow(i);
+                Card card = cards.get(c.iterator().next());
+                c.forEach(p -> cards.put(p, Card.noCard()));
+                return Optional.of(card);
             }
         }
         return Optional.empty();
@@ -83,11 +82,6 @@ final class PlayingCards {
         for (int row = 1; row <= 3; row++) {
             for (int column = 1; column <= 4; column++) {
                 Position position = Position.atRow(row).atColumn(column);
-                if(excludedPositions.contains(position)) {
-                    sb.append("|  |");
-                    sb.append(" ");
-                    continue;
-                }
                 sb.append(cards.get(position).toString());
                 sb.append(" ");
             }
