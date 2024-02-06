@@ -1,7 +1,6 @@
 package kata;
 
 import kata.position.Position;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -92,5 +91,29 @@ class PlayingCardsTest {
         Card card = playingCards.swap(Position.atRow(3).atColumn(1), card3);
 
         assertThat(card.value()).isEqualTo(1);
+    }
+
+    @Test
+    void all_cards_flipped_when_all_vertical_rows_completed_and_removed() {
+        PlayingCards playingCards = setupPlayingCardsWithAllCardsTheSame();
+
+        flipAllCards(playingCards);
+
+        assertThat(playingCards.allCardsFlipped()).isTrue();
+    }
+
+    private static PlayingCards setupPlayingCardsWithAllCardsTheSame() {
+        PlayingCards playingCards = new PlayingCards();
+
+        for (int i = 0; i < 12; i++) {
+            playingCards.addCard(Card.of(Points.of(1)));
+        }
+        return playingCards;
+    }
+
+    private static void flipAllCards(PlayingCards playingCards) {
+        for (int i = 0; i < 12; i++) {
+            playingCards.flipCard(Position.fromIndex(i));
+        }
     }
 }
