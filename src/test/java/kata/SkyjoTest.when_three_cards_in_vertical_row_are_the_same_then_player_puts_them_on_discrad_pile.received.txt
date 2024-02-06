@@ -49,9 +49,9 @@ Current player: Alice
 
 Frame #3:
 Alice: 
-|12| |XX| |XX| |XX| 
-|12| |XX| |XX| |XX| 
-|12| |XX| |XX| |XX| 
+|  | |XX| |XX| |XX| 
+|  | |XX| |XX| |XX| 
+|  | |XX| |XX| |XX| 
 
 
 Bob: 

@@ -65,8 +65,8 @@ final class PlayingCards {
     private boolean allTheSame(Set<Position> positions) {
         int pointsOfFirstCard = cards.get(positions.iterator().next()).value();
         List<Card> cardsInVerticalRow = positions.stream().map(cards::get).toList();
-        long howManyFlippped = cardsInVerticalRow.stream().filter(Card::flipped).count();
-        return cardsInVerticalRow.stream().filter(Card::flipped).allMatch(p -> p.value() == pointsOfFirstCard) && howManyFlippped == 3;
+        long howManyFlipped = cardsInVerticalRow.stream().filter(Card::flipped).count();
+        return cardsInVerticalRow.stream().filter(Card::flipped).allMatch(p -> p.value() == pointsOfFirstCard) && howManyFlipped == 3;
     }
 
     public boolean cardAlreadyFlipped(Position position) {
@@ -82,9 +82,16 @@ final class PlayingCards {
         var sb = new StringBuilder();
         for (int row = 1; row <= 3; row++) {
             for (int column = 1; column <= 4; column++) {
-                sb.append(cards.get(Position.atRow(row).atColumn(column)).toString());
+                Position position = Position.atRow(row).atColumn(column);
+                if(excludedPositions.contains(position)) {
+                    sb.append("|  |");
+                    sb.append(" ");
+                    continue;
+                }
+                sb.append(cards.get(position).toString());
                 sb.append(" ");
             }
+
             sb.append("\n");
         }
         return sb.toString();
