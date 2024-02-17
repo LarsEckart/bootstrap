@@ -14,6 +14,7 @@
 * shuffle the deck
 * does Position need more input validation?
 * print unflipped card scores (debug mode?)
+* try out EqualsVerifier for our classes?!
 
 
 
