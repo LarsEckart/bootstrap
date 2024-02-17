@@ -1,9 +1,8 @@
 plugins {
     id 'java'
-    id 'jacoco'
-    id 'application'
     id 'com.diffplug.spotless' version '6.25.0'
     id 'info.solidsoft.pitest' version '1.15.0'
+    id 'com.github.spotbugs' version '6.0.7'
 }
 
 java {
@@ -34,39 +33,10 @@ tasks.withType(JavaCompile) {
     dependsOn 'spotlessApply'
 }
 
-
-application {
-    mainClass.set("kata.App")
-}
-
-jar {
-    manifest {
-        attributes "Main-Class": "kata.App"
-    }
-
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-}
-
 test {
     useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
-    }
-    finalizedBy jacocoTestReport
-}
-
-jacoco {
-    toolVersion = "0.8.11"
-}
-
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.required = false
-        csv.required = false
-        html.destination file("${buildDir}/jacocoHtml")
     }
 }
 
@@ -87,4 +57,28 @@ spotless {
         googleJavaFormat()
         formatAnnotations()
     }
+}
+
+import com.github.spotbugs.snom.Confidence
+import com.github.spotbugs.snom.Effort
+spotbugs {
+    ignoreFailures = false
+    showStackTraces = true
+    showProgress = true
+
+    // https://discuss.kotlinlang.org/t/bug-cannot-use-kotlin-enum-from-groovy/1521
+    // https://touk.pl/blog/2018/05/28/testing-kotlin-with-spock-part-2-enum-with-instance-method/
+    effort = Effort.valueOf('DEFAULT')
+    reportLevel = Confidence.valueOf('DEFAULT')
+
+    visitors = [ 'FindSqlInjection', 'SwitchFallthrough' ]
+    omitVisitors = [ 'FindNonShortCircuit' ]
+    reportsDir = file("$buildDir/spotbugs")
+    includeFilter = file("include.xml")
+    excludeFilter = file("exclude.xml")
+    baselineFile = file("baseline.xml")
+    onlyAnalyze = [ 'com.foobar.MyClass', 'com.foobar.mypkg.*' ]
+    maxHeapSize = '1g'
+    extraArgs = [ '-nested:false' ]
+    jvmArgs = [ '-Duser.language=ja' ]
 }
