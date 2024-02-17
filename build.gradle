@@ -46,7 +46,7 @@ test {
 
 project.tasks.check.dependsOn("pitest")
 pitest {
-    junit5PluginVersion = '1.0.0'
+    junit5PluginVersion = '1.2.1'
     testSourceSets = [sourceSets.test]
     mainSourceSets = [sourceSets.main]
     targetClasses = ['kata.*']
