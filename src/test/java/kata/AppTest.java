@@ -11,6 +11,6 @@ class AppTest {
 
   @Test
   void my_first_test() {
-    assertThat("4" + "2").isEqualTo("42");
+    assertThat(App.getActual()).isEqualTo("42");
   }
 }
