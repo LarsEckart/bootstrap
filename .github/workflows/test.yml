@@ -31,6 +31,8 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle-
       - name: Run Gradle's test task
         run: ./gradlew --no-daemon --parallel --continue --build-cache --stacktrace test
+      - name: Run Gradle's build task
+        run: ./gradlew --no-daemon --parallel --continue --build-cache --stacktrace build
   auto-merge:
     needs: build
     runs-on: ubuntu-latest
