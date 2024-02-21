@@ -25,12 +25,12 @@ class Skyjo {
         discardPile = new DiscardPile(this.deck.takeFromTop());
     }
 
-    public void registerPlayer(Player alice) {
-        this.players.add(alice);
+    public void registerPlayer(Player player) {
+        this.players.add(player);
     }
 
     public Player playerWithHighestScore() {
-        Player highest = players.get(0);
+        Player highest = players.getFirst();
         for (Player player : players) {
             if (player.score() > highest.score()) {
                 highest = player;
@@ -38,26 +38,6 @@ class Skyjo {
         }
 
         return highest;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        for (Player player : players) {
-            sb.append(player.toString());
-            sb.append("\n");
-        }
-
-        sb.append("Discard pile: " + discardPile.toString());
-        sb.append("\n");
-
-        if (currentPlayer != null) {
-            sb.append("Current player: " + currentPlayer.name());
-            sb.append("\n");
-        }
-
-        return sb.toString();
     }
 
     public void on(Event event) {
@@ -85,7 +65,7 @@ class Skyjo {
         }
 
 
-        currentPlayer = determineNextPlayer();
+        currentPlayer = determineNextPlayer(players, currentPlayer);
     }
 
     private void onPlayerPutsCardOnDiscardPile(PlayerPutsCardOnDiscardPile e) {
@@ -112,11 +92,11 @@ class Skyjo {
 
         card.flip();
         this.discardPile = new DiscardPile(card);
-        currentPlayer = determineNextPlayer();
+        currentPlayer = determineNextPlayer(players, this.currentPlayer);
 
     }
 
-    private Player determineNextPlayer() {
+    private static Player determineNextPlayer(List<Player> players, Player currentPlayer) {
         return players.get((players.indexOf(currentPlayer) + 1) % players.size());
     }
 
@@ -132,5 +112,25 @@ class Skyjo {
 
     public boolean gameFinished() {
         return players.stream().filter(Player::isFinishedPlaying).allMatch(Player::playedLastTurn);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (Player player : players) {
+            sb.append(player.toString());
+            sb.append("\n");
+        }
+
+        sb.append("Discard pile: " + discardPile.toString());
+        sb.append("\n");
+
+        if (currentPlayer != null) {
+            sb.append("Current player: " + currentPlayer.name());
+            sb.append("\n");
+        }
+
+        return sb.toString();
     }
 }

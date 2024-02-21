@@ -4,7 +4,7 @@
 # question: who owns the validation logic around game events?
 
 ## Next
-
+* wrap List<Player> players in Skyjo
 
 ## Later
 * shuffle the deck
