@@ -7,6 +7,7 @@ import org.approvaltests.reporters.UseReporter;
 import org.approvaltests.reporters.intellij.IntelliJReporter;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @UseReporter({IntelliJReporter.class, AutoApproveReporter.class})
@@ -33,7 +34,7 @@ class PlayerTest {
 
         player.flipCard(Position.atRow(1).atColumn(1));
 
-        assertEquals(12, player.score());
+        assertThat(player.score()).isEqualTo(12);
     }
 
     @Test
