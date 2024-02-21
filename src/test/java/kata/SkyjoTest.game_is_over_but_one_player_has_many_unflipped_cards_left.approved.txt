@@ -1,0 +1,47 @@
+Initial:
+Alice: 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Bob: 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 10
+
+
+Frame #1:
+Alice: 
+|12| |12| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Bob: 
+|11| |11| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 10
+
+
+Frame #2:
+Alice: playedLastTurn
+|  | |  | |12| |12| 
+|  | |  | |12| |12| 
+|  | |  | |11| |11| 
+
+
+Bob: 
+|11| | 8| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 8
+Current player: Alice

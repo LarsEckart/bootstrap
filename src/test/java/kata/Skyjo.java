@@ -1,7 +1,5 @@
 package kata;
 
-import kata.position.Position;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -82,11 +80,10 @@ class Skyjo {
 
         card.ifPresent(c -> this.discardPile = new DiscardPile(c));
 
-        if (e.player().allCardsFlipped()) {
-            e.player().playedLastTurn = true;
-
-            this.lastRound = true;
+        if (!lastRound) {
+            this.lastRound = e.player().isFinishedPlaying();
         }
+
 
         currentPlayer = determineNextPlayer();
     }
@@ -107,16 +104,16 @@ class Skyjo {
     }
 
     private void onPlayerSwapsTakenCardWithCardAtPosition(PlayerSwapsTakenCardWithCardAtPosition event) {
-        var card = currentPlayer.swap(event.position(), lastRound);
+        Card card = lastRound ? currentPlayer.swapOneLastTime(event.position()) : currentPlayer.swap(event.position());
+
+        if (currentPlayer.isFinishedPlaying()) {
+            this.lastRound = true;
+        }
+
         card.flip();
         this.discardPile = new DiscardPile(card);
         currentPlayer = determineNextPlayer();
-/*
-        if (event.player().allCardsFlipped()) {
-            event.player().playedLastTurn = true;
 
-            this.lastRound = true;
-        }*/
     }
 
     private Player determineNextPlayer() {
@@ -134,11 +131,6 @@ class Skyjo {
     }
 
     public boolean gameFinished() {
-//        boolean atLeastOnePlayerFinished = players.stream().filter(player -> !player.allCardsFlipped()).count() == 0;
-         boolean bobPlayedLastTime = players.stream().filter(player -> player.allCardsFlipped()).allMatch(player -> player.playedLastTurn());
-
-        // TODO: add consideration for last turn, handle on events that advance the game
-
-        return bobPlayedLastTime;
+        return players.stream().filter(Player::isFinishedPlaying).allMatch(Player::playedLastTurn);
     }
 }

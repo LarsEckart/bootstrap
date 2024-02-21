@@ -1,6 +1,5 @@
 package kata;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -54,8 +53,9 @@ class SkyjoTest {
     skyjo.start();
 
     assertThatExceptionOfType(IllegalStateException.class)
-            .isThrownBy(() -> skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.atRow(1).atColumn(1))))
-            .withMessage("Cannot flip card that is already flipped.");
+        .isThrownBy(
+            () -> skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.atRow(1).atColumn(1))))
+        .withMessage("Cannot flip card that is already flipped.");
 
   }
 
@@ -190,13 +190,13 @@ class SkyjoTest {
     skyjo.start();
 
     for (int i = 2; i < 12; i++) {
-        skyjo.on(new PlayerTakesCardFromDeck());
-        skyjo.on(new PlayerPutsCardOnDiscardPile());
-        skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.fromIndex(i)));
+      skyjo.on(new PlayerTakesCardFromDeck());
+      skyjo.on(new PlayerPutsCardOnDiscardPile());
+      skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.fromIndex(i)));
 
-        skyjo.on(new PlayerTakesCardFromDeck());
-        skyjo.on(new PlayerPutsCardOnDiscardPile());
-        skyjo.on(new PlayerFlipsCardDuringGame(Bob, Position.fromIndex(i)));
+      skyjo.on(new PlayerTakesCardFromDeck());
+      skyjo.on(new PlayerPutsCardOnDiscardPile());
+      skyjo.on(new PlayerFlipsCardDuringGame(Bob, Position.fromIndex(i)));
     }
 
     assertThat(skyjo.gameFinished()).isTrue();
@@ -224,14 +224,16 @@ class SkyjoTest {
     skyjo.start();
 
     for (int i = 2; i < 12; i++) {
-        skyjo.on(new PlayerTakesCardFromDeck());
-        skyjo.on(new PlayerPutsCardOnDiscardPile());
-        skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.fromIndex(i)));
+      skyjo.on(new PlayerTakesCardFromDeck());
+      skyjo.on(new PlayerPutsCardOnDiscardPile());
+      skyjo.on(new PlayerFlipsCardDuringGame(Alice, Position.fromIndex(i)));
 
-        skyjo.on(new PlayerTakesCardFromDeck());
-        skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(Position.fromIndex(1)));
+      skyjo.on(new PlayerTakesCardFromDeck());
+      skyjo.on(new PlayerSwapsTakenCardWithCardAtPosition(Position.fromIndex(1)));
     }
+    storyboard.add(skyjo);
 
+    Approvals.verify(storyboard);
     assertThat(skyjo.gameFinished()).isTrue();
   }
 }

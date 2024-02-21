@@ -15,6 +15,10 @@ class Player {
     this.playingCards = new PlayingCards();
   }
 
+  public boolean isFinishedPlaying() {
+    return this.playingCards.allCardsFlipped();
+  }
+
   public int numberOfCards() {
     return playingCards.numberOfCards();
   }
@@ -28,27 +32,28 @@ class Player {
   }
 
   public Optional<Card> flipCard(Position position) {
-    return this.playingCards.flipCard(position);
+    Optional<Card> card = this.playingCards.flipCard(position);
+    this.playedLastTurn = allCardsFlipped();
+    return card;
   }
 
   public Card swap(Position position) {
     Card card = this.playingCards.swap(position, pendingCard);
     pendingCard = null;
+    this.playedLastTurn = allCardsFlipped();
     return card;
   }
 
-  public Card swap(Position position, boolean isLastTurn) {
-    Card card = this.playingCards.swap(position, pendingCard);
-    pendingCard = null;
-    playedLastTurn = isLastTurn;
-    return card;
+  public Card swapOneLastTime(Position position) {
+    playedLastTurn = true;
+    return swap(position);
   }
 
   @Override
   public String toString() {
     StringBuffer sb = new StringBuffer();
 
-    sb.append(this.name + ": " + "\n");
+    sb.append(this.name + ": " + (playedLastTurn ? "playedLastTurn" : "") + "\n");
 
     sb.append(this.playingCards);
 
