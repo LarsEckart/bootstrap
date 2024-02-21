@@ -26,6 +26,7 @@ dependencies {
     testImplementation("com.larseckart:junit-tcr-extensions:0.0.3")
     testImplementation("org.mockito:mockito-core:5.6.0")
     testImplementation("org.mockito:mockito-junit-jupiter:5.6.0")
+    testImplementation 'nl.jqno.equalsverifier:equalsverifier:3.15.6'
 }
 
 tasks.withType(JavaCompile) {

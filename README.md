@@ -7,12 +7,11 @@
 
 
 ## Later
-* NoCard to throw exceptions?
-* handle invalid input. player cannot flip card that is already flipped
 * shuffle the deck
 * does Position need more input validation?
 * print unflipped card scores (debug mode?)
-* try out EqualsVerifier for our classes?!
+* 
+* handle invalid input. player cannot flip card that is already flipped
 
 
 

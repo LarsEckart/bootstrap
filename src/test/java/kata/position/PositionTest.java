@@ -1,5 +1,6 @@
 package kata.position;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -42,5 +43,10 @@ class PositionTest {
         assertThat(Position.atRow(3).atColumn(2).toIndex()).isEqualTo(9);
         assertThat(Position.atRow(3).atColumn(3).toIndex()).isEqualTo(10);
         assertThat(Position.atRow(3).atColumn(4).toIndex()).isEqualTo(11);
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(Position.class).verify();
     }
 }

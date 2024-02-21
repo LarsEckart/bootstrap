@@ -16,8 +16,7 @@ class NoCard extends Card{
 
     @Override
     public void flip() {
-        // illegal move, card is gone, cannot be flipped.
-        // who will validate that it doesnt happen, or do we let it happen and throw?
+        throw new IllegalMoveException("Cannot flip a NoCard");
     }
 
     @Override
