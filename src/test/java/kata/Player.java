@@ -8,7 +8,7 @@ class Player {
   private String name;
   private Card pendingCard;
   public boolean playedLastTurn;
-  public PlayingCards playingCards;
+  private final PlayingCards playingCards;
 
   public Player(String name) {
     this.name = name;
