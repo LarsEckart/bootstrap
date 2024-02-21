@@ -107,7 +107,7 @@ class Skyjo {
     }
 
     private void onPlayerSwapsTakenCardWithCardAtPosition(PlayerSwapsTakenCardWithCardAtPosition event) {
-        var card = currentPlayer.swap(event.position());
+        var card = currentPlayer.swap(event.position(), lastRound);
         card.flip();
         this.discardPile = new DiscardPile(card);
         currentPlayer = determineNextPlayer();
@@ -134,11 +134,11 @@ class Skyjo {
     }
 
     public boolean gameFinished() {
-        boolean atLeastOnePlayerFinished = players.stream().filter(player -> !player.allCardsFlipped()).count() == 0;
-        // boolean bobPlayedLastTime = players.stream().filter(player -> player.allCardsFlipped()).allMatch(player -> player.playedLastTurn());
+//        boolean atLeastOnePlayerFinished = players.stream().filter(player -> !player.allCardsFlipped()).count() == 0;
+         boolean bobPlayedLastTime = players.stream().filter(player -> player.allCardsFlipped()).allMatch(player -> player.playedLastTurn());
 
         // TODO: add consideration for last turn, handle on events that advance the game
 
-        return atLeastOnePlayerFinished;
+        return bobPlayedLastTime;
     }
 }

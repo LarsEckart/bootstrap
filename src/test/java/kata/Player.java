@@ -37,6 +37,13 @@ class Player {
     return card;
   }
 
+  public Card swap(Position position, boolean isLastTurn) {
+    Card card = this.playingCards.swap(position, pendingCard);
+    pendingCard = null;
+    playedLastTurn = isLastTurn;
+    return card;
+  }
+
   @Override
   public String toString() {
     StringBuffer sb = new StringBuffer();
@@ -76,4 +83,7 @@ class Player {
     return this.playingCards.allCardsFlipped();
   }
 
+  public boolean playedLastTurn() {
+    return playedLastTurn;
+  }
 }
