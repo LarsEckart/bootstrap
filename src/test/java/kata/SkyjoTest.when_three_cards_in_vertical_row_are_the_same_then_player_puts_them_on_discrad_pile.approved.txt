@@ -22,7 +22,7 @@ Alice:
 
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -38,7 +38,7 @@ Alice:
 
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -49,16 +49,16 @@ Current player: Alice
 
 Frame #3:
 Alice: 
-|  | |XX| |XX| |XX| 
-|  | |XX| |XX| |XX| 
-|  | |XX| |XX| |XX| 
+|12| |XX| |XX| |XX| 
+|12| |XX| |XX| |XX| 
+|11| |XX| |XX| |XX| 
 
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
 
-Discard pile: 12
+Discard pile: 10
 Current player: Bob

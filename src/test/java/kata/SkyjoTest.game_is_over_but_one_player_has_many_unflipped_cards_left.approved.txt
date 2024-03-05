@@ -22,7 +22,7 @@ Alice:
 
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -32,16 +32,16 @@ Discard pile: 10
 
 Frame #2:
 Alice: playedLastTurn
-|  | |  | |12| |12| 
-|  | |  | |12| |12| 
-|  | |  | |11| |11| 
+|12| |12| |12| |12| 
+|12| |11| |11| |11| 
+|11| |11| |10| |10| 
 
 
 Bob: 
-|11| | 8| |XX| |XX| 
+|12| | 8| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
 
 Discard pile: 8
-Current player: Alice
+Current player: Bob

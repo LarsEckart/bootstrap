@@ -6,7 +6,7 @@ import java.util.Optional;
 
 class Skyjo {
     private final Deck deck;
-    private List<Player> players = new ArrayList<>();
+    public Players players = new Players();
     private Player currentPlayer;
     private DiscardPile discardPile;
     private boolean lastRound;
@@ -16,28 +16,16 @@ class Skyjo {
     }
 
     public void deal() {
-        for (Player player : players) {
-            for (int i = 0; i < 12; i++) {
-                player.addCard(this.deck.dealFromTop());
-            }
+         // hardcoded to 24 for 2 players, what about more players?
+        for (int i = 0; i < 24; i++) {
+            this.players.acceptIncomingCard(this.deck.dealFromTop());
         }
 
         discardPile = new DiscardPile(this.deck.takeFromTop());
     }
 
     public void registerPlayer(Player player) {
-        this.players.add(player);
-    }
-
-    public Player playerWithHighestScore() {
-        Player highest = players.getFirst();
-        for (Player player : players) {
-            if (player.score() > highest.score()) {
-                highest = player;
-            }
-        }
-
-        return highest;
+        players.addPlayer(player);
     }
 
     public void on(Event event) {
@@ -64,8 +52,7 @@ class Skyjo {
             this.lastRound = e.player().isFinishedPlaying();
         }
 
-
-        currentPlayer = determineNextPlayer(players, currentPlayer);
+        currentPlayer = players.nextPlayer();
     }
 
     private void onPlayerPutsCardOnDiscardPile(PlayerPutsCardOnDiscardPile e) {
@@ -92,12 +79,7 @@ class Skyjo {
 
         card.flip();
         this.discardPile = new DiscardPile(card);
-        currentPlayer = determineNextPlayer(players, this.currentPlayer);
-
-    }
-
-    private static Player determineNextPlayer(List<Player> players, Player currentPlayer) {
-        return players.get((players.indexOf(currentPlayer) + 1) % players.size());
+        currentPlayer = players.nextPlayer();
     }
 
     public void onPlayerTakesCardFromDeck(PlayerTakesCardFromDeck event) {
@@ -107,22 +89,18 @@ class Skyjo {
     }
 
     public void start() {
-        currentPlayer = playerWithHighestScore();
+        currentPlayer = players.playerWithHighestScore();
     }
 
     public boolean gameFinished() {
-        return players.stream().filter(Player::isFinishedPlaying).allMatch(Player::playedLastTurn);
+        return players.allFinished();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (Player player : players) {
-            sb.append(player.toString());
-            sb.append("\n");
-        }
-
+        sb.append(players.toString());
         sb.append("Discard pile: " + discardPile.toString());
         sb.append("\n");
 

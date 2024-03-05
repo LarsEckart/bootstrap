@@ -22,7 +22,7 @@ Alice:
 
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -38,7 +38,7 @@ Alice:
 
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -55,7 +55,7 @@ Alice:
 Pending card: 10
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -72,7 +72,7 @@ Alice:
 
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -89,7 +89,7 @@ Alice:
 
 
 Bob: 
-|11| |11| |XX| |XX| 
+|12| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 Pending card: 10
@@ -106,41 +106,7 @@ Alice:
 
 
 Bob: 
-|11| |11| |10| |XX| 
-|XX| |XX| |XX| |XX| 
-|XX| |XX| |XX| |XX| 
-
-
-Discard pile: 11
-Current player: Alice
-
-
-Frame #7:
-Alice: 
-|10| |12| |XX| |XX| 
-|XX| |XX| |XX| |XX| 
-|XX| |XX| |XX| |XX| 
-Pending card: 11
-
-Bob: 
-|11| |11| |10| |XX| 
-|XX| |XX| |XX| |XX| 
-|XX| |XX| |XX| |XX| 
-
-
-Discard pile: 11
-Current player: Alice
-
-
-Frame #8:
-Alice: 
-|10| |12| |11| |XX| 
-|XX| |XX| |XX| |XX| 
-|XX| |XX| |XX| |XX| 
-
-
-Bob: 
-|11| |11| |10| |XX| 
+|12| |12| |10| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -149,15 +115,49 @@ Discard pile: 12
 Current player: Bob
 
 
-Frame #9:
+Frame #7:
 Alice: 
-|10| |12| |11| |XX| 
+|10| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
 
 Bob: 
-|11| |11| |10| |XX| 
+|12| |12| |10| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+Pending card: 12
+
+Discard pile: 12
+Current player: Bob
+
+
+Frame #8:
+Alice: 
+|10| |12| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Bob: 
+|12| |12| |12| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 10
+Current player: Bob
+
+
+Frame #9:
+Alice: 
+|10| |12| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Bob: 
+|12| |12| |12| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
@@ -168,16 +168,16 @@ Current player: Bob
 
 Frame #10:
 Alice: 
-|10| |12| |11| |XX| 
+|10| |12| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
 
 Bob: 
-|11| |11| |10| |11| 
+|12| |12| |12| |12| 
 |XX| |XX| |XX| |XX| 
 |XX| |XX| |XX| |XX| 
 
 
 Discard pile: 10
-Current player: Alice
+Current player: Bob

@@ -2,7 +2,7 @@ package kata;
 
 import java.util.Objects;
 
-class Card {
+public class Card {
     private final Points points;
     private boolean flipped;
 
