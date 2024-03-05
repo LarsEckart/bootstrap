@@ -2,6 +2,7 @@ package kata;
 
 import java.util.ArrayList;
 import java.util.List;
+import kata.position.Position;
 
 public final class Players {
 
@@ -9,7 +10,7 @@ public final class Players {
   private Player currentPlayer;
 
   public Players() {
-    this.players = new ArrayList();
+    this.players = new ArrayList<>();
   }
 
   public void addPlayer(Player player) {
@@ -41,9 +42,7 @@ public final class Players {
 
   public Player nextPlayer() {
     int i = players.indexOf(currentPlayer);
-    System.out.println(i);
     int indexOfNextPlayer = (i + 1) % players.size();
-    System.out.println(indexOfNextPlayer);
     return players.get(indexOfNextPlayer);
   }
 
@@ -57,5 +56,10 @@ public final class Players {
     }
 
     return sb.toString();
+  }
+
+  public void currentPlayerFlipsCard(Position position) {
+    currentPlayer.flipCard(position);
+    currentPlayer = nextPlayer();
   }
 }

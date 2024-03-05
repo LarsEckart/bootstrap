@@ -4,8 +4,8 @@ import kata.position.Position;
 
 import java.util.Optional;
 
-class Player {
-  private String name;
+public class Player {
+  private final String name;
   private Card pendingCard;
   public boolean playedLastTurn;
   private final PlayingCards playingCards;

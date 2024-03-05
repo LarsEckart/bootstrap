@@ -44,10 +44,10 @@ class SkyjoTest {
     skyjo.deal();
     storyboard.add(skyjo);
 
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
 
     storyboard.add(skyjo);
     skyjo.start();
@@ -71,10 +71,10 @@ class SkyjoTest {
 
     skyjo.deal();
 
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
 
     skyjo.start();
 
@@ -106,10 +106,10 @@ class SkyjoTest {
     skyjo.deal();
     storyboard.add(skyjo);
 
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
 
     storyboard.add(skyjo);
     skyjo.start();
@@ -150,10 +150,10 @@ class SkyjoTest {
     skyjo.deal();
     storyboard.add(skyjo);
 
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(2).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(2).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
 
     storyboard.add(skyjo);
     skyjo.start();
@@ -181,10 +181,10 @@ class SkyjoTest {
     skyjo.deal();
     storyboard.add(skyjo);
 
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
 
     storyboard.add(skyjo);
     skyjo.start();
@@ -215,10 +215,10 @@ class SkyjoTest {
     skyjo.deal();
     storyboard.add(skyjo);
 
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Alice, Position.atRow(1).atColumn(2)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(1)));
-    skyjo.on(new PlayerFlipsCard(Bob, Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(1)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
+    skyjo.on(new PlayerFlipsCard(Position.atRow(1).atColumn(2)));
 
     storyboard.add(skyjo);
     skyjo.start();

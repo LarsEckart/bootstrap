@@ -67,7 +67,9 @@ class Skyjo {
     }
 
     private void onPlayerFlipsCard(PlayerFlipsCard event) {
-        event.player().flipCard(event.position());
+        // event.player().flipCard(event.position());
+
+        players.currentPlayerFlipsCard(event.position());
     }
 
     private void onPlayerSwapsTakenCardWithCardAtPosition(PlayerSwapsTakenCardWithCardAtPosition event) {
