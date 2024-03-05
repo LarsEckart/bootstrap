@@ -7,7 +7,6 @@ import java.util.Optional;
 class Skyjo {
     private final Deck deck;
     public Players players = new Players();
-    private Player currentPlayer;
     private DiscardPile discardPile;
     private boolean lastRound;
 

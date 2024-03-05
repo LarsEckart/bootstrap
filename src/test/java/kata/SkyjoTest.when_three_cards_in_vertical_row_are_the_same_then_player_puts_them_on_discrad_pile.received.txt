@@ -1,0 +1,64 @@
+Initial:
+Alice: 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Bob: 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 10
+
+
+Frame #1:
+Alice: 
+|12| |XX| |XX| |XX| 
+|12| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Bob: 
+|12| |12| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 10
+
+
+Frame #2:
+Alice: 
+|12| |XX| |XX| |XX| 
+|12| |XX| |XX| |XX| 
+|XX| |XX| |10| |XX| 
+
+
+Bob: 
+|12| |12| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 10
+Current player: Alice
+
+
+Frame #3:
+Alice: 
+|10| |XX| |XX| |XX| 
+|12| |XX| |XX| |XX| 
+|12| |XX| |10| |XX| 
+
+
+Bob: 
+|12| |12| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+|XX| |XX| |XX| |XX| 
+
+
+Discard pile: 11
+Current player: Alice
