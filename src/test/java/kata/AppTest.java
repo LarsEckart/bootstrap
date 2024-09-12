@@ -14,9 +14,9 @@ class AppTest {
   @Test
   void when_dice_rolled_then_positive_number_returned() {
     Dice dice = new Dice();
-    DiceGame cc = new DiceGame(dice);
+    var diceGame = new DiceGame(dice);
 
-    int result = cc.play();
+    int result = diceGame.play();
 
     assertThat(result).isPositive();
   }
