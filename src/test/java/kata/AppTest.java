@@ -14,22 +14,22 @@ class AppTest {
 
   @Test
   void when_dice_rolled_then_positive_number_returned() {
-    SixSidedDice dice = new SixSidedDice();
+    var dice = new SixSidedDice();
     var diceGame = new DiceGame(dice);
 
-    int result = diceGame.play();
+    GameResult result = diceGame.play();
 
-    assertThat(result).isPositive();
+    assertThat(result).isEqualTo(new GameResult(1));
   }
 
   @Test
   void when_two_dice_rolled_then_positive_number_returned() {
-    SixSidedDice dice = new SixSidedDice();
-    SixSidedDice dice2 = new SixSidedDice();
+    var dice = new SixSidedDice();
+    var dice2 = new SixSidedDice();
     var diceGame = new DiceGame(List.of(dice, dice2));
 
-    int result = diceGame.play();
+    GameResult result = diceGame.play();
 
-    assertThat(result).isPositive();
+    assertThat(result).isEqualTo(new GameResult(2));
   }
 }

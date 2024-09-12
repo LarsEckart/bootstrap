@@ -14,11 +14,11 @@ class DiceGame {
     this.dice = dieces;
   }
 
-  public int play() {
+  public GameResult play() {
     GameResult result = new GameResult();
     for (SixSidedDice die : dice) {
       result.add(die.roll());
     }
-    return result.asInt();
+    return result;
   }
 }
