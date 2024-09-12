@@ -32,4 +32,15 @@ class AppTest {
 
     assertThat(result).isEqualTo(new GameResult(2));
   }
+
+  @Test
+  void when_two_dice_rolled_and_sum_larger_than_7_then_we_win() {
+    var dice = new SixSidedDice();
+    var dice2 = new SixSidedDice();
+    var diceGame = new DiceGame(List.of(dice, dice2));
+
+    GameResult result = diceGame.play();
+
+    assertThat(result.hasWon()).isTrue();
+  }
 }

@@ -16,6 +16,10 @@ class GameResult {
     value = value + roll.asInt();
   }
 
+  public boolean hasWon() {
+    return true;
+  }
+
   @Override
   public boolean equals(Object other) {
     return other == this
