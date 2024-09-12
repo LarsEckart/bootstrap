@@ -11,6 +11,10 @@ class AppTest {
 
   @Test
   void my_first_test() {
-    assertThat(App.getActual()).isEqualTo("42");
+    ControllerClass cc = new ControllerClass();
+
+    int result = cc.roll();
+
+    assertThat(result).isPositive();
   }
 }
