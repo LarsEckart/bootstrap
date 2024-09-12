@@ -35,12 +35,37 @@ class AppTest {
 
   @Test
   void when_two_dice_rolled_and_sum_larger_than_7_then_we_win() {
-    var dice = new SixSidedDice();
-    var dice2 = new SixSidedDice();
+    var dice = new AlwaysSameDiceResultDice(4);
+    var dice2 = new AlwaysSameDiceResultDice(6);
     var diceGame = new DiceGame(List.of(dice, dice2));
 
     GameResult result = diceGame.play();
 
     assertThat(result.hasWon()).isTrue();
+  }
+
+  @Test
+  void when_two_dice_rolled_and_sum_less_than_7_then_we_lose() {
+    var dice = new AlwaysSameDiceResultDice(4);
+    var dice2 = new AlwaysSameDiceResultDice(1);
+    var diceGame = new DiceGame(List.of(dice, dice2));
+
+    GameResult result = diceGame.play();
+
+    assertThat(result.hasWon()).isFalse();
+  }
+
+  private static class AlwaysSameDiceResultDice extends SixSidedDice {
+
+    public int result;
+
+    public AlwaysSameDiceResultDice(int result1) {
+      result = result1;
+    }
+
+    @Override
+    public DiceResult roll() {
+      return new DiceResult(result);
+    }
   }
 }

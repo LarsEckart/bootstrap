@@ -17,7 +17,7 @@ class GameResult {
   }
 
   public boolean hasWon() {
-    return true;
+    return value >= 7;
   }
 
   @Override
