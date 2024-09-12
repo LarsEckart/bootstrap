@@ -14,7 +14,7 @@ class AppTest {
 
   @Test
   void when_dice_rolled_then_positive_number_returned() {
-    var dice = new SixSidedDice();
+    var dice = new AlwaysSameDiceResultDice(1);
     var diceGame = new DiceGame(dice);
 
     GameResult result = diceGame.play();
@@ -24,13 +24,13 @@ class AppTest {
 
   @Test
   void when_two_dice_rolled_then_positive_number_returned() {
-    var dice = new SixSidedDice();
-    var dice2 = new SixSidedDice();
+    var dice = new AlwaysSameDiceResultDice(1);
+    var dice2 = new AlwaysSameDiceResultDice(3);
     var diceGame = new DiceGame(List.of(dice, dice2));
 
     GameResult result = diceGame.play();
 
-    assertThat(result).isEqualTo(new GameResult(2));
+    assertThat(result).isEqualTo(new GameResult(4));
   }
 
   @Test
