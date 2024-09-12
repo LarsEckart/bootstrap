@@ -15,10 +15,10 @@ class DiceGame {
   }
 
   public int play() {
-    int sum = 0;
+    GameResult result = new GameResult();
     for (SixSidedDice die : dice) {
-      sum = die.roll().asInt();
+      result.add(die.roll());
     }
-    return sum;
+    return result.asInt();
   }
 }
