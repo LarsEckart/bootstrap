@@ -9,11 +9,14 @@ import org.junit.jupiter.api.Test;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class AppTest {
 
-  @Test
-  void my_first_test() {
-    ControllerClass cc = new ControllerClass();
+  // DO we need a Cup that contains 2 Dice?
 
-    int result = cc.roll();
+  @Test
+  void when_dice_rolled_then_positive_number_returned() {
+    Dice dice = new Dice();
+    DiceGame cc = new DiceGame(dice);
+
+    int result = cc.play();
 
     assertThat(result).isPositive();
   }
