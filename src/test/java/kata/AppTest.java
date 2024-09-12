@@ -14,7 +14,7 @@ class AppTest {
 
   @Test
   void when_dice_rolled_then_positive_number_returned() {
-    Dice dice = new Dice();
+    SixSidedDice dice = new SixSidedDice();
     var diceGame = new DiceGame(dice);
 
     int result = diceGame.play();
@@ -24,8 +24,8 @@ class AppTest {
 
   @Test
   void when_two_dice_rolled_then_positive_number_returned() {
-    Dice dice = new Dice();
-    Dice dice2 = new Dice();
+    SixSidedDice dice = new SixSidedDice();
+    SixSidedDice dice2 = new SixSidedDice();
     var diceGame = new DiceGame(List.of(dice, dice2));
 
     int result = diceGame.play();

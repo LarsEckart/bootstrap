@@ -4,20 +4,20 @@ import java.util.List;
 
 class DiceGame {
 
-  private final List<Dice> dice;
+  private final List<SixSidedDice> dice;
 
-  public DiceGame(Dice dice) {
+  public DiceGame(SixSidedDice dice) {
     this.dice = List.of(dice);
   }
 
-  public DiceGame(List<Dice> dieces) {
+  public DiceGame(List<SixSidedDice> dieces) {
     this.dice = dieces;
   }
 
   public int play() {
     int sum = 0;
-    for (Dice die : dice) {
-      sum = die.roll();
+    for (SixSidedDice die : dice) {
+      sum = die.roll().asInt();
     }
     return sum;
   }
