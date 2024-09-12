@@ -1,24 +1,14 @@
 package kata;
 
-import java.util.List;
-
 class DiceGame {
 
-  private final List<SixSidedDice> dice;
+  private final Cup cup;
 
-  public DiceGame(SixSidedDice dice) {
-    this.dice = List.of(dice);
-  }
-
-  public DiceGame(List<SixSidedDice> dieces) {
-    this.dice = dieces;
+  public DiceGame(Cup cup1) {
+    this.cup = cup1;
   }
 
   public GameResult play() {
-    GameResult result = new GameResult();
-    for (SixSidedDice die : dice) {
-      result.add(die.roll());
-    }
-    return result;
+    return cup.swing();
   }
 }

@@ -1,33 +1,8 @@
 package kata;
 
-import java.util.Objects;
+public interface GameResult {
 
-class GameResult {
+  void add(DiceResult roll);
 
-  private int value = 0;
-
-  public GameResult() {}
-
-  public GameResult(int initialValue) {
-    value = initialValue;
-  }
-
-  public void add(DiceResult roll) {
-    value = value + roll.asInt();
-  }
-
-  public boolean hasWon() {
-    return value >= 7;
-  }
-
-  @Override
-  public boolean equals(Object other) {
-    return other == this
-        || (other instanceof GameResult gameResult) && Objects.equals(value, gameResult.value);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(value);
-  }
+  boolean hasWon();
 }

@@ -15,29 +15,29 @@ class AppTest {
   @Test
   void when_dice_rolled_then_positive_number_returned() {
     var dice = new AlwaysSameDiceResultDice(1);
-    var diceGame = new DiceGame(dice);
+    var diceGame = new DiceGame(new TwoDiceCup(List.of(dice)));
 
     GameResult result = diceGame.play();
 
-    assertThat(result).isEqualTo(new GameResult(1));
+    assertThat(result).isEqualTo(new TwoDiceGameResult(1));
   }
 
   @Test
   void when_two_dice_rolled_then_positive_number_returned() {
     var dice = new AlwaysSameDiceResultDice(1);
     var dice2 = new AlwaysSameDiceResultDice(3);
-    var diceGame = new DiceGame(List.of(dice, dice2));
+    var diceGame = new DiceGame(new TwoDiceCup(List.of(dice, dice2)));
 
     GameResult result = diceGame.play();
 
-    assertThat(result).isEqualTo(new GameResult(4));
+    assertThat(result).isEqualTo(new TwoDiceGameResult(4));
   }
 
   @Test
   void when_two_dice_rolled_and_sum_larger_than_7_then_we_win() {
     var dice = new AlwaysSameDiceResultDice(4);
     var dice2 = new AlwaysSameDiceResultDice(6);
-    var diceGame = new DiceGame(List.of(dice, dice2));
+    var diceGame = new DiceGame(new TwoDiceCup(List.of(dice, dice2)));
 
     GameResult result = diceGame.play();
 
@@ -48,7 +48,7 @@ class AppTest {
   void when_two_dice_rolled_and_sum_less_than_7_then_we_lose() {
     var dice = new AlwaysSameDiceResultDice(4);
     var dice2 = new AlwaysSameDiceResultDice(1);
-    var diceGame = new DiceGame(List.of(dice, dice2));
+    var diceGame = new DiceGame(new TwoDiceCup(List.of(dice, dice2)));
 
     GameResult result = diceGame.play();
 
