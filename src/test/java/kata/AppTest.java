@@ -2,6 +2,7 @@ package kata;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,17 @@ class AppTest {
   void when_dice_rolled_then_positive_number_returned() {
     Dice dice = new Dice();
     var diceGame = new DiceGame(dice);
+
+    int result = diceGame.play();
+
+    assertThat(result).isPositive();
+  }
+
+  @Test
+  void when_two_dice_rolled_then_positive_number_returned() {
+    Dice dice = new Dice();
+    Dice dice2 = new Dice();
+    var diceGame = new DiceGame(List.of(dice, dice2));
 
     int result = diceGame.play();
 

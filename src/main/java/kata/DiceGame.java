@@ -1,15 +1,24 @@
 package kata;
 
+import java.util.List;
+
 class DiceGame {
 
-  private final Dice dice;
+  private final List<Dice> dice;
 
   public DiceGame(Dice dice) {
-    this.dice = dice;
+    this.dice = List.of(dice);
+  }
+
+  public DiceGame(List<Dice> dieces) {
+    this.dice = dieces;
   }
 
   public int play() {
-    int result = dice.roll();
-    return result;
+    int sum = 0;
+    for (Dice die : dice) {
+      sum = die.roll();
+    }
+    return sum;
   }
 }
