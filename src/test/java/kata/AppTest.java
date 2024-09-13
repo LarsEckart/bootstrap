@@ -3,6 +3,8 @@ package kata;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import kata.two.TwoDiceCup;
+import kata.two.TwoDiceGameResult;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;

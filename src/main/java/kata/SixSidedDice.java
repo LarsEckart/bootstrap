@@ -2,9 +2,9 @@ package kata;
 
 import java.util.Random;
 
-class SixSidedDice {
+public class SixSidedDice {
 
-  Random random;
+  private final Random random;
 
   public SixSidedDice() {
     this.random = new Random();

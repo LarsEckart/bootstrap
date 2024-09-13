@@ -1,6 +1,6 @@
 package kata;
 
-class DiceResult {
+public class DiceResult {
 
   private final int result;
 

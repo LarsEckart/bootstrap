@@ -1,6 +1,8 @@
-package kata;
+package kata.four;
 
 import java.util.Objects;
+import kata.DiceResult;
+import kata.GameResult;
 
 public class FourDiceGameResult implements GameResult {
 

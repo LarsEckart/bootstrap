@@ -1,6 +1,9 @@
-package kata;
+package kata.two;
 
 import java.util.List;
+import kata.Cup;
+import kata.GameResult;
+import kata.SixSidedDice;
 
 public final class TwoDiceCup implements Cup {
 
@@ -13,6 +16,7 @@ public final class TwoDiceCup implements Cup {
     this.dieces = dice;
   }
 
+  @Override
   public GameResult swing() {
     var result = new TwoDiceGameResult();
     for (var dice : dieces) {

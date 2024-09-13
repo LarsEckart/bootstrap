@@ -2,6 +2,8 @@ package kata;
 
 import java.io.IOException;
 import java.util.List;
+import kata.four.FourDiceCup;
+import kata.two.TwoDiceCup;
 
 class App {
 

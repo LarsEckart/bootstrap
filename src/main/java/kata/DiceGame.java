@@ -4,8 +4,8 @@ class DiceGame {
 
   private final Cup cup;
 
-  public DiceGame(Cup cup1) {
-    this.cup = cup1;
+  public DiceGame(Cup cup) {
+    this.cup = cup;
   }
 
   public GameResult play() {

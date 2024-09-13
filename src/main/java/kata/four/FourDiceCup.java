@@ -1,6 +1,9 @@
-package kata;
+package kata.four;
 
 import java.util.List;
+import kata.Cup;
+import kata.GameResult;
+import kata.SixSidedDice;
 
 public final class FourDiceCup implements Cup {
 

@@ -1,6 +1,8 @@
-package kata;
+package kata.two;
 
 import java.util.Objects;
+import kata.DiceResult;
+import kata.GameResult;
 
 public class TwoDiceGameResult implements GameResult {
 
