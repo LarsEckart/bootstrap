@@ -12,3 +12,6 @@ out
 .project
 .settings/
 bin/
+
+# ai, i symlink this file
+.github/copilot-instructions.md
