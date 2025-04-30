@@ -13,23 +13,35 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 public class RedisCache implements Cache {
   private final GenericObjectPool<StatefulRedisConnection<String, String>> pool;
+  private final RedisClient client;
 
   public RedisCache(String host, int port, int poolSize, Duration timeout) {
     var redisUri = RedisURI.builder().withHost(host).withPort(port).withTimeout(timeout).build();
-    var client = RedisClient.create(redisUri);
+    this.client = RedisClient.create(redisUri);
     var factory = new RedisConnectionFactory(client);
     var config = new GenericObjectPoolConfig<StatefulRedisConnection<String, String>>();
     config.setMaxTotal(poolSize);
     this.pool = new GenericObjectPool<>(factory, config);
   }
 
+  public void close() {
+    pool.close();
+    client.shutdown();
+  }
+
   @Override
   public Optional<CacheValue> get(CacheKey key) throws CacheException {
-    try (var connection = pool.borrowObject()) {
+    StatefulRedisConnection<String, String> connection = null;
+    try {
+      connection = pool.borrowObject();
       var value = connection.sync().get(key.value());
       return Optional.ofNullable(value).map(CacheValue::new);
     } catch (Exception e) {
       throw new CacheException("Failed to get value", e);
+    } finally {
+      if (connection != null) {
+        pool.returnObject(connection);
+      }
     }
   }
 
@@ -42,38 +54,62 @@ public class RedisCache implements Cache {
 
   @Override
   public void put(CacheKey key, CacheValue value) throws CacheException {
-    try (var connection = pool.borrowObject()) {
+    StatefulRedisConnection<String, String> connection = null;
+    try {
+      connection = pool.borrowObject();
       connection.sync().set(key.value(), value.value());
     } catch (Exception e) {
       throw new CacheException("Failed to put value", e);
+    } finally {
+      if (connection != null) {
+        pool.returnObject(connection);
+      }
     }
   }
 
   @Override
   public void remove(CacheKey key) throws CacheException {
-    try (var connection = pool.borrowObject()) {
+    StatefulRedisConnection<String, String> connection = null;
+    try {
+      connection = pool.borrowObject();
       connection.sync().del(key.value());
     } catch (Exception e) {
       throw new CacheException("Failed to remove value", e);
+    } finally {
+      if (connection != null) {
+        pool.returnObject(connection);
+      }
     }
   }
 
   @Override
   public boolean exists(CacheKey key) throws CacheException {
-    try (var connection = pool.borrowObject()) {
+    StatefulRedisConnection<String, String> connection = null;
+    try {
+      connection = pool.borrowObject();
       return connection.sync().exists(key.value()) > 0;
     } catch (Exception e) {
       throw new CacheException("Failed to check existence", e);
+    } finally {
+      if (connection != null) {
+        pool.returnObject(connection);
+      }
     }
   }
 
   @Override
   public Optional<CacheValue> hget(HashName hash, HashField field) throws CacheException {
-    try (var connection = pool.borrowObject()) {
+    StatefulRedisConnection<String, String> connection = null;
+    try {
+      connection = pool.borrowObject();
       var value = connection.sync().hget(hash.value(), field.value());
       return Optional.ofNullable(value).map(CacheValue::new);
     } catch (Exception e) {
       throw new CacheException("Failed to hget value", e);
+    } finally {
+      if (connection != null) {
+        pool.returnObject(connection);
+      }
     }
   }
 
@@ -86,19 +122,31 @@ public class RedisCache implements Cache {
 
   @Override
   public void hset(HashName hash, HashField field, CacheValue value) throws CacheException {
-    try (var connection = pool.borrowObject()) {
+    StatefulRedisConnection<String, String> connection = null;
+    try {
+      connection = pool.borrowObject();
       connection.sync().hset(hash.value(), field.value(), value.value());
     } catch (Exception e) {
       throw new CacheException("Failed to hset value", e);
+    } finally {
+      if (connection != null) {
+        pool.returnObject(connection);
+      }
     }
   }
 
   @Override
   public void hdel(HashName hash, HashField field) throws CacheException {
-    try (var connection = pool.borrowObject()) {
+    StatefulRedisConnection<String, String> connection = null;
+    try {
+      connection = pool.borrowObject();
       connection.sync().hdel(hash.value(), field.value());
     } catch (Exception e) {
       throw new CacheException("Failed to hdel value", e);
+    } finally {
+      if (connection != null) {
+        pool.returnObject(connection);
+      }
     }
   }
 
