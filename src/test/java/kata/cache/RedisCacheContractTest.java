@@ -16,7 +16,8 @@ class RedisCacheContractTest extends CacheContractTest {
   void startRedis() {
     redis = new RedisContainer(RedisContainer.DEFAULT_IMAGE_NAME.withTag("7.4.2"));
     redis.start();
-    cache = new RedisCache(redis.getHost(), redis.getFirstMappedPort(), 2, Duration.ofSeconds(2));
+    cache =
+        RedisCache.create(redis.getHost(), redis.getFirstMappedPort(), 2, Duration.ofSeconds(2));
   }
 
   @AfterAll

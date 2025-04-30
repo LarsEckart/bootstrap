@@ -12,7 +12,7 @@ class RedisCacheTest {
   class construction {
     @Test
     void valid_parameters_create_instance() {
-      var cache = new RedisCache("localhost", 6379, 2, Duration.ofSeconds(1));
+      var cache = RedisCache.create("localhost", 6379, 2, Duration.ofSeconds(1));
       assertThat(cache).isNotNull();
     }
   }
@@ -21,7 +21,7 @@ class RedisCacheTest {
   class error_handling {
     @Test
     void get_throws_cache_exception_on_connection_failure() {
-      var cache = new RedisCache("invalid-host", 1234, 1, Duration.ofMillis(100));
+      var cache = RedisCache.create("invalid-host", 1234, 1, Duration.ofMillis(100));
       var key = new CacheKey("foo");
 
       assertThatThrownBy(() -> cache.get(key))
@@ -31,7 +31,7 @@ class RedisCacheTest {
 
     @Test
     void put_throws_cache_exception_on_connection_failure() {
-      var cache = new RedisCache("invalid-host", 1234, 1, Duration.ofMillis(100));
+      var cache = RedisCache.create("invalid-host", 1234, 1, Duration.ofMillis(100));
       var key = new CacheKey("foo");
       var value = new CacheValue("bar");
 
