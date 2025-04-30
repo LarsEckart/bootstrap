@@ -1,14 +1,14 @@
 # TODO Checklist for Cache Abstraction Project
 
 ## Value Objects
-- [ ] Implement `CacheKey` class with validation
-- [ ] Write unit tests for `CacheKey` (valid and invalid construction)
-- [ ] Implement `CacheValue` class with validation
-- [ ] Write unit tests for `CacheValue` (valid and invalid construction)
-- [ ] Implement `HashName` class with validation
-- [ ] Write unit tests for `HashName` (valid and invalid construction)
-- [ ] Implement `HashField` class with validation
-- [ ] Write unit tests for `HashField` (valid and invalid construction)
+- [x] Implement `CacheKey` class with validation
+- [x] Write unit tests for `CacheKey` (valid and invalid construction)
+- [x] Implement `CacheValue` class with validation
+- [x] Write unit tests for `CacheValue` (valid and invalid construction)
+- [x] Implement `HashName` class with validation
+- [x] Write unit tests for `HashName` (valid and invalid construction)
+- [x] Implement `HashField` class with validation
+- [x] Write unit tests for `HashField` (valid and invalid construction)
 
 ## Exception
 - [ ] Implement `CacheException` (checked exception)
