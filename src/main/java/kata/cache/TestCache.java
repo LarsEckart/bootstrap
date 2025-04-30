@@ -46,8 +46,7 @@ public class TestCache implements Cache {
   @Override
   public CacheValue hgetOrThrow(HashName hash, HashField field) {
     var map = hashStore.get(hash);
-    if (map == null) throw new RuntimeException("Hash not found: " + hash.value());
-    var value = map.get(field);
+    var value = (map == null) ? null : map.get(field);
     if (value == null) throw new RuntimeException("Field not found: " + field.value());
     return value;
   }
