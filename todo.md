@@ -18,8 +18,8 @@
 - [x] Define `Cache` interface with all required methods (get, put, remove, exists, hget, hset, hdel, Optional and throwing variants)
 
 ## TestCache Implementation
-- [ ] Implement `TestCache` using `ConcurrentHashMap`
-- [ ] Write unit tests for `TestCache` (all methods, happy and negative paths, input validation)
+- [x] Implement `TestCache` using `ConcurrentHashMap`
+- [x] Write unit tests for `TestCache` (all methods, happy and negative paths, input validation)
 
 ## RedisCache Implementation (non-SSL)
 - [ ] Implement `RedisCache` with Lettuce and Apache Commons Pool (host, port, pool size, timeouts)
