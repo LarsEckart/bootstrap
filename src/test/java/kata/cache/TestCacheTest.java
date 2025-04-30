@@ -1,6 +1,7 @@
 package kata.cache;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -130,12 +131,12 @@ class TestCacheTest {
     @Test
     void hgetOrThrow_throws_when_hash_missing() {
       var cache = new TestCache();
-      var hash = new HashName("h");
-      var field = new HashField("f");
+      var hash = new HashName("missing_hash");
+      var field = new HashField("missing_field");
 
       assertThatThrownBy(() -> cache.hgetOrThrow(hash, field))
           .isInstanceOf(RuntimeException.class)
-          .hasMessageContaining("Hash not found");
+          .hasMessageContaining("Field not found");
     }
 
     @Test
