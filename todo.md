@@ -11,11 +11,11 @@
 - [x] Write unit tests for `HashField` (valid and invalid construction)
 
 ## Exception
-- [ ] Implement `CacheException` (checked exception)
-- [ ] Write unit tests for `CacheException` construction and message
+- [x] Implement `CacheException` (checked exception)
+- [x] Write unit tests for `CacheException` construction and message
 
 ## Cache Interface
-- [ ] Define `Cache` interface with all required methods (get, put, remove, exists, hget, hset, hdel, Optional and throwing variants)
+- [x] Define `Cache` interface with all required methods (get, put, remove, exists, hget, hset, hdel, Optional and throwing variants)
 
 ## TestCache Implementation
 - [ ] Implement `TestCache` using `ConcurrentHashMap`
