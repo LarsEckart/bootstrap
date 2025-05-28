@@ -13,5 +13,20 @@ public enum Rank {
   TEN,
   JACK,
   QUEEN,
-  KING
+  KING;
+
+  public int getBlackjackValue() {
+    return switch (this) {
+      case ACE -> 11;
+      case TWO -> 2;
+      case THREE -> 3;
+      case FOUR -> 4;
+      case FIVE -> 5;
+      case SIX -> 6;
+      case SEVEN -> 7;
+      case EIGHT -> 8;
+      case NINE -> 9;
+      case TEN, JACK, QUEEN, KING -> 10;
+    };
+  }
 }

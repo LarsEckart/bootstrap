@@ -3,6 +3,7 @@ package kata;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class Deck {
   private final List<Card> cards;
@@ -30,5 +31,12 @@ public class Deck {
 
   public void shuffle() {
     Collections.shuffle(cards);
+  }
+
+  public Optional<Card> deal() {
+    if (cards.isEmpty()) {
+      return Optional.empty();
+    }
+    return Optional.of(cards.remove(cards.size() - 1));
   }
 }

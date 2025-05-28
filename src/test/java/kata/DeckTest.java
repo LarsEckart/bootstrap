@@ -155,4 +155,46 @@ class DeckTest {
       assertThat(ordersDifferent).isTrue();
     }
   }
+
+  @Nested
+  class dealing_tests {
+
+    @Test
+    void deal_returns_card_from_deck() {
+      var deck = new Deck();
+      var originalSize = deck.size();
+
+      var dealtCard = deck.deal();
+
+      assertThat(dealtCard).isPresent();
+      assertThat(deck.size()).isEqualTo(originalSize - 1);
+    }
+
+    @Test
+    void deal_removes_card_from_deck() {
+      var deck = new Deck();
+      var originalCards = deck.getCards();
+
+      var dealtCard = deck.deal();
+
+      assertThat(dealtCard).isPresent();
+      var remainingCards = deck.getCards();
+      assertThat(remainingCards).doesNotContain(dealtCard.get());
+      assertThat(remainingCards.size()).isEqualTo(originalCards.size() - 1);
+    }
+
+    @Test
+    void deal_from_empty_deck_returns_empty() {
+      var deck = new Deck();
+
+      for (int i = 0; i < 52; i++) {
+        deck.deal();
+      }
+
+      var result = deck.deal();
+
+      assertThat(result).isEmpty();
+      assertThat(deck.size()).isZero();
+    }
+  }
 }
