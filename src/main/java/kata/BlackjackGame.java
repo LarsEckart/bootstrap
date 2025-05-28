@@ -52,8 +52,8 @@ public class BlackjackGame {
 
   private void displayInitialHands() {
     System.out.println("\n--- Initial Deal ---");
-    System.out.println("Your hand: " + formatHand(playerHand, false));
-    System.out.println("Dealer hand: [Hidden Card], " + formatDealerUpCard());
+    System.out.println("Your hand: " + playerHand);
+    System.out.println("Dealer hand: [Hidden Card], [Up Card]");
   }
 
   private void playerTurn(Scanner scanner) {
@@ -64,7 +64,7 @@ public class BlackjackGame {
       if (action.equals("h") || action.equals("hit")) {
         playerHand.addCard(deck.deal().orElseThrow());
         System.out.println("You drew a card.");
-        System.out.println("Your hand: " + formatHand(playerHand, false));
+        System.out.println("Your hand: " + playerHand);
 
         if (playerHand.getScore().isBust()) {
           System.out.println("Bust! You lose!");
@@ -81,12 +81,12 @@ public class BlackjackGame {
 
   private void dealerTurn() {
     System.out.println("\n--- Dealer's Turn ---");
-    System.out.println("Dealer reveals: " + formatHand(dealerHand, false));
+    System.out.println("Dealer reveals: " + dealerHand);
 
     while (dealerHand.getScore().getValue() < 17
         || (dealerHand.getScore().getValue() == 17 && dealerHand.getScore().isSoft())) {
       dealerHand.addCard(deck.deal().orElseThrow());
-      System.out.println("Dealer hits: " + formatHand(dealerHand, false));
+      System.out.println("Dealer hits: " + dealerHand);
     }
 
     if (dealerHand.getScore().isBust()) {
@@ -106,8 +106,8 @@ public class BlackjackGame {
     }
 
     System.out.println("\n--- Final Results ---");
-    System.out.println("Your hand: " + formatHand(playerHand, false));
-    System.out.println("Dealer hand: " + formatHand(dealerHand, false));
+    System.out.println("Your hand: " + playerHand);
+    System.out.println("Dealer hand: " + dealerHand);
 
     if (playerHand.beats(dealerHand)) {
       System.out.println("You win!");
@@ -116,16 +116,5 @@ public class BlackjackGame {
     } else {
       System.out.println("It's a tie!");
     }
-  }
-
-  private String formatHand(Hand hand, boolean hideFirstCard) {
-    if (hideFirstCard) {
-      return "[Hidden Card], " + formatDealerUpCard();
-    }
-    return hand.toString();
-  }
-
-  private String formatDealerUpCard() {
-    return "Up card visible";
   }
 }

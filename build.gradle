@@ -81,8 +81,6 @@ spotbugs {
     showStackTraces = true
     showProgress = true
 
-    // https://discuss.kotlinlang.org/t/bug-cannot-use-kotlin-enum-from-groovy/1521
-    // https://touk.pl/blog/2018/05/28/testing-kotlin-with-spock-part-2-enum-with-instance-method/
     effort = Effort.valueOf('DEFAULT')
     reportLevel = Confidence.valueOf('DEFAULT')
 

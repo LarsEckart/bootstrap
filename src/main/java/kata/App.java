@@ -23,8 +23,4 @@ class App {
     System.out.println("Thanks for playing!");
     scanner.close();
   }
-
-  static String getActual() {
-    return "4" + "2";
-  }
 }
