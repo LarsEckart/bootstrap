@@ -37,3 +37,6 @@ This is a Java 21 project using Gradle with a focus on code quality and testing 
 - Avoid null - use Optional, exceptions, or null objects instead
 - Wrap primitives in Value Objects that validate constraints
 - Follow Single Responsibility Principle
+- **Object-Oriented Design**: Prioritize high cohesion and low coupling
+- Keep internal data private - avoid exposing collections or internal state
+- Classes should encapsulate their data and provide behavior, not just data access
