@@ -1,14 +1,14 @@
 plugins {
     id 'java'
-    id 'com.diffplug.spotless' version '8.0.0'
-    id 'info.solidsoft.pitest' version '1.15.0'
+//    id 'com.diffplug.spotless' version '8.0.0'
+    id 'info.solidsoft.pitest' version '1.19.0-rc.2'
     id 'com.github.spotbugs' version '6.4.4'
     id 'net.ltgt.errorprone' version '4.3.0'
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -34,7 +34,7 @@ dependencies {
 tasks.withType(JavaCompile) {
     options.compilerArgs.add("-Xlint:all")
     options.incremental = true
-    dependsOn 'spotlessApply'
+//    dependsOn 'spotlessApply'
 }
 
 test {
@@ -46,22 +46,22 @@ test {
 
 project.tasks.check.dependsOn("pitest")
 pitest {
-    junit5PluginVersion = '1.2.1'
+    junit5PluginVersion = '1.2.3'
     testSourceSets = [sourceSets.test]
     mainSourceSets = [sourceSets.main]
     targetClasses = ['kata.*']
-    pitestVersion = '1.15.8'
+    pitestVersion = '1.21.0'
     threads = 4
     outputFormats = ['XML', 'HTML']
     timestampedReports = false
 }
 
-spotless {
-    java {
-        googleJavaFormat()
-        formatAnnotations()
-    }
-}
+//spotless {
+//    java {
+//        googleJavaFormat()
+//        formatAnnotations()
+//    }
+//}
 
 import com.github.spotbugs.snom.Confidence
 import com.github.spotbugs.snom.Effort
