@@ -50,7 +50,7 @@ jobs:
           # this secret needs to be in the settings.secrets.dependabot
           GITHUB_TOKEN: ${{secrets.GH_ACTION_TOKEN}}
       - name: Publish Test Report
-        uses: mikepenz/action-junit-report@v5
+        uses: mikepenz/action-junit-report@v6
         if: success() || failure()
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
