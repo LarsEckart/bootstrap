@@ -1,4 +1,4 @@
-![Test Status](../../workflows/test/badge.svg)
+[![Test Status](../../workflows/test/badge.svg)](https://github.com/LarsEckart/bootstrap/actions/workflows/test.yml)
 
 # 
 
