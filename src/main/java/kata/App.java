@@ -1,12 +1,11 @@
 package kata;
 
-import java.io.IOException;
-
 class App {
 
-  public static void main(String[] args) throws IOException {}
+    void main() {
+    }
 
-  static String getActual() {
-    return "4" + "2";
-  }
+    static String getActual() {
+        return "4" + "2";
+    }
 }
