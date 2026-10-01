@@ -1,0 +1,24 @@
+[versions]
+errorproneCore = "2.50.0"
+findsecbugs = "1.14.0"
+vavr = "1.0.1"
+junit = "6.1.3"
+assertj = "3.27.7"
+approvaltests = "31.0.0"
+pitestTool = "1.30.0"
+pitestJunit5 = "1.2.3"
+
+[plugins]
+pitest = { id = "info.solidsoft.pitest", version = "1.19.0" }
+spotbugs = { id = "com.github.spotbugs", version = "6.5.12" }
+errorprone = { id = "net.ltgt.errorprone", version = "5.1.1" }
+objectCalisthenics = { id = "com.larseckart.object-calisthenics", version = "0.4.0" }
+crappyJava = { id = "com.larseckart.crappy-java", version = "0.1.1" }
+
+[libraries]
+errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "errorproneCore" }
+findsecbugs-plugin = { module = "com.h3xstream.findsecbugs:findsecbugs-plugin", version.ref = "findsecbugs" }
+vavr = { module = "io.vavr:vavr", version.ref = "vavr" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+approvaltests = { module = "com.approvaltests:approvaltests", version.ref = "approvaltests" }
