@@ -12,7 +12,7 @@ pitestJunit5 = "1.2.3"
 pitest = { id = "info.solidsoft.pitest", version = "1.19.0" }
 spotbugs = { id = "com.github.spotbugs", version = "6.5.13" }
 errorprone = { id = "net.ltgt.errorprone", version = "5.1.1" }
-objectCalisthenics = { id = "com.larseckart.object-calisthenics", version = "0.4.0" }
+objectCalisthenics = { id = "com.larseckart.object-calisthenics", version = "0.5.0" }
 crappyJava = { id = "com.larseckart.crappy-java", version = "0.1.1" }
 
 [libraries]
