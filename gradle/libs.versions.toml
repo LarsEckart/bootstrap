@@ -1,5 +1,5 @@
 [versions]
-errorproneCore = "2.50.0"
+errorproneCore = "2.51.0"
 findsecbugs = "1.14.0"
 vavr = "1.0.1"
 junit = "6.1.3"
